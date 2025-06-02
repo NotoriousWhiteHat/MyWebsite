@@ -394,9 +394,10 @@
       align-items: center;
     }
     
+    /* Updated to force 2×2 grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       width: 100%;
       justify-items: center;
@@ -455,7 +456,8 @@
       background: linear-gradient(90deg, #00ff88, #00ccff, #0088ff);
       border-radius: 10px;
       position: relative;
-      animation: fillBar 2s ease-out;
+      width: 0;
+      animation: fillBar 2s ease-out forwards;
       box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
     }
     
@@ -477,6 +479,11 @@
       100% {
         left: 100%;
       }
+    }
+    
+    @keyframes fillBar {
+      from { width: 0; }
+      to   { width: var(--width); }
     }
     
     .contact-section {
@@ -516,34 +523,6 @@
       background: rgba(0, 255, 136, 0.15);
       box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
       transform: translateY(-3px);
-    }
-    
-    @keyframes pulse-glow {
-      0%, 100% {
-        border-color: #00ff88;
-        box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-      }
-      50% {
-        border-color: #00ccff;
-        box-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
-      }
-    }
-    
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      40% {
-        transform: translateX(-50%) translateY(-10px);
-      }
-      60% {
-        transform: translateX(-50%) translateY(-5px);
-      }
-    }
-    
-    @keyframes fillBar {
-      from { width: 0%; }
-      to { width: var(--width); }
     }
     
     .discord-card {
@@ -684,6 +663,29 @@
         bottom: 20px;
       }
     }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        border-color: #00ff88;
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+      }
+      50% {
+        border-color: #00ccff;
+        box-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -787,106 +789,82 @@
       </div>
       
       <div class="skills-section">
-        <h2 class="section-title">Skills & Expertise</h2>
+        <h2 class="section-title">Skills &amp; Expertise</h2>
         <div class="skills-grid">
           <div class="skill-category">
-            <h3>Security & Hacking</h3>
+            <h3>Security &amp; Hacking</h3>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Penetration Testing</span>
-                <span class="skill-percentage">95%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 95%; width: 95%;"></div></div>
+              <span class="skill-name">Penetration Testing</span>
+              <span class="skill-percentage">95%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 95%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Vulnerability Assessment</span>
-                <span class="skill-percentage">90%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 90%; width: 90%;"></div></div>
+              <span class="skill-name">Vulnerability Assessment</span>
+              <span class="skill-percentage">90%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 90%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Ethical Hacking</span>
-                <span class="skill-percentage">88%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 88%; width: 88%;"></div></div>
+              <span class="skill-name">Ethical Hacking</span>
+              <span class="skill-percentage">88%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 88%;"></div></div>
           </div>
           
           <div class="skill-category">
             <h3>Programming</h3>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Python</span>
-                <span class="skill-percentage">92%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 92%; width: 92%;"></div></div>
+              <span class="skill-name">Python</span>
+              <span class="skill-percentage">92%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 92%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">JavaScript</span>
-                <span class="skill-percentage">85%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 85%; width: 85%;"></div></div>
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percentage">85%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 85%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Lua</span>
-                <span class="skill-percentage">90%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 90%; width: 90%;"></div></div>
+              <span class="skill-name">Lua</span>
+              <span class="skill-percentage">90%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 90%;"></div></div>
           </div>
           
           <div class="skill-category">
             <h3>Web Technologies</h3>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">HTML/CSS</span>
-                <span class="skill-percentage">88%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 88%; width: 88%;"></div></div>
+              <span class="skill-name">HTML/CSS</span>
+              <span class="skill-percentage">88%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 88%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Web Security</span>
-                <span class="skill-percentage">93%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 93%; width: 93%;"></div></div>
+              <span class="skill-name">Web Security</span>
+              <span class="skill-percentage">93%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 93%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">API Development</span>
-                <span class="skill-percentage">80%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 80%; width: 80%;"></div></div>
+              <span class="skill-name">API Development</span>
+              <span class="skill-percentage">80%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 80%;"></div></div>
           </div>
           
           <div class="skill-category">
-            <h3>Tools & Platforms</h3>
+            <h3>Tools &amp; Platforms</h3>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Roblox Studio</span>
-                <span class="skill-percentage">95%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 95%; width: 95%;"></div></div>
+              <span class="skill-name">Roblox Studio</span>
+              <span class="skill-percentage">95%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 95%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Git/GitHub</span>
-                <span class="skill-percentage">85%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 85%; width: 85%;"></div></div>
+              <span class="skill-name">Git/GitHub</span>
+              <span class="skill-percentage">85%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 85%;"></div></div>
             <div class="skill-item">
-              <div class="skill-header">
-                <span class="skill-name">Linux/Terminal</span>
-                <span class="skill-percentage">87%</span>
-              </div>
-              <div class="skill-bar"><div class="skill-progress" style="--width: 87%; width: 87%;"></div></div>
+              <span class="skill-name">Linux/Terminal</span>
+              <span class="skill-percentage">87%</span>
             </div>
+            <div class="skill-bar"><div class="skill-progress" style="--width: 87%;"></div></div>
           </div>
         </div>
       </div>
@@ -980,11 +958,15 @@
           skillBars.forEach(bar => {
             bar.style.animation = 'none';
             bar.offsetHeight; // Trigger reflow
-            bar.style.animation = 'fillBar 2s ease-out';
+            bar.style.animation = 'fillBar 2s ease-out forwards';
           });
         }
       });
     }, observerOptions);
+
+    document.querySelectorAll('.skills-section .skills-grid > .skill-category').forEach(section => {
+      observer.observe(section);
+    });
 
     // Glass card mouse tracking for games
     const gameCards = document.querySelectorAll('.game-card');
@@ -998,7 +980,6 @@
         card.querySelector('.game-card-light').style.setProperty('--mouse-y', `${y}%`);
       });
       
-      // Add click functionality for real games
       card.addEventListener('click', () => {
         const gameTitle = card.querySelector('h3').textContent;
         if (gameTitle.includes('Project Realism')) {
