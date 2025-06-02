@@ -130,11 +130,18 @@
       position: relative;
       z-index: 5;
       padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .container {
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .section-title {
@@ -154,10 +161,13 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
       margin-bottom: 60px;
+      width: 100%;
+      justify-items: center;
     }
     
     .game-card {
       width: 100%;
+      max-width: 320px;
       height: 350px;
       position: relative;
       transition: transform 0.3s ease;
@@ -375,12 +385,18 @@
     
     .skills-section {
       margin: 80px 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 30px;
+      width: 100%;
+      justify-items: center;
     }
     
     .skill-category {
@@ -389,6 +405,8 @@
       border-radius: 12px;
       padding: 25px;
       backdrop-filter: blur(10px);
+      width: 100%;
+      max-width: 300px;
     }
     
     .skill-category h3 {
@@ -400,29 +418,71 @@
     .skill-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 15px;
+      align-items: center;
+      margin-bottom: 20px;
       color: #cccccc;
     }
     
+    .skill-name {
+      font-weight: 500;
+      min-width: 120px;
+    }
+    
+    .skill-percentage {
+      font-size: 0.9rem;
+      color: #00ffaa;
+      font-weight: 600;
+      min-width: 40px;
+      text-align: right;
+    }
+    
     .skill-bar {
-      width: 100%;
-      height: 6px;
-      background: rgba(0, 255, 136, 0.2);
-      border-radius: 3px;
-      margin-top: 5px;
+      flex: 1;
+      height: 8px;
+      background: rgba(0, 255, 136, 0.15);
+      border-radius: 10px;
+      margin: 0 15px;
       overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
     .skill-progress {
       height: 100%;
-      background: linear-gradient(90deg, #00ff88, #00ccff);
-      border-radius: 3px;
+      background: linear-gradient(90deg, #00ff88, #00ccff, #0088ff);
+      border-radius: 10px;
+      position: relative;
       animation: fillBar 2s ease-out;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+    
+    .skill-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 2s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
     }
     
     .contact-section {
       text-align: center;
       margin-top: 80px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .contact-links {
@@ -431,6 +491,7 @@
       gap: 30px;
       flex-wrap: wrap;
       margin-top: 30px;
+      width: 100%;
     }
     
     .contact-link {
@@ -494,7 +555,7 @@
       padding: 20px;
       z-index: 1000;
       transform: translateX(120%);
-      animation: slideInDiscord 1s ease-out 2s forwards;
+      animation: slideInDiscord 1s ease-out 3s forwards;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -717,64 +778,76 @@
           <div class="skill-category">
             <h3>Security & Hacking</h3>
             <div class="skill-item">
-              <span>Penetration Testing</span>
+              <span class="skill-name">Penetration Testing</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 95%; width: 95%;"></div></div>
+              <span class="skill-percentage">95%</span>
             </div>
             <div class="skill-item">
-              <span>Vulnerability Assessment</span>
+              <span class="skill-name">Vulnerability Assessment</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 90%; width: 90%;"></div></div>
+              <span class="skill-percentage">90%</span>
             </div>
             <div class="skill-item">
-              <span>Ethical Hacking</span>
+              <span class="skill-name">Ethical Hacking</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 88%; width: 88%;"></div></div>
+              <span class="skill-percentage">88%</span>
             </div>
           </div>
           
           <div class="skill-category">
             <h3>Programming</h3>
             <div class="skill-item">
-              <span>Python</span>
+              <span class="skill-name">Python</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 92%; width: 92%;"></div></div>
+              <span class="skill-percentage">92%</span>
             </div>
             <div class="skill-item">
-              <span>JavaScript</span>
+              <span class="skill-name">JavaScript</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 85%; width: 85%;"></div></div>
+              <span class="skill-percentage">85%</span>
             </div>
             <div class="skill-item">
-              <span>Lua</span>
+              <span class="skill-name">Lua</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 90%; width: 90%;"></div></div>
+              <span class="skill-percentage">90%</span>
             </div>
           </div>
           
           <div class="skill-category">
             <h3>Web Technologies</h3>
             <div class="skill-item">
-              <span>HTML/CSS</span>
+              <span class="skill-name">HTML/CSS</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 88%; width: 88%;"></div></div>
+              <span class="skill-percentage">88%</span>
             </div>
             <div class="skill-item">
-              <span>Web Security</span>
+              <span class="skill-name">Web Security</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 93%; width: 93%;"></div></div>
+              <span class="skill-percentage">93%</span>
             </div>
             <div class="skill-item">
-              <span>API Development</span>
+              <span class="skill-name">API Development</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 80%; width: 80%;"></div></div>
+              <span class="skill-percentage">80%</span>
             </div>
           </div>
           
           <div class="skill-category">
             <h3>Tools & Platforms</h3>
             <div class="skill-item">
-              <span>Roblox Studio</span>
+              <span class="skill-name">Roblox Studio</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 95%; width: 95%;"></div></div>
+              <span class="skill-percentage">95%</span>
             </div>
             <div class="skill-item">
-              <span>Git/GitHub</span>
+              <span class="skill-name">Git/GitHub</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 85%; width: 85%;"></div></div>
+              <span class="skill-percentage">85%</span>
             </div>
             <div class="skill-item">
-              <span>Linux/Terminal</span>
+              <span class="skill-name">Linux/Terminal</span>
               <div class="skill-bar"><div class="skill-progress" style="--width: 87%; width: 87%;"></div></div>
+              <span class="skill-percentage">87%</span>
             </div>
           </div>
         </div>
