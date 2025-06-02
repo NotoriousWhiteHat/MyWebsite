@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Notorious(Hesi) - Whitehat Hacker</title>
+  <title>Notorious - Whitehat Hacker</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
   <style>
@@ -103,7 +103,7 @@
     .lang-item:nth-child(5) { animation-delay: 2.4s; }
     
     .scroll-indicator {
-      position: fixed;
+      position: absolute;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
@@ -114,7 +114,7 @@
       cursor: pointer;
       animation: bounce 2s infinite;
       z-index: 20;
-      white-space: nowrap;
+      text-align: center;
     }
     
     .scroll-arrow {
@@ -123,6 +123,8 @@
       font-size: 1.2rem;
       animation: bounce 2s infinite 0.5s;
       text-align: center;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .portfolio-section {
