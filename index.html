@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <title>Notorious - Whitehat Hacker</title>
+  <!-- Vanta / Three.js (for the fog effect) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
+
   <style>
+    /* ────────────────────────────────────────────────────────────────────────── */
+    /* ─────────────────────────────── Base Styles ────────────────────────────── */
+    /* ────────────────────────────────────────────────────────────────────────── */
     html {
       scroll-behavior: smooth;
     }
-    
     html, body {
       margin: 0;
       padding: 0;
@@ -18,7 +22,10 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow-x: hidden;
     }
-    
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Fog Background (Vanta)                                                 */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     #fog-bg {
       position: fixed;
       width: 100vw;
@@ -29,7 +36,10 @@
       opacity: 1;
       transition: opacity 1s ease;
     }
-    
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Hero Section (Top)                                                     */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     .hero-section {
       height: 100vh;
       display: flex;
@@ -39,8 +49,8 @@
       position: relative;
       z-index: 10;
     }
-    
-    h1 {
+
+    .hero-section h1 {
       font-size: 5rem;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -52,8 +62,8 @@
       color: transparent;
       text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
     }
-    
-    h2 {
+
+    .hero-section h2 {
       font-size: 1.4rem;
       letter-spacing: 2px;
       font-weight: 300;
@@ -62,7 +72,7 @@
       margin-bottom: 3rem;
       text-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
     }
-    
+
     .coding-languages {
       display: flex;
       justify-content: center;
@@ -72,7 +82,7 @@
       position: relative;
       margin-bottom: 4rem;
     }
-    
+
     .lang-item {
       position: relative;
       color: #ffffff;
@@ -89,19 +99,19 @@
       animation: pulse-glow 3s ease-in-out infinite;
       z-index: 20;
     }
-    
+
     .lang-item:hover {
       background: rgba(0, 255, 136, 0.2);
       box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
       transform: translateY(-2px);
     }
-    
+
     .lang-item:nth-child(1) { animation-delay: 0s; }
     .lang-item:nth-child(2) { animation-delay: 0.6s; }
     .lang-item:nth-child(3) { animation-delay: 1.2s; }
     .lang-item:nth-child(4) { animation-delay: 1.8s; }
     .lang-item:nth-child(5) { animation-delay: 2.4s; }
-    
+
     .scroll-indicator {
       position: absolute;
       bottom: 30px;
@@ -116,7 +126,7 @@
       z-index: 20;
       text-align: center;
     }
-    
+
     .scroll-arrow {
       display: block;
       margin-top: 8px;
@@ -126,10 +136,16 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Portfolio / Featured Games                                              */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     .portfolio-section {
       min-height: 100vh;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(5, 25, 20, 0.98) 100%);
+      background: linear-gradient(180deg,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(5, 25, 20, 0.98) 100%
+      );
       position: relative;
       z-index: 5;
       padding: 80px 20px;
@@ -137,7 +153,7 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -146,7 +162,7 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     .section-title {
       font-size: 3rem;
       text-align: center;
@@ -158,7 +174,7 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
-    
+
     .games-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -167,7 +183,7 @@
       width: 100%;
       justify-items: center;
     }
-    
+
     .game-card {
       width: 100%;
       max-width: 320px;
@@ -178,12 +194,12 @@
       opacity: 0;
       animation: card-entrance 0.8s ease-out forwards;
     }
-    
+
     .game-card:nth-child(1) { animation-delay: 0.2s; }
     .game-card:nth-child(2) { animation-delay: 0.4s; }
     .game-card:nth-child(3) { animation-delay: 0.6s; }
     .game-card:nth-child(4) { animation-delay: 0.8s; }
-    
+
     @keyframes card-entrance {
       from {
         opacity: 0;
@@ -194,11 +210,11 @@
         transform: translateY(0);
       }
     }
-    
+
     .game-card:hover {
       transform: translateY(-15px) scale(1.02);
     }
-    
+
     .game-card-inner {
       width: 100%;
       height: 100%;
@@ -213,13 +229,13 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .game-card:hover .game-card-inner {
       background: rgba(0, 255, 136, 0.1);
       box-shadow: 0 20px 50px rgba(0, 255, 136, 0.2);
       border: 1px solid rgba(0, 255, 136, 0.4);
     }
-    
+
     .game-card-light {
       position: absolute;
       top: 0;
@@ -237,11 +253,11 @@
       border-radius: 16px;
       z-index: 1;
     }
-    
+
     .game-card:hover .game-card-light {
       opacity: 1;
     }
-    
+
     .game-card-image {
       width: 100%;
       height: 60%;
@@ -253,7 +269,7 @@
       overflow: hidden;
       border-radius: 16px 16px 0 0;
     }
-    
+
     .game-card-image img {
       width: 100%;
       height: 100%;
@@ -261,12 +277,12 @@
       filter: brightness(0.8) contrast(1.1);
       transition: all 0.3s ease;
     }
-    
+
     .game-card:hover .game-card-image img {
       filter: brightness(1) contrast(1.2);
       transform: scale(1.1);
     }
-    
+
     .game-card-content {
       padding: 20px;
       height: 40%;
@@ -276,14 +292,14 @@
       position: relative;
       z-index: 2;
     }
-    
+
     .game-card-content h3 {
       margin: 0 0 8px 0;
       color: #00ffaa;
       font-size: 1.3rem;
       font-weight: 600;
     }
-    
+
     .game-card-content p {
       margin: 0 0 15px 0;
       color: #cccccc;
@@ -291,20 +307,23 @@
       line-height: 1.4;
       flex-grow: 1;
     }
-    
+
     .game-tech {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
     }
-    
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Development Projects (kept blank in this example)                       */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
       margin-bottom: 80px;
     }
-    
+
     .project-card {
       background: rgba(0, 255, 136, 0.05);
       border: 1px solid rgba(0, 255, 136, 0.3);
@@ -315,7 +334,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .project-card::before {
       content: '';
       position: absolute;
@@ -323,40 +342,44 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(0, 255, 136, 0.1),
+        transparent
+      );
       transition: left 0.5s;
     }
-    
+
     .project-card:hover::before {
       left: 100%;
     }
-    
+
     .project-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
       border-color: #00ff88;
     }
-    
+
     .project-title {
       font-size: 1.5rem;
       color: #00ffaa;
       margin-bottom: 15px;
       font-weight: 600;
     }
-    
+
     .project-desc {
       color: #cccccc;
       line-height: 1.6;
       margin-bottom: 20px;
     }
-    
+
     .project-tech {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-bottom: 20px;
     }
-    
+
     .tech-tag {
       background: rgba(0, 204, 255, 0.2);
       color: #00ccff;
@@ -365,12 +388,12 @@
       font-size: 0.8rem;
       border: 1px solid rgba(0, 204, 255, 0.3);
     }
-    
+
     .project-links {
       display: flex;
       gap: 15px;
     }
-    
+
     .project-link {
       color: #00ff88;
       text-decoration: none;
@@ -380,12 +403,16 @@
       transition: all 0.3s ease;
       font-size: 0.9rem;
     }
-    
+
     .project-link:hover {
       background: rgba(0, 255, 136, 0.2);
       box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
     }
-    
+
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Skills & Expertise                                                      */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     .skills-section {
       margin: 80px 0;
       width: 100%;
@@ -393,45 +420,55 @@
       flex-direction: column;
       align-items: center;
     }
-    
-    /* Updated to force 2×2 grid */
+
+    .skills-section .section-title {
+      margin-bottom: 40px; /* a bit more space above the grid */
+    }
+
+    /* ── Force a 2×2 grid on large screens ───────────────────────────────────── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 40px; /* increase gap so cards aren't too cramped */
       width: 100%;
+      max-width: 1000px; /* keep them centered inside 1200px container */
       justify-items: center;
     }
-    
+
+    /* ── Each skill card ─────────────────────────────────────────────────────── */
     .skill-category {
       background: rgba(0, 255, 136, 0.05);
       border: 1px solid rgba(0, 255, 136, 0.3);
       border-radius: 12px;
-      padding: 25px;
+      padding: 30px 35px; /* more balanced padding */
       backdrop-filter: blur(10px);
       width: 100%;
-      max-width: 300px;
+      max-width: 400px; /* a bit wider so text doesn’t wrap too soon */
+      box-sizing: border-box;
     }
-    
+
     .skill-category h3 {
       color: #00ffaa;
-      margin-bottom: 20px;
-      font-size: 1.3rem;
+      margin-bottom: 25px; /* more space below heading */
+      font-size: 1.4rem;
+      font-weight: 600;
     }
-    
+
     .skill-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      color: #cccccc;
+      margin-bottom: 8px;     /* tighten up just a bit */
+      color: #e0e0e0;         /* lighter gray for the text */
+      font-size: 1rem;       /* ensure consistent font-size */
+      line-height: 1.3;
     }
-    
+
     .skill-name {
       font-weight: 500;
-      min-width: 120px;
+      min-width: 140px; /* give labels more breathing room */
     }
-    
+
     .skill-percentage {
       font-size: 0.9rem;
       color: #00ffaa;
@@ -439,18 +476,17 @@
       min-width: 40px;
       text-align: right;
     }
-    
+
     .skill-bar {
-      flex: 1;
       height: 8px;
       background: rgba(0, 255, 136, 0.15);
       border-radius: 10px;
-      margin: 0 15px;
+      margin: 4px 0 20px; /* 4px above, 20px below */
       overflow: hidden;
       position: relative;
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-    
+
     .skill-progress {
       height: 100%;
       background: linear-gradient(90deg, #00ff88, #00ccff, #0088ff);
@@ -460,7 +496,7 @@
       animation: fillBar 2s ease-out forwards;
       box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
     }
-    
+
     .skill-progress::after {
       content: '';
       position: absolute;
@@ -468,24 +504,28 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
       animation: shimmer 2s ease-in-out infinite;
     }
-    
+
     @keyframes shimmer {
-      0% {
-        left: -100%;
-      }
-      100% {
-        left: 100%;
-      }
+      0%   { left: -100%; }
+      100% { left: 100%; }
     }
-    
+
     @keyframes fillBar {
       from { width: 0; }
       to   { width: var(--width); }
     }
-    
+
+
+    /* ══════════════════════════════════════════════════════════════════════════ */
+    /*   Contact Section & Floating Discord Card                                   */
+    /* ══════════════════════════════════════════════════════════════════════════ */
     .contact-section {
       text-align: center;
       margin-top: 80px;
@@ -494,7 +534,7 @@
       flex-direction: column;
       align-items: center;
     }
-    
+
     .contact-links {
       display: flex;
       justify-content: center;
@@ -503,7 +543,7 @@
       margin-top: 30px;
       width: 100%;
     }
-    
+
     .contact-link {
       display: flex;
       align-items: center;
@@ -518,13 +558,13 @@
       transition: all 0.3s ease;
       font-weight: 500;
     }
-    
+
     .contact-link:hover {
       background: rgba(0, 255, 136, 0.15);
       box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
       transform: translateY(-3px);
     }
-    
+
     .discord-card {
       position: fixed;
       bottom: 30px;
@@ -541,20 +581,20 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
+
     .discord-card:hover {
       transform: translateX(0) scale(1.02);
       box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
       border-color: #00ff88;
     }
-    
+
     .discord-header {
       display: flex;
       align-items: center;
       gap: 15px;
       margin-bottom: 15px;
     }
-    
+
     .discord-avatar {
       width: 60px;
       height: 60px;
@@ -563,13 +603,13 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .discord-avatar img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
+
     .discord-status {
       position: absolute;
       bottom: -2px;
@@ -581,20 +621,20 @@
       border-radius: 50%;
       animation: statusPulse 2s ease-in-out infinite;
     }
-    
+
     .discord-info h4 {
       margin: 0;
       color: #ffffff;
       font-size: 1.1rem;
       font-weight: 600;
     }
-    
+
     .discord-info p {
       margin: 5px 0 0 0;
       color: #00ffaa;
       font-size: 0.9rem;
     }
-    
+
     .discord-custom-status {
       display: flex;
       align-items: center;
@@ -604,12 +644,12 @@
       border-radius: 8px;
       border: 1px solid rgba(0, 255, 136, 0.2);
     }
-    
+
     .discord-custom-status span {
       color: #cccccc;
       font-size: 0.85rem;
     }
-    
+
     .discord-tag {
       position: absolute;
       top: -8px;
@@ -623,13 +663,13 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    
+
     @keyframes slideInDiscord {
       to {
         transform: translateX(0);
       }
     }
-    
+
     @keyframes statusPulse {
       0%, 100% {
         box-shadow: 0 0 0 0 rgba(35, 165, 89, 0.7);
@@ -638,32 +678,11 @@
         box-shadow: 0 0 0 8px rgba(35, 165, 89, 0);
       }
     }
-    
-    @media (max-width: 768px) {
-      h1 { font-size: 3rem; }
-      h2 { font-size: 1.2rem; }
-      .section-title { font-size: 2rem; }
-      .coding-languages { gap: 15px; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        max-width: 400px;
-      }
-      
-      .contact-links { flex-direction: column; align-items: center; }
-      
-      .scroll-indicator {
-        font-size: 0.8rem;
-      }
-      
-      .discord-card {
-        width: 280px;
-        right: 20px;
-        bottom: 20px;
-      }
-    }
-    
+
+
+    /* ────────────────────────────────────────────────────────────────────────── */
+    /* ──────────────────────── Utility Animations ───────────────────────────── */
+    /* ────────────────────────────────────────────────────────────────────────── */
     @keyframes pulse-glow {
       0%, 100% {
         border-color: #00ff88;
@@ -674,7 +693,7 @@
         box-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
       }
     }
-    
+
     @keyframes bounce {
       0%, 20%, 50%, 80%, 100% {
         transform: translateX(-50%) translateY(0);
@@ -686,11 +705,36 @@
         transform: translateX(-50%) translateY(-5px);
       }
     }
+
+    /* ────────────────────────────────────────────────────────────────────────── */
+    /* ─────────────────────────────── Media Query ────────────────────────────── */
+    /* ────────────────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      h1 { font-size: 3rem; }
+      h2 { font-size: 1.2rem; }
+      .section-title { font-size: 2rem; }
+      .coding-languages { gap: 15px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid {
+        grid-template-columns: 1fr; /* stack 1×4 on small screens */
+        gap: 30px;
+        max-width: 400px;
+      }
+      .contact-links { flex-direction: column; align-items: center; }
+      .scroll-indicator { font-size: 0.8rem; }
+      .discord-card {
+        width: 280px;
+        right: 20px;
+        bottom: 20px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div id="fog-bg"></div>
-  
+
+  <!-- ═════════════════ Hero Section ═════════════════ -->
   <section class="hero-section">
     <h1>Notorious</h1>
     <h2>Whitehat Hacker | Programmer of 5+ Years</h2>
@@ -701,16 +745,19 @@
       <span class="lang-item">CSS</span>
       <span class="lang-item">Python</span>
     </div>
-    <div class="scroll-indicator" onclick="document.querySelector('.portfolio-section').scrollIntoView()">
+    <div class="scroll-indicator"
+         onclick="document.querySelector('.portfolio-section').scrollIntoView()">
       View Portfolio
       <span class="scroll-arrow">▼</span>
     </div>
   </section>
 
+  <!-- ═════════════════ Portfolio Section ═════════════════ -->
   <section class="portfolio-section">
     <div class="container">
       <h2 class="section-title">Featured Games</h2>
       <div class="games-grid">
+        <!-- ── Game Card ─────────────────────────────────────────────────────── -->
         <div class="game-card">
           <div class="game-card-inner">
             <span class="game-card-light"></span>
@@ -728,7 +775,8 @@
             </div>
           </div>
         </div>
-        
+
+        <!-- ── Game Card ─────────────────────────────────────────────────────── -->
         <div class="game-card">
           <div class="game-card-inner">
             <span class="game-card-light"></span>
@@ -746,7 +794,8 @@
             </div>
           </div>
         </div>
-        
+
+        <!-- ── Game Card ─────────────────────────────────────────────────────── -->
         <div class="game-card">
           <div class="game-card-inner">
             <span class="game-card-light"></span>
@@ -764,7 +813,8 @@
             </div>
           </div>
         </div>
-        
+
+        <!-- ── Game Card ─────────────────────────────────────────────────────── -->
         <div class="game-card">
           <div class="game-card-inner">
             <span class="game-card-light"></span>
@@ -773,7 +823,7 @@
             </div>
             <div class="game-card-content">
               <h3>Crusaders RPG</h3>
-              <p>Action-packed dungeon crawler with rune systems, boss raids, and powerful ability collection mechanics.</p>
+              <p>Action-packed dungeon crawler with rune systems, boss raids, and powerful ability-collection mechanics.</p>
               <div class="game-tech">
                 <span class="tech-tag">Lua</span>
                 <span class="tech-tag">Action RPG</span>
@@ -783,92 +833,132 @@
           </div>
         </div>
       </div>
+
       <h2 class="section-title">Development Projects</h2>
       <div class="projects-grid">
-        <!-- Projects will be added here -->
+        <!-- You can add project cards here. -->
       </div>
-      
+
+      <!-- ═════════════════ Skills & Expertise ═════════════════ -->
       <div class="skills-section">
         <h2 class="section-title">Skills &amp; Expertise</h2>
+
         <div class="skills-grid">
+          <!-- ── Security & Hacking ───────────────────────────────────────────────── -->
           <div class="skill-category">
             <h3>Security &amp; Hacking</h3>
             <div class="skill-item">
               <span class="skill-name">Penetration Testing</span>
               <span class="skill-percentage">95%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 95%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 95%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Vulnerability Assessment</span>
               <span class="skill-percentage">90%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 90%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 90%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Ethical Hacking</span>
               <span class="skill-percentage">88%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 88%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 88%;"></div>
+            </div>
           </div>
-          
+
+          <!-- ── Programming ───────────────────────────────────────────────────────── -->
           <div class="skill-category">
             <h3>Programming</h3>
             <div class="skill-item">
               <span class="skill-name">Python</span>
               <span class="skill-percentage">92%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 92%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 92%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">JavaScript</span>
               <span class="skill-percentage">85%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 85%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 85%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Lua</span>
               <span class="skill-percentage">90%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 90%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 90%;"></div>
+            </div>
           </div>
-          
+
+          <!-- ── Web Technologies ─────────────────────────────────────────────────── -->
           <div class="skill-category">
             <h3>Web Technologies</h3>
             <div class="skill-item">
               <span class="skill-name">HTML/CSS</span>
               <span class="skill-percentage">88%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 88%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 88%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Web Security</span>
               <span class="skill-percentage">93%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 93%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 93%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">API Development</span>
               <span class="skill-percentage">80%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 80%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 80%;"></div>
+            </div>
           </div>
-          
+
+          <!-- ── Tools & Platforms ────────────────────────────────────────────────── -->
           <div class="skill-category">
             <h3>Tools &amp; Platforms</h3>
             <div class="skill-item">
               <span class="skill-name">Roblox Studio</span>
               <span class="skill-percentage">95%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 95%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 95%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Git/GitHub</span>
               <span class="skill-percentage">85%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 85%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 85%;"></div>
+            </div>
+
             <div class="skill-item">
               <span class="skill-name">Linux/Terminal</span>
               <span class="skill-percentage">87%</span>
             </div>
-            <div class="skill-bar"><div class="skill-progress" style="--width: 87%;"></div></div>
+            <div class="skill-bar">
+              <div class="skill-progress" style="--width: 87%;"></div>
+            </div>
           </div>
         </div>
       </div>
-      
+
+      <!-- ═════════════════ Contact Section ═════════════════ -->
       <div class="contact-section">
         <h2 class="section-title">Get In Touch</h2>
         <p style="color: #cccccc; font-size: 1.1rem; margin-bottom: 30px;">
@@ -892,8 +982,9 @@
     </div>
   </section>
 
-  <!-- Floating Discord Card -->
-  <div class="discord-card" onclick="window.open('https://discord.com/users/959238547133595648', '_blank')">
+  <!-- ═════════════════ Floating Discord Card ═════════════════ -->
+  <div class="discord-card"
+       onclick="window.open('https://discord.com/users/959238547133595648', '_blank')">
     <div class="discord-tag">Live</div>
     <div class="discord-header">
       <div class="discord-avatar">
@@ -912,7 +1003,9 @@
   </div>
 
   <script>
-    // Fog background with fade effect on scroll
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Fog background with fade effect on scroll
+    // ──────────────────────────────────────────────────────────────────────────
     window.addEventListener('load', function() {
       setTimeout(() => {
         try {
@@ -931,13 +1024,12 @@
           });
         } catch (error) {
           console.error('Vanta fog failed to initialize:', error);
-          document.getElementById('fog-bg').style.background = 
+          document.getElementById('fog-bg').style.background =
             'radial-gradient(circle, rgba(0,255,255,0.1) 0%, rgba(0,17,34,0.3) 50%, rgba(0,0,0,1) 100%)';
         }
       }, 100);
     });
 
-    // Fade fog on scroll
     window.addEventListener('scroll', function() {
       const scrolled = window.pageYOffset;
       const rate = scrolled * -0.001;
@@ -945,7 +1037,9 @@
       document.getElementById('fog-bg').style.opacity = opacity;
     });
 
-    // Animate skill bars when they come into view
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Animate skill bars only when they come into view
+    // ──────────────────────────────────────────────────────────────────────────
     const observerOptions = {
       threshold: 0.3,
       rootMargin: '0px 0px -50px 0px'
@@ -968,18 +1062,19 @@
       observer.observe(section);
     });
 
-    // Glass card mouse tracking for games
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Glass-card mouse tracking (for game cards)
+    // ──────────────────────────────────────────────────────────────────────────
     const gameCards = document.querySelectorAll('.game-card');
     gameCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
-        
         card.querySelector('.game-card-light').style.setProperty('--mouse-x', `${x}%`);
         card.querySelector('.game-card-light').style.setProperty('--mouse-y', `${y}%`);
       });
-      
+
       card.addEventListener('click', () => {
         const gameTitle = card.querySelector('h3').textContent;
         if (gameTitle.includes('Project Realism')) {
