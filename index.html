@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Fog Effect Example</title>
+  <title>Notorious - Whitehat Hacker</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@700&display=swap');
+
     html, body {
       width: 100vw;
       height: 100vh;
       margin: 0;
       padding: 0;
       overflow: hidden;
+      background: #000;
+      color: #fff;
+      font-family: 'Proxima Nova', sans-serif;
     }
+
     #fog-bg {
       position: fixed;
       width: 100vw;
@@ -21,21 +27,38 @@
       left: 0;
       z-index: -1;
     }
+
     .content {
       position: relative;
       z-index: 1;
-      color: #fff;
       text-align: center;
-      font-size: 2rem;
       top: 40vh;
+      transform: translateY(-50%);
+    }
+
+    h1 {
+      font-size: 4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      font-weight: normal;
+      color: #aaa;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
   <div id="fog-bg"></div>
   <div class="content">
-    Your content goes here!
+    <h1>Notorious</h1>
+    <h2>Whitehat Hacker | Roblox Security Expert</h2>
   </div>
+
   <script>
     VANTA.FOG({
       el: "#fog-bg",
