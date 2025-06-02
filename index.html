@@ -103,7 +103,7 @@
     .lang-item:nth-child(5) { animation-delay: 2.4s; }
     
     .scroll-indicator {
-      position: absolute;
+      position: fixed;
       bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
@@ -114,18 +114,15 @@
       cursor: pointer;
       animation: bounce 2s infinite;
       z-index: 20;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      white-space: nowrap;
     }
     
-    .scroll-indicator::after {
-      content: '▼';
+    .scroll-arrow {
       display: block;
-      margin-top: 5px;
+      margin-top: 8px;
       font-size: 1.2rem;
       animation: bounce 2s infinite 0.5s;
+      text-align: center;
     }
     
     .portfolio-section {
@@ -702,6 +699,7 @@
     </div>
     <div class="scroll-indicator" onclick="document.querySelector('.portfolio-section').scrollIntoView()">
       View Portfolio
+      <span class="scroll-arrow">▼</span>
     </div>
   </section>
 
