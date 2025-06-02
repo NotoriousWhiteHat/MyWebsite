@@ -11,9 +11,9 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background: #000;
+      background: #0a0a0a;
       color: #fff;
-      font-family: 'Courier New', monospace;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     #fog-bg {
       position: fixed;
@@ -32,19 +32,74 @@
       pointer-events: none;
     }
     h1 {
-      font-size: 4rem;
-      letter-spacing: 2px;
+      font-size: 5rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
       margin: 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      font-weight: 800;
+      background: linear-gradient(135deg, #00ff88, #00ccff, #0088ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
     }
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      font-weight: 300;
+      color: #00ffaa;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+      text-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+    }
+    
+    .coding-languages {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      z-index: 15;
+      position: relative;
+    }
+    
+    .lang-item {
+      position: relative;
+      color: #ffffff;
+      background: rgba(0, 255, 136, 0.1);
+      font-size: 1.1rem;
+      font-weight: 600;
       letter-spacing: 1px;
-      font-weight: normal;
-      color: #0ff;
-      margin-top: 0.5rem;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border: 1px solid #00ff88;
+      border-radius: 6px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      animation: pulse-glow 3s ease-in-out infinite;
+      z-index: 20;
+    }
+    
+    .lang-item:hover {
+      background: rgba(0, 255, 136, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    .lang-item:nth-child(1) { animation-delay: 0s; }
+    .lang-item:nth-child(2) { animation-delay: 0.6s; }
+    .lang-item:nth-child(3) { animation-delay: 1.2s; }
+    .lang-item:nth-child(4) { animation-delay: 1.8s; }
+    .lang-item:nth-child(5) { animation-delay: 2.4s; }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        border-color: #00ff88;
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+      }
+      50% {
+        border-color: #00ccff;
+        box-shadow: 0 0 15px rgba(0, 204, 255, 0.4);
+      }
     }
   </style>
 </head>
@@ -52,7 +107,14 @@
   <div id="fog-bg"></div>
   <div class="content">
     <h1>Notorious</h1>
-    <h2>Whitehat Hacker | Lua, Javascript, HTML, CSS, Python</h2>
+    <h2>Whitehat Hacker | Programmer of 5+ Years</h2>
+    <div class="coding-languages">
+      <span class="lang-item">Lua</span>
+      <span class="lang-item">JavaScript</span>
+      <span class="lang-item">HTML</span>
+      <span class="lang-item">CSS</span>
+      <span class="lang-item">Python</span>
+    </div>
   </div>
   <script>
     // Wait for everything to load
