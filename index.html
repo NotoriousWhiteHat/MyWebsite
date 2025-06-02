@@ -2,25 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smile Studios</title>
+  <title>Fog Effect Example</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.fog.min.js"></script>
   <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
-    a {
-      color: #00f7ff;
-      text-decoration: none;
+    #fog-bg {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      text-align: center;
+      font-size: 2rem;
+      top: 40vh;
     }
   </style>
 </head>
 <body>
-  <h1>Smile Studios</h1>
-  <p>Creating innovative Roblox games for the future.</p>
-  <p><a href="https://roblox.com/groups/yourgroupid">Join us on Roblox</a></p>
+  <div id="fog-bg"></div>
+  <div class="content">
+    Your content goes here!
+  </div>
+  <script>
+    VANTA.FOG({
+      el: "#fog-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      highlightColor: 0xffffff,
+      midtoneColor: 0x000000,
+      lowlightColor: 0xffffff,
+      baseColor: 0x000000,
+      blurFactor: 0.1,
+      speed: 1.0,
+      zoom: 1.0
+    })
+  </script>
 </body>
 </html>
