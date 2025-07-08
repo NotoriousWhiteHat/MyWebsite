@@ -30,7 +30,7 @@ const Projects = () => {
       stats: {
         visits: "2.2B",
         rating: "91%",
-        ccu: "2K"
+        ccu: "60K"
       },
       role: "Vulnerability Researcher",
       technologies: ["Exploit Research", "Reverse Engineering", "Lua", "Security Analysis"],
@@ -46,7 +46,7 @@ const Projects = () => {
       stats: {
         visits: "6.8M",
         rating: "85%",
-        ccu: "~300"
+        ccu: "~8000"
       },
       role: "Backend Developer & Security Analyst",
       technologies: ["Lua", "Backend Development", "Exploit Research", "Security Testing"],
@@ -62,7 +62,7 @@ const Projects = () => {
       stats: {
         visits: "1.9M",
         rating: "87%",
-        ccu: "~200"
+        ccu: "~100"
       },
       role: "Security Analyst",
       technologies: ["Lua", "Exploit Research", "Security Testing", "Vulnerability Assessment"],
