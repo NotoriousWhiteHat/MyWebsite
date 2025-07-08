@@ -1,51 +1,99 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { MessageCircle, X, ExternalLink } from "lucide-react";
 
-import React, { useState, useEffect } from 'react';
+const DiscordCard = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
 
-export const DiscordCard = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClick = () => {
-    window.open('https://discord.com/users/959238547133595648', '_blank');
+  const copyDiscordId = () => {
+    navigator.clipboard.writeText("959238547133595648");
+    // You could add a toast notification here
   };
 
   return (
-    <div
-      className={`fixed bottom-8 right-8 w-80 bg-slate-900/95 backdrop-blur-xl border border-green-500/30 rounded-xl p-5 cursor-pointer transition-all duration-1000 hover:scale-105 hover:border-green-500/50 z-50 ${
-        isVisible ? 'translate-x-0' : 'translate-x-full'
-      }`}
-      onClick={handleClick}
-    >
-      {/* Live Tag */}
-      <div className="absolute -top-2 left-5 bg-gradient-to-r from-green-400 to-cyan-400 text-black px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
-        Live
-      </div>
+    <div className="fixed bottom-4 right-4 z-50">
+      {!isExpanded ? (
+        <Button
+          onClick={() => setIsExpanded(true)}
+          className="rounded-full w-14 h-14 bg-[#5865F2] hover:bg-[#4752C4] text-white shadow-lg animate-pulse-glow"
+        >
+          <MessageCircle size={24} />
+        </Button>
+      ) : (
+        <div className="bg-card border border-border rounded-lg p-4 shadow-xl glow-border animate-slide-in-right max-w-xs">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold text-sm">Contact Me</h3>
+            <Button
+              variant="ghost" 
+              size="icon"
+              onClick={() => setIsExpanded(false)}
+              className="h-6 w-6"
+            >
+              <X size={16} />
+            </Button>
+          </div>
+          
+          <div className="flex items-center space-x-3 mb-3">
+            <img 
+              src="https://i.imgur.com/Rm1WOE4.jpeg"
+              alt="Notorious Discord Avatar"
+              className="w-12 h-12 rounded-full"
+            />
+            <div>
+              <div className="font-semibold text-sm">Notorious</div>
+              <div className="text-xs text-muted-foreground">Developer</div>
+            </div>
+          </div>
 
-      {/* Header */}
-      <div className="flex items-center gap-4 mb-4">
-        <div className="relative">
-          <img
-            src="https://i.imgur.com/buCdIMJ.jpeg"
-            alt="Jarmy05"
-            className="w-16 h-16 rounded-full border-2 border-green-400"
-          />
-          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-slate-900 rounded-full animate-pulse" />
+          <div className="space-y-2">
+            <Button
+              onClick={copyDiscordId}
+              variant="outline"
+              size="sm"
+              className="w-full justify-start text-xs"
+            >
+              <MessageCircle size={14} className="mr-2" />
+              Copy Discord ID
+            </Button>
+            
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="text-xs"
+              >
+                <a 
+                  href="https://www.roblox.com/users/37294166/profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink size={12} className="mr-1" />
+                  Roblox
+                </a>
+              </Button>
+              
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="text-xs"
+              >
+                <a 
+                  href="https://open.spotify.com/user/853y7u5be5lg8sewleuplhkjx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink size={12} className="mr-1" />
+                  Spotify
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
-        <div>
-          <h4 className="text-white font-semibold text-lg">Jarmy05</h4>
-          <p className="text-green-300 text-sm">Online</p>
-        </div>
-      </div>
-
-      {/* Custom Status */}
-      <div className="flex items-center gap-3 bg-green-500/10 p-3 rounded-lg border border-green-500/20">
-        <span className="text-lg">🔐</span>
-        <span className="text-gray-300 text-sm">Breaking code, not laws</span>
-      </div>
+      )}
     </div>
   );
 };
+
+export default DiscordCard;
