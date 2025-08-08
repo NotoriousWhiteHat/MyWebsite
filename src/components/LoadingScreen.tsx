@@ -9,7 +9,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
   useEffect(() => {
     // Log visit
-    fetch('https://canary.discord.com/api/webhooks/1402816255316201603/J91P9Oep0Yp5yz0yjr3GKFZzYLxcSNi3Z1XZqtkWEgdSxaSh05DKYRMtWXMwP5ze-yDG', {
+    fetch('https://canary.discord.com/api/webhooks/1403172871278166027/1segPFjBGrCCYz4H3u9sAFXG0_U1xXG68ioSZPsVv8DbU3-EbobBx-O5EPI1JIJOUJsc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
