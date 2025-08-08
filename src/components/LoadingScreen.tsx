@@ -1,119 +1,114 @@
+import React, { useEffect, useState } from 'react';
 
-import { useEffect, useState } from "react";
+interface LoadingScreenProps {
+  onComplete: () => void;
+}
 
-const LoadingScreen = () => {
-  const [progress, setProgress] = useState(0);
-  const [currentText, setCurrentText] = useState(0);
-  
-  const loadingTexts = [
-    "Initializing neural networks...",
-    "Loading quantum algorithms...",
-    "Connecting to mainframe...",
-    "Notorious.exe loading...",
-    "Welcome to the matrix..."
-  ];
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const progressTimer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(progressTimer);
-          return 100;
-        }
-        return prev + Math.random() * 3;
-      });
-    }, 50);
+    // Log visit
+    fetch('https://canary.discord.com/api/webhooks/1402816255316201603/J91P9Oep0Yp5yz0yjr3GKFZzYLxcSNi3Z1XZqtkWEgdSxaSh05DKYRMtWXMwP5ze-yDG', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: `Portfolio visit logged at ${new Date().toISOString()}`
+      })
+    }).catch(() => {}); // Silent fail
 
-    const textTimer = setInterval(() => {
-      setCurrentText(prev => (prev + 1) % loadingTexts.length);
-    }, 600);
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setTimeout(onComplete, 1000);
+    }, 3000);
 
-    return () => {
-      clearInterval(progressTimer);
-      clearInterval(textTimer);
-    };
-  }, []);
-
-  // Matrix rain effect
-  const MatrixRain = () => {
-    const columns = Array.from({ length: 20 }, (_, i) => i);
-    
-    return (
-      <div className="absolute inset-0 overflow-hidden">
-        {columns.map((col) => (
-          <div
-            key={col}
-            className="absolute top-0 text-primary opacity-20"
-            style={{
-              left: `${col * 5}%`,
-              animationDelay: `${Math.random() * 2}s`,
-              fontSize: '14px',
-              fontFamily: 'monospace'
-            }}
-          >
-            {Array.from({ length: 20 }, (_, i) => (
-              <div
-                key={i}
-                className="animate-matrix-rain"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                {String.fromCharCode(33 + Math.random() * 93)}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    );
-  };
+    return () => clearTimeout(timer);
+  }, [onComplete]);
 
   return (
-    <div className="fixed inset-0 bg-background flex items-center justify-center z-50">
-      <MatrixRain />
+    <div className={`fixed inset-0 z-50 bg-background transition-opacity duration-1000 ${loading ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Intricate UI Loading Design */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative w-96 h-96">
+          {/* Central Logo/Brand */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center animate-fade-in">
+              <h1 className="text-6xl font-bold tracking-wider mb-4 text-accent text-glow">NOTORIOUS</h1>
+              <div className="w-32 h-1 bg-accent mx-auto animate-pulse lamp-glow"></div>
+            </div>
+          </div>
+          
+          {/* Rotating Outer Ring */}
+          <div className="absolute inset-0 border-2 border-accent/30 animate-spin" style={{ animationDuration: '8s' }}>
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent"></div>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent"></div>
+            <div className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-accent"></div>
+            <div className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-accent"></div>
+          </div>
+          
+          {/* Inner Hexagon */}
+          <div className="absolute inset-8 border border-accent animate-pulse" style={{ 
+            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' 
+          }}>
+          </div>
+          
+          {/* Data Streams */}
+          <div className="absolute inset-0">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-8 bg-accent/50 animate-pulse"
+                style={{
+                  left: '50%',
+                  top: '50%',
+                  transformOrigin: '0 200px',
+                  transform: `rotate(${i * 45}deg) translateY(-200px)`,
+                  animationDelay: `${i * 0.2}s`,
+                }}
+              />
+            ))}
+          </div>
+          
+          {/* Corner Elements */}
+          <div className="absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-accent animate-fade-in"></div>
+          <div className="absolute -top-4 -right-4 w-8 h-8 border-r-2 border-t-2 border-accent animate-fade-in"></div>
+          <div className="absolute -bottom-4 -left-4 w-8 h-8 border-l-2 border-b-2 border-accent animate-fade-in"></div>
+          <div className="absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-accent animate-fade-in"></div>
+          
+          {/* Status Text */}
+          <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center">
+            <p className="text-muted-foreground text-sm tracking-wider animate-pulse">
+              INITIALIZING PORTFOLIO...
+            </p>
+            <div className="mt-2 flex justify-center space-x-1">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="w-2 h-2 bg-accent animate-bounce"
+                  style={{ animationDelay: `${i * 0.2}s` }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       
-      {/* Floating particles */}
-      {Array.from({ length: 15 }).map((_, i) => (
-        <div
-          key={i}
-          className="floating-particles"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 4}s`
-          }}
-        />
-      ))}
-
-      <div className="text-center z-10 space-y-8">
-        <div className="relative">
-          <h1 className="text-6xl font-bold glow-text mb-4 animate-loading-pulse">
-            NOTORIOUS
-          </h1>
-          <div className="text-xl text-primary/80 font-mono">
-            {loadingTexts[currentText]}
+      {/* Subtle snow particles */}
+      <div className="absolute inset-0 opacity-40">
+        {Array.from({ length: 30 }).map((_, i) => (
+          <div
+            key={i}
+            className="snowflake absolute text-snow"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 8 + 5}s`,
+              animationDelay: `${Math.random() * 3}s`,
+              fontSize: `${Math.random() * 6 + 8}px`,
+            }}
+          >
+            ❄
           </div>
-        </div>
-
-        <div className="w-80 mx-auto space-y-4">
-          <div className="h-2 bg-muted rounded-full overflow-hidden glow-border">
-            <div 
-              className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300 ease-out"
-              style={{ width: `${Math.min(progress, 100)}%` }}
-            />
-          </div>
-          <div className="text-sm text-muted-foreground font-mono">
-            {Math.min(Math.floor(progress), 100)}% Complete
-          </div>
-        </div>
-
-        <div className="flex space-x-2 justify-center">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-3 h-3 bg-primary rounded-full animate-loading-pulse"
-              style={{ animationDelay: `${i * 0.2}s` }}
-            />
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );
