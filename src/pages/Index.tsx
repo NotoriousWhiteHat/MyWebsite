@@ -28,7 +28,7 @@ const projects = [
   },
   {
     title: 'Lone Survival',
-    icon: 'https://i.imgur.com/a33da6d.png',
+    icon: 'https://i.imgur.com/dUOSZDm.png',
     gameLink: 'https://www.roblox.com/games/13559584718/Lone-Survival',
     groupLink: 'https://www.roblox.com/communities/32062143/High-Table-Studio',
     ccu: '~2k',
@@ -85,7 +85,7 @@ const projects = [
 const groups = [
   {
     name: 'Grand Army of the Insurgence',
-    icon: 'https://i.imgur.com/9fdaeee.png',
+    icon: 'https://i.imgur.com/RSzIzfO.jpeg',
     link: 'https://www.roblox.com/communities/1075140737/Grand-Army-of-the-Insurgence#!/about',
     role: 'Developer, Scripter – Owned by DoBigStudios'
   },
