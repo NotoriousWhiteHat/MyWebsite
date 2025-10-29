@@ -16,71 +16,105 @@ const Index = () => {
   
   useVisitLogger();
 
-  const projects = [
-    {
-      title: 'The Mexican Border | RP',
-      icon: 'https://i.imgur.com/0xZkI8x.png',
-      gameLink: 'https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP',
-      groupLink: 'https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about',
-      ccu: '7k',
-      visits: '6.7m',
-      role: 'Only developer – builder, scripter, UI, all systems'
-    },
-    {
-      title: 'The Robine',
-      icon: 'https://i.imgur.com/zEbgoMY.png',
-      gameLink: 'https://www.roblox.com/games/509062192/JEWELRY-HEIST-Project-Realism',
-      groupLink: 'https://www.roblox.com/communities/2808906/The-Robine#!/about',
-      ccu: '~800',
-      visits: '18.4m',
-      role: 'Lead dev for city systems, lead scripter, manager, whitehat/exploit fixes'
-    },
-    {
-      title: 'Arcane Conquest',
-      icon: 'https://i.imgur.com/jUKGCfs.png',
-      gameLink: 'https://www.roblox.com/games/125503319883299/Arcane-Conquest',
-      groupLink: 'https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about',
-      ccu: '~8k',
-      visits: '7.1m',
-      role: 'Scripter – quest system, admin panel, patched exploits/godmodes'
-    },
-    {
-      title: 'Crusaders RPG',
-      icon: 'https://i.imgur.com/HSyaRx5.png',
-      gameLink: 'https://www.roblox.com/games/13076677555/TOWER-Crusaders-RPG',
-      groupLink: 'https://www.roblox.com/communities/13221283/Crusaders-AS#!/about',
-      ccu: '500-1k',
-      visits: '2m',
-      role: 'Vulnerability testing, godmode patching'
-    }
-  ];
+const projects = [
+  {
+    title: 'The Mexican Border | RP',
+    icon: 'https://i.imgur.com/0xZkI8x.png',
+    gameLink: 'https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP',
+    groupLink: 'https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about',
+    ccu: '7k',
+    visits: '12.2m',      // updated
+    role: 'Only developer – builder, scripter, UI, all systems'
+  },
+  {
+    title: 'The Robine',
+    icon: 'https://i.imgur.com/zEbgoMY.png',
+    gameLink: 'https://www.roblox.com/games/509062192/JEWELRY-HEIST-Project-Realism',
+    groupLink: 'https://www.roblox.com/communities/2808906/The-Robine#!/about',
+    ccu: '~800',
+    visits: '18.4m',
+    role: 'Lead dev for city systems, lead scripter, manager, whitehat/exploit fixes'
+  },
+  {
+    title: 'Arcane Conquest',
+    icon: 'https://i.imgur.com/jUKGCfs.png',
+    gameLink: 'https://www.roblox.com/games/125503319883299/Arcane-Conquest',
+    groupLink: 'https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about',
+    ccu: '~8k',
+    visits: '7.4m',      // updated
+    role: 'Scripter – quest system, admin panel, patched exploits/godmodes'
+  },
+  {
+    title: 'Crusaders RPG',
+    icon: 'https://i.imgur.com/HSyaRx5.png',
+    gameLink: 'https://www.roblox.com/games/13076677555/TOWER-Crusaders-RPG',
+    groupLink: 'https://www.roblox.com/communities/13221283/Crusaders-AS#!/about',
+    ccu: '500-1k',
+    visits: '2m',
+    role: 'Vulnerability testing, godmode patching'
+  },
+  {
+    title: 'Virus Border Roleplay',
+    icon: 'https://i.imgur.com/t3pyxcm.png',
+    gameLink: 'https://www.roblox.com/games/4888877755/Virus-Border-Roleplay',
+    groupLink: 'https://www.roblox.com/communities/5855434/CBRN#!/about',
+    ccu: '~2k',
+    visits: '34.0m',
+    role: 'Whitehat/exploit fixes – kill all, gunmods, silent aim etc'
+  },
+  {
+    title: 'Half Life: City 8',
+    icon: 'https://i.imgur.com/nO7Ubx1.jpeg',
+    gameLink: 'https://www.roblox.com/games/8906378074/BACK-Half-Life-City-8',
+    groupLink: 'https://www.roblox.com/communities/13426157/Half-Life-World',
+    ccu: '~800',
+    visits: '12.8m',
+    role: 'Whitehat, exploit – Kill all, auto complete job, gun mods'
+  },
+  {
+    title: 'Lone Survival',
+    icon: '(you’ll need to insert the image link here)',
+    gameLink: 'https://www.roblox.com/games/13559584718/Lone-Survival',
+    groupLink: 'https://www.roblox.com/communities/32062143/High-Table-Studio',
+    ccu: '~2k',
+    visits: '26.3m',
+    role: 'Whitehat, exploit – 2 Noclip methods, silent aim, and many more vulns'
+  }
+];
 
-  const groups = [
-    {
-      name: 'TR Sentinels',
-      icon: 'https://tr.rbxcdn.com/180DAY-c2f5b4af4009f85b033d8c82fcbea1d0/150/150/Image/Webp/noFilter',
-      link: 'https://www.roblox.com/communities/5163623/TR-Sentinels#!/about',
-      role: 'Developer, anticheat maker'
-    },
-    {
-      name: 'TR lntercept Squadron',
-      icon: 'https://tr.rbxcdn.com/180DAY-04861922c0250ce17b1fbf8bcd36efa3/150/150/Image/Webp/noFilter',
-      link: 'https://www.roblox.com/communities/10104161/TR-lntercept-Squadron#!/about',
-      role: 'Developer'
-    },
-    {
-      name: 'TR HELlX',
-      icon: 'https://tr.rbxcdn.com/180DAY-cbbd9c7aaa1ed3c1f60de28ac0570f8f/150/150/Image/Webp/noFilter',
-      link: 'https://www.roblox.com/communities/10109929/TR-HELlX#!/about',
-      role: 'Developer'
-    },
-    {
-      name: 'Robine Deathwatch',
-      icon: 'https://tr.rbxcdn.com/180DAY-1d7987d6da93f756b30f588906687abb/150/150/Image/Webp/noFilter',
-      link: 'https://www.roblox.com/communities/2896860/Robine-Deathwatch#!/about',
-      role: 'Developer'
-    }
-  ];
+const groups = [
+  {
+    name: 'TR Sentinels',
+    icon: 'https://tr.rbxcdn.com/180DAY-c2f5b4af4009f85b033d8c82fcbea1d0/150/150/Image/Webp/noFilter',
+    link: 'https://www.roblox.com/communities/5163623/TR-Sentinels#!/about',
+    role: 'Developer, anticheat maker'
+  },
+  {
+    name: 'TR lntercept Squadron',
+    icon: 'https://tr.rbxcdn.com/180DAY-04861922c0250ce17b1fbf8bcd36efa3/150/150/Image/Webp/noFilter',
+    link: 'https://www.roblox.com/communities/10104161/TR-lntercept-Squadron#!/about',
+    role: 'Developer'
+  },
+  {
+    name: 'TR HELlX',
+    icon: 'https://tr.rbxcdn.com/180DAY-cbbd9c7aaa1ed3c1f60de28ac0570f8f/150/150/Image/Webp/noFilter',
+    link: 'https://www.roblox.com/communities/10109929/TR-HELlX#!/about',
+    role: 'Developer'
+  },
+  {
+    name: 'Robine Deathwatch',
+    icon: 'https://tr.rbxcdn.com/180DAY-1d7987d6da93f756b30f588906687abb/150/150/Image/Webp/noFilter',
+    link: 'https://www.roblox.com/communities/2896860/Robine-Deathwatch#!/about',
+    role: 'Developer'
+  },
+  {
+    name: 'Grand Army of the Insurgence',
+    icon: '(you’ll need to insert the image link here)',
+    link: 'https://www.roblox.com/communities/1075140737/Grand-Army-of-the-Insurgence#!/about',
+    role: 'Developer, Scripter – Owned by DoBigStudios'
+  }
+];
+
 
   const renderContent = () => {
     switch (activeTab) {
