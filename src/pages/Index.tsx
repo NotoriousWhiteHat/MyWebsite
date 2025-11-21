@@ -1,0 +1,151 @@
+import { useState } from "react";
+import ScrollingBackground from "@/components/ScrollingBackground";
+import ProjectCard from "@/components/ProjectCard";
+import LoadingScreen from "@/components/LoadingScreen";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import spotifyLogo from "@/assets/spotify-logo.png";
+import discordLogo from "@/assets/discord-logo.png";
+import robloxLogo from "@/assets/roblox-logo.png";
+
+const Index = () => {
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const projects = [
+    {
+      title: "Virus Border Roleplay",
+      image: "https://i.imgur.com/t3pyxcm.png",
+      visits: "34.0M",
+      ccu: "~2k",
+      role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
+      gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
+      groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
+    },
+    {
+      title: "Lone Survival",
+      image: "https://i.imgur.com/dUOSZDm.png",
+      visits: "26.3M",
+      ccu: "~2k",
+      role: "Whitehat - 2 Noclip methods, silent aim, many more vulns",
+      gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
+      groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
+    },
+    {
+      title: "The Mexican Border | RP",
+      image: "https://i.imgur.com/0xZkI8x.png",
+      visits: "12.2M",
+      ccu: "7k",
+      role: "Only developer - building, scripting, UI, security systems",
+      gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
+      groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
+    },
+    {
+      title: "The Lost Front",
+      image: "https://i.imgur.com/nO7Ubx1.jpeg",
+      visits: "10M",
+      ccu: "20k",
+      role: "Anticheat work",
+      gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
+      groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
+    },
+    {
+      title: "The Robine",
+      image: "https://i.imgur.com/zEbgoMY.png",
+      visits: "18.4M",
+      ccu: "~800",
+      role: "Lead dev for city systems, lead scripter, manager, whitehat/exploit fixes",
+      gameLink: "https://www.roblox.com/games/509062192/JEWELRY-HEIST-Project-Realism",
+      groupLink: "https://www.roblox.com/communities/2808906/The-Robine#!/about"
+    },
+    {
+      title: "Half Life: City 8",
+      image: "https://i.imgur.com/nO7Ubx1.jpeg",
+      visits: "12.8M",
+      ccu: "~800",
+      role: "Whitehat - kill all, auto complete job, gun mods",
+      gameLink: "https://www.roblox.com/games/8906378074/BACK-Half-Life-City-8",
+      groupLink: "https://www.roblox.com/communities/13426157/Half-Life-World"
+    },
+    {
+      title: "Arcane Conquest",
+      image: "https://i.imgur.com/jUKGCfs.png",
+      visits: "6.8M",
+      ccu: "~8k",
+      role: "Backend developer & security analyst",
+      gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
+      groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
+    }
+  ];
+
+  const copyDiscord = () => {
+    navigator.clipboard.writeText("959238547133595648");
+    toast({
+      title: "Copied",
+      description: "Discord ID copied to clipboard",
+    });
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
+  }
+
+  return (
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <ScrollingBackground />
+
+      <div className="relative z-10">
+        <section className="min-h-screen flex flex-col items-center justify-center px-6">
+          <div className="text-center max-w-4xl">
+            <div className="flex gap-2 justify-center mb-8">
+              <Button size="sm" variant="ghost" onClick={copyDiscord}>
+                <img src={discordLogo} alt="Discord" className="w-4 h-4" />
+              </Button>
+              <Button size="sm" variant="ghost" asChild>
+                <a href="https://www.roblox.com/users/37294166/profile" target="_blank" rel="noopener noreferrer">
+                  <img src={robloxLogo} alt="Roblox" className="w-4 h-4" />
+                </a>
+              </Button>
+              <Button size="sm" variant="ghost" asChild>
+                <a href="https://open.spotify.com/user/853y7u5be5lg8sewleuplhkjx" target="_blank" rel="noopener noreferrer">
+                  <img src={spotifyLogo} alt="Spotify" className="w-4 h-4" />
+                </a>
+              </Button>
+            </div>
+
+            <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
+              NOTORIOUS
+            </h1>
+            <p className="text-xl text-muted-foreground mb-12">
+              17 years old | notoriouswhitehat &lt; Discord
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+                View Projects
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-5xl font-black text-center mb-12">Projects</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, index) => (
+                <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <ProjectCard {...project} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <footer className="py-8 text-center text-muted-foreground border-t border-border">
+          <p>© 2024 NOTORIOUS. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
+  );
+};
+
+export default Index;
