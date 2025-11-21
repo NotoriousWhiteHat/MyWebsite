@@ -14,6 +14,15 @@ const Index = () => {
 
   const projects = [
     {
+      title: "The Lost Front",
+      image: "https://i.imgur.com/ZeAKHA8.png",
+      visits: "10M",
+      ccu: "20k",
+      role: "Anticheat work",
+      gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
+      groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
+    },
+    {
       title: "Virus Border Roleplay",
       image: "https://i.imgur.com/t3pyxcm.png",
       visits: "34.0M",
@@ -39,15 +48,6 @@ const Index = () => {
       role: "Only developer - building, scripting, UI, security systems",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
-    },
-    {
-      title: "The Lost Front",
-      image: "https://i.imgur.com/nO7Ubx1.jpeg",
-      visits: "10M",
-      ccu: "20k",
-      role: "Anticheat work",
-      gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
-      groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
     },
     {
       title: "The Robine",
