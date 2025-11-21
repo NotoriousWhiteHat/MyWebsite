@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300">
+    <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 h-full flex flex-col">
       <div className="aspect-video overflow-hidden bg-muted">
         <img 
           src={image} 
@@ -21,7 +21,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         <h3 className="text-2xl font-bold text-foreground mb-4">{title}</h3>
         <div className="flex gap-4 mb-4 text-sm">
           <div>
@@ -33,8 +33,8 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
             <span className="text-muted-foreground"> CCU</span>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground mb-4">{role}</p>
-        <div className="flex gap-2">
+        <p className="text-sm text-muted-foreground mb-4 flex-grow">{role}</p>
+        <div className="flex gap-2 mt-auto">
           <Button asChild variant="secondary" size="sm">
             <a href={gameLink} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
