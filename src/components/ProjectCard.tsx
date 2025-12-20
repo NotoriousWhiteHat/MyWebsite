@@ -1,5 +1,4 @@
-import { ExternalLink } from "lucide-react";
-import { Button } from "./ui/button";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -13,43 +12,96 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
   return (
-    <div className="bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 h-full flex flex-col">
+    <a 
+      href={gameLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block bg-card border border-border rounded-xl overflow-hidden 
+                 hover:border-zinc-700 hover:bg-zinc-800/50 transition-all duration-200 
+                 cursor-pointer h-full"
+      style={{ textDecoration: 'none' }}
+    >
+      {/* Image Section */}
       <div className="aspect-video overflow-hidden bg-muted">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 
+                     group-hover:scale-[1.02]"
         />
       </div>
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold text-foreground mb-4">{title}</h3>
-        <div className="flex gap-4 mb-4 text-sm">
-          <div>
-            <span className="font-semibold">{visits}</span>
-            <span className="text-muted-foreground"> visits</span>
+
+      {/* Content Section */}
+      <div className="p-6">
+        
+        {/* Header */}
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-foreground mb-1.5">
+              {title}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {role}
+            </p>
           </div>
-          <div>
-            <span className="font-semibold">{ccu}</span>
-            <span className="text-muted-foreground"> CCU</span>
+          
+          <div className="text-muted-foreground group-hover:text-foreground 
+                         transition-all duration-200 ml-3 mt-0.5
+                         group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <ArrowUpRight size={20} strokeWidth={2} />
           </div>
         </div>
-        <p className="text-sm text-muted-foreground mb-4 flex-grow">{role}</p>
-        <div className="flex gap-2 mt-auto">
-          <Button asChild variant="secondary" size="sm">
-            <a href={gameLink} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              View Game
-            </a>
-          </Button>
-          <Button asChild variant="ghost" size="sm">
-            <a href={groupLink} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Group
-            </a>
-          </Button>
+        
+        {/* Stats */}
+        <div className="flex gap-10 mt-6 pt-5 border-t border-border">
+          <div>
+            <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
+              {visits}
+            </p>
+            <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+              Visits
+            </p>
+          </div>
+          
+          <div>
+            <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
+              {ccu}
+            </p>
+            <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+              Peak CCU
+            </p>
+          </div>
         </div>
+        
+        {/* Actions */}
+        <div className="flex gap-3 mt-6 pt-5 border-t border-border">
+          <button 
+            className="bg-foreground text-background px-4 py-2 rounded-lg text-sm 
+                       font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 
+                       transition-all duration-200 active:scale-[0.98]"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(gameLink, '_blank');
+            }}
+          >
+            View Project
+          </button>
+          
+          <button 
+            className="bg-transparent text-muted-foreground border border-border px-4 py-2 
+                       rounded-lg text-sm font-medium hover:border-zinc-700 hover:text-foreground 
+                       hover:bg-muted transition-all duration-200 active:scale-[0.98]"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(groupLink, '_blank');
+            }}
+          >
+            Group
+          </button>
+        </div>
+        
       </div>
-    </div>
+    </a>
   );
 };
 
