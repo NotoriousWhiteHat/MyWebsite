@@ -18,7 +18,7 @@ const Index = () => {
       image: "https://i.imgur.com/ZeAKHA8.png",
       visits: "10M",
       ccu: "20k",
-      role: "Anticheat work",
+      role: "Patched multiple exploits",
       gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
       groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
     },
@@ -139,10 +139,6 @@ const Index = () => {
             </div>
           </div>
         </section>
-
-        <footer className="py-8 text-center text-muted-foreground border-t border-border">
-          <p>© 2024 NOTORIOUS. All rights reserved.</p>
-        </footer>
       </div>
     </div>
   );
