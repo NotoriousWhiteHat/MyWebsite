@@ -16,44 +16,53 @@ const Index = () => {
     {
       title: "The Lost Front",
       image: "https://i.imgur.com/ZeAKHA8.png",
-      visits: "10M",
-      ccu: "20k",
-      role: "Patched multiple exploits",
+      visits: "29.5M",
+      ccu: "22.600",
+      role: "Worked on anti-cheat helping patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
       groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
     },
     {
-      title: "Virus Border Roleplay",
-      image: "https://i.imgur.com/t3pyxcm.png",
-      visits: "34.0M",
-      ccu: "~2k",
-      role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
-      gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
-      groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
-    },
-    {
-      title: "Lone Survival",
-      image: "https://i.imgur.com/dUOSZDm.png",
-      visits: "26.3M",
-      ccu: "~2k",
-      role: "Whitehat - 2 Noclip methods, silent aim, many more vulns",
-      gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
-      groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
+      title: "Arcane Conquest",
+      image: "https://i.imgur.com/jUKGCfs.png",
+      visits: "8.10M",
+      ccu: "8.000",
+      role: "Backend developer & security analyst",
+      gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
+      groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
     },
     {
       title: "The Mexican Border | RP",
       image: "https://i.imgur.com/0xZkI8x.png",
-      visits: "12.2M",
-      ccu: "7k",
+      visits: "13.0M",
+      ccu: "7.400",
       role: "Only developer - building, scripting, UI, security systems",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
     },
     {
+      title: "Lone Survival",
+      image: "https://i.imgur.com/dUOSZDm.png",
+      visits: "28.4M",
+      ccu: "3.000",
+      role: "Whitehat - 2 Noclip methods, silent aim, many more vulns",
+      gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
+      groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
+    },
+    {
+      title: "Virus Border Roleplay",
+      image: "https://i.imgur.com/t3pyxcm.png",
+      visits: "36.6M",
+      ccu: "2.400",
+      role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
+      gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
+      groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
+    },
+    {
       title: "The Robine",
       image: "https://i.imgur.com/zEbgoMY.png",
       visits: "18.4M",
-      ccu: "~800",
+      ccu: "800",
       role: "Lead dev for city systems, lead scripter, manager, whitehat/exploit fixes",
       gameLink: "https://www.roblox.com/games/509062192/JEWELRY-HEIST-Project-Realism",
       groupLink: "https://www.roblox.com/communities/2808906/The-Robine#!/about"
@@ -61,21 +70,12 @@ const Index = () => {
     {
       title: "Half Life: City 8",
       image: "https://i.imgur.com/nO7Ubx1.jpeg",
-      visits: "12.8M",
-      ccu: "~800",
+      visits: "13.0M",
+      ccu: "800",
       role: "Whitehat - kill all, auto complete job, gun mods",
       gameLink: "https://www.roblox.com/games/8906378074/BACK-Half-Life-City-8",
       groupLink: "https://www.roblox.com/communities/13426157/Half-Life-World"
     },
-    {
-      title: "Arcane Conquest",
-      image: "https://i.imgur.com/jUKGCfs.png",
-      visits: "6.8M",
-      ccu: "~8k",
-      role: "Backend developer & security analyst",
-      gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
-      groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
-    }
   ];
 
   const copyDiscord = () => {
