@@ -36,16 +36,25 @@ const Index = () => {
       image: "https://i.imgur.com/0xZkI8x.png",
       visits: "13.0M",
       ccu: "7.400",
-      role: "Only developer - building, scripting, UI, security systems",
+      role: "Lead developer - scripting, building, UI",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
+    },
+    {
+      title: "Super Soldiers",
+      image: "https://i.imgur.com/kxGb3xT.jpeg",
+      visits: "6.6M",
+      ccu: "4.100",
+      role: "Worked on anti-cheat helped patch multiple exploits.",
+      gameLink: "https://www.roblox.com/games/119441025136387/Super-Soldiers",
+      groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about"
     },
     {
       title: "Lone Survival",
       image: "https://i.imgur.com/dUOSZDm.png",
       visits: "28.4M",
       ccu: "3.000",
-      role: "Whitehat - 2 Noclip methods, silent aim, many more vulns",
+      role: "Worked on anti-cheat helped patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
       groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
     },
