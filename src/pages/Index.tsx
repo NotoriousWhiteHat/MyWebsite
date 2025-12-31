@@ -14,6 +14,15 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Don't Get Crushed By 67",
+      image: "https://i.imgur.com/hqx6BnZ.png",
+      visits: "127.7M",
+      ccu: "47.900",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/124082555806669/Dont-Get-Crushed-By-67",
+      groupLink: "https://www.roblox.com/communities/934390337/Dig-A-Tunnel-Studios#!/about"
+    },
+    {
       title: "The Lost Front",
       image: "https://i.imgur.com/ZeAKHA8.png",
       visits: "29.5M",
