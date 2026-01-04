@@ -14,6 +14,15 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Blind Shot",
+      image: "https://i.imgur.com/ZdijnLu.png",
+      visits: "115.0M",
+      ccu: "52.800",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/118614517739521/Blind-Shot",
+      groupLink: "https://www.roblox.com/communities/699920026/Blind-Shot-Group#!/about"
+    },
+    {
       title: "Don't Get Crushed By 67",
       image: "https://i.imgur.com/hqx6BnZ.png",
       visits: "127.7M",
