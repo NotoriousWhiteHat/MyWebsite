@@ -14,6 +14,15 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Shoot A Brainrot",
+      image: "https://i.imgur.com/AUfyBxw.png",
+      visits: "69.0M",
+      ccu: "74.700",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/78949013360566/Shoot-a-Brainrot",
+      groupLink: "https://www.roblox.com/communities/503910868/Chefs-Special-Games#!/about"
+    },
+    {
       title: "Blind Shot",
       image: "https://i.imgur.com/ZdijnLu.png",
       visits: "115.0M",
@@ -59,6 +68,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
     },
     {
+      title: "Climb And ZIP",
+      image: "https://i.imgur.com/8dlxLXt.png",
+      visits: "12.5M",
+      ccu: "4.700",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/79605710125811/Climb-And-Zip",
+      groupLink: "https://www.roblox.com/communities/675364330/Muscle-Rabbit-Studio#!/about"
+    },
+    {
       title: "Super Soldiers",
       image: "https://i.imgur.com/kxGb3xT.jpeg",
       visits: "6.6M",
@@ -84,6 +102,15 @@ const Index = () => {
       role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
       gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
       groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
+    },
+    {
+      title: "Slap Duels",
+      image: "https://i.imgur.com/wVOBLOh.png",
+      visits: "589.000",
+      ccu: "2.300",
+      role: "Anticheat - patching autofarms, fly hack, speedhack",
+      gameLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about",
+      groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
     },
     {
       title: "The Robine",
