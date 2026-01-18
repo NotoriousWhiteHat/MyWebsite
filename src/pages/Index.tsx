@@ -50,6 +50,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
     },
     {
+      title: "Slap Duels",
+      image: "https://i.imgur.com/wVOBLOh.png",
+      visits: "11.9M",
+      ccu: "13.600",
+      role: "Anticheat - patching autofarms, fly hack, speedhack",
+      gameLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about",
+      groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
+    },
+    {
       title: "Arcane Conquest",
       image: "https://i.imgur.com/jUKGCfs.png",
       visits: "8.10M",
@@ -102,15 +111,6 @@ const Index = () => {
       role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
       gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
       groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
-    },
-    {
-      title: "Slap Duels",
-      image: "https://i.imgur.com/wVOBLOh.png",
-      visits: "589.000",
-      ccu: "2.300",
-      role: "Anticheat - patching autofarms, fly hack, speedhack",
-      gameLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about",
-      groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
     },
     {
       title: "The Robine",
