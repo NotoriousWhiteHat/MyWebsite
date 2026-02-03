@@ -1,18 +1,9 @@
-import { useState } from "react";
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
-import LoadingScreen from "@/components/LoadingScreen";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import spotifyLogo from "@/assets/spotify-logo.png";
-import discordLogo from "@/assets/discord-logo.png";
-import robloxLogo from "@/assets/roblox-logo.png";
 import heroBackdrop from "@/assets/Backdrop.png";
 
 const Index = () => {
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(true);
-
   const projects = [
     {
       title: "Shoot A Brainrot",
@@ -151,54 +142,26 @@ const Index = () => {
     },
   ];
 
-  const copyDiscord = () => {
-    navigator.clipboard.writeText("959238547133595648");
-    toast({
-      title: "Copied",
-      description: "Discord ID copied to clipboard",
-    });
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
-  }
-
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden">
+    <div className="relative min-h-screen bg-background overflow-hidden animate-fade-in">
       {/* Hero Section with Backdrop Image */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-        {/* Background Image - no overlay, just the image */}
+        {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBackdrop})` }}
         />
 
         {/* Content */}
-        <div className="relative z-10 text-center max-w-4xl">
-          <div className="flex gap-2 justify-center mb-8">
-            <Button size="sm" variant="ghost" onClick={copyDiscord}>
-              <img src={discordLogo} alt="Discord" className="w-4 h-4" />
-            </Button>
-            <Button size="sm" variant="ghost" asChild>
-              <a href="https://www.roblox.com/users/37294166/profile" target="_blank" rel="noopener noreferrer">
-                <img src={robloxLogo} alt="Roblox" className="w-4 h-4" />
-              </a>
-            </Button>
-            <Button size="sm" variant="ghost" asChild>
-              <a href="https://open.spotify.com/user/853y7u5be5lg8sewleuplhkjx" target="_blank" rel="noopener noreferrer">
-                <img src={spotifyLogo} alt="Spotify" className="w-4 h-4" />
-              </a>
-            </Button>
-          </div>
-
+        <div className="relative z-10 text-center max-w-4xl -mt-20">
           <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
             NOTORIOUS
           </h1>
           <p className="text-xl text-muted-foreground mb-12">
-            17 years old | notoriouswhitehat &lt; Discord
+            Scripting Things Right.
           </p>
           <div className="flex gap-4 justify-center">
-            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>  
+            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects
             </Button>
           </div>
@@ -207,7 +170,7 @@ const Index = () => {
 
       {/* Projects Section with Scrolling Background */}
       <div className="relative">
-        <ScrollingBackground /> 
+        <ScrollingBackground />
         
         <section id="projects" className="relative z-10 py-20 px-6">
           <div className="max-w-7xl mx-auto">
