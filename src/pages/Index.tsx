@@ -1,7 +1,7 @@
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
-import heroBackdrop from "@/assets/Backdrop.png";
+import heroVideo from "@/assets/Backdrop.mp4";
 
 const Index = () => {
   const projects = [
@@ -143,14 +143,18 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in">
-      {/* Hero Section with Backdrop Image */}
+    <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in"> 
+      {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBackdrop})` }}
-        />
+        {/* Background Video - plays once and stops on last frame */}
+        <video
+          autoPlay
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
 
         {/* Content */}
         <div className="relative z-10 text-center max-w-4xl -mt-20">
