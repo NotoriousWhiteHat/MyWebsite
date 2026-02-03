@@ -63,7 +63,7 @@ const Index = () => {
       image: "https://i.imgur.com/jUKGCfs.png",
       visits: "8.10M",
       ccu: "8.000",
-      role: "Backend developer & security analyst",
+      role: "Worked as a scripter doing mainly anti-cheat",
       gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
       groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
     },
@@ -75,6 +75,15 @@ const Index = () => {
       role: "Lead developer - scripting, building, UI",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
+    },
+    {
+      title: "Emote RNG",
+      image: "https://i.imgur.com/PIvsmzQ.png",
+      visits: "9.9M",
+      ccu: "7.400",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/132768306953643/Emote-RNG",
+      groupLink: "https://www.roblox.com/communities/6264771/Emote-Clan#!/about"
     },
     {
       title: "Climb And ZIP",
