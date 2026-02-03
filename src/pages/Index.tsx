@@ -167,25 +167,10 @@ const Index = () => {
     <div className="relative min-h-screen bg-background overflow-hidden">
       {/* Hero Section with Backdrop Image */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-        {/* Background Image */}
+        {/* Background Image - no overlay, just the image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroBackdrop})` }}
-        />
-        
-        {/* Dark overlay with blur effect */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-        
-        {/* Green/Cyan glow effect */}
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `
-              radial-gradient(ellipse at 30% 40%, rgba(87, 237, 135, 0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 60%, rgba(116, 160, 255, 0.12) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 50%, rgba(87, 237, 135, 0.08) 0%, transparent 40%)
-            `
-          }}
         />
 
         {/* Content */}
@@ -213,7 +198,7 @@ const Index = () => {
             17 years old | notoriouswhitehat &lt; Discord
           </p>
           <div className="flex gap-4 justify-center">
-            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>  
               View Projects
             </Button>
           </div>
@@ -222,7 +207,7 @@ const Index = () => {
 
       {/* Projects Section with Scrolling Background */}
       <div className="relative">
-        <ScrollingBackground />
+        <ScrollingBackground /> 
         
         <section id="projects" className="relative z-10 py-20 px-6">
           <div className="max-w-7xl mx-auto">
