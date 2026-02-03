@@ -86,6 +86,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/6264771/Emote-Clan#!/about"
     },
     {
+      title: "Build a Mini Golf",
+      image: "https://i.imgur.com/7kurgnM.png",
+      visits: "2.1M",
+      ccu: "5.600",
+      role: "Worked as a scripter doing regular updates",
+      gameLink: "https://www.roblox.com/games/113508814820816/Build-a-Mini-Golf",
+      groupLink: "https://www.roblox.com/communities/5142143/A-S-c#!/about"
+    },
+    {
       title: "Climb And ZIP",
       image: "https://i.imgur.com/8dlxLXt.png",
       visits: "12.5M",
