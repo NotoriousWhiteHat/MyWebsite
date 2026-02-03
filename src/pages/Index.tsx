@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import spotifyLogo from "@/assets/spotify-logo.png";
 import discordLogo from "@/assets/discord-logo.png";
 import robloxLogo from "@/assets/roblox-logo.png";
+import heroBackdrop from "@/assets/Backdrop.png";
 
 const Index = () => {
   const { toast } = useToast();
@@ -164,42 +165,66 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen bg-background overflow-hidden">
-      <ScrollingBackground />
+      {/* Hero Section with Backdrop Image */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBackdrop})` }}
+        />
+        
+        {/* Dark overlay with blur effect */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        
+        {/* Green/Cyan glow effect */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `
+              radial-gradient(ellipse at 30% 40%, rgba(87, 237, 135, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 60%, rgba(116, 160, 255, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(87, 237, 135, 0.08) 0%, transparent 40%)
+            `
+          }}
+        />
 
-      <div className="relative z-10">
-        <section className="min-h-screen flex flex-col items-center justify-center px-6">
-          <div className="text-center max-w-4xl">
-            <div className="flex gap-2 justify-center mb-8">
-              <Button size="sm" variant="ghost" onClick={copyDiscord}>
-                <img src={discordLogo} alt="Discord" className="w-4 h-4" />
-              </Button>
-              <Button size="sm" variant="ghost" asChild>
-                <a href="https://www.roblox.com/users/37294166/profile" target="_blank" rel="noopener noreferrer">
-                  <img src={robloxLogo} alt="Roblox" className="w-4 h-4" />
-                </a>
-              </Button>
-              <Button size="sm" variant="ghost" asChild>
-                <a href="https://open.spotify.com/user/853y7u5be5lg8sewleuplhkjx" target="_blank" rel="noopener noreferrer">
-                  <img src={spotifyLogo} alt="Spotify" className="w-4 h-4" />
-                </a>
-              </Button>
-            </div>
-
-            <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
-              NOTORIOUS
-            </h1>
-            <p className="text-xl text-muted-foreground mb-12">
-              17 years old | notoriouswhitehat &lt; Discord
-            </p>
-            <div className="flex gap-4 justify-center">
-              <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-                View Projects
-              </Button>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-4xl">
+          <div className="flex gap-2 justify-center mb-8">
+            <Button size="sm" variant="ghost" onClick={copyDiscord}>
+              <img src={discordLogo} alt="Discord" className="w-4 h-4" />
+            </Button>
+            <Button size="sm" variant="ghost" asChild>
+              <a href="https://www.roblox.com/users/37294166/profile" target="_blank" rel="noopener noreferrer">
+                <img src={robloxLogo} alt="Roblox" className="w-4 h-4" />
+              </a>
+            </Button>
+            <Button size="sm" variant="ghost" asChild>
+              <a href="https://open.spotify.com/user/853y7u5be5lg8sewleuplhkjx" target="_blank" rel="noopener noreferrer">
+                <img src={spotifyLogo} alt="Spotify" className="w-4 h-4" />
+              </a>
+            </Button>
           </div>
-        </section>
 
-        <section id="projects" className="py-20 px-6">
+          <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
+            NOTORIOUS
+          </h1>
+          <p className="text-xl text-muted-foreground mb-12">
+            17 years old | notoriouswhitehat &lt; Discord
+          </p>
+          <div className="flex gap-4 justify-center">
+            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+              View Projects
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section with Scrolling Background */}
+      <div className="relative">
+        <ScrollingBackground />
+        
+        <section id="projects" className="relative z-10 py-20 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-5xl font-black text-center mb-12">Projects</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
