@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { useState, useRef } from "react";
 
 interface ProjectCardProps {
   title: string;
@@ -11,50 +11,68 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <a 
-      href={gameLink}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block bg-card border border-border rounded-xl overflow-hidden 
-                 hover:border-zinc-700 hover:bg-zinc-800/50 transition-all duration-200 
-                 cursor-pointer h-full"
-      style={{ textDecoration: 'none' }}
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative bg-black border border-zinc-800 rounded-xl overflow-hidden h-full"
+      style={{ 
+        boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)',
+      }}
     >
+      {/* Blue gradient glow that follows mouse */}
+      {isHovered && (
+        <div
+          className="absolute pointer-events-none z-0 transition-opacity duration-300"
+          style={{
+            background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
+            inset: 0,
+            '--mouse-x': `${mousePosition.x}px`,
+            '--mouse-y': `${mousePosition.y}px`,
+          } as React.CSSProperties}
+        />
+      )}
+
       {/* Image Section */}
-      <div className="aspect-video overflow-hidden bg-muted">
+      <div className="aspect-video overflow-hidden bg-black relative z-10">
         <img 
           src={image} 
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-300 
-                     group-hover:scale-[1.02]"
+          className="w-full h-full object-cover"
         />
       </div>
 
       {/* Content Section */}
-      <div className="p-6">
+      <div className="p-6 relative z-10">
         
         {/* Header */}
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold text-foreground mb-1.5">
-              {title}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {role}
-            </p>
-          </div>
-          
-          <div className="text-muted-foreground group-hover:text-foreground 
-                         transition-all duration-200 ml-3 mt-0.5
-                         group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-            <ArrowUpRight size={20} strokeWidth={2} />
-          </div>
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-foreground text-center mb-1.5">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground text-center">
+            {role}
+          </p>
         </div>
         
         {/* Stats */}
-        <div className="flex gap-10 mt-6 pt-5 border-t border-border">
-          <div>
+        <div className="flex gap-10 justify-center mt-6 pt-5 border-t border-zinc-800">
+          <div className="text-center">
             <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
               {visits}
             </p>
@@ -63,7 +81,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
             </p>
           </div>
           
-          <div>
+          <div className="text-center">
             <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
               {ccu}
             </p>
@@ -74,34 +92,28 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         </div>
         
         {/* Actions */}
-        <div className="flex gap-3 mt-6 pt-5 border-t border-border">
+        <div className="flex gap-3 mt-6 pt-5 border-t border-zinc-800 justify-center">
           <button 
             className="bg-foreground text-background px-4 py-2 rounded-lg text-sm 
-                       font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700 
+                       font-medium hover:bg-zinc-200 dark:hover:bg-zinc-300 
                        transition-all duration-200 active:scale-[0.98]"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(gameLink, '_blank');
-            }}
+            onClick={() => window.open(gameLink, '_blank')}
           >
             View Project
           </button>
           
           <button 
-            className="bg-transparent text-muted-foreground border border-border px-4 py-2 
-                       rounded-lg text-sm font-medium hover:border-zinc-700 hover:text-foreground 
-                       hover:bg-muted transition-all duration-200 active:scale-[0.98]"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(groupLink, '_blank');
-            }}
+            className="bg-transparent text-muted-foreground border border-zinc-800 px-4 py-2 
+                       rounded-lg text-sm font-medium hover:border-zinc-600 hover:text-foreground 
+                       transition-all duration-200 active:scale-[0.98]"
+            onClick={() => window.open(groupLink, '_blank')}
           >
             Group
           </button>
         </div>
         
       </div>
-    </a>
+    </div>
   );
 };
 
