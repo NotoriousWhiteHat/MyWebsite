@@ -143,7 +143,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-background overflow-hidden animate-fade-in">
+    <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in">
       {/* Hero Section with Backdrop Image */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
         {/* Background Image */}
@@ -157,8 +157,8 @@ const Index = () => {
           <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
             NOTORIOUS
           </h1>
-          <p className="text-xl text-muted-foreground mb-12">
-            Scripting Things Right.
+          <p className="text-2xl md:text-3xl font-bold text-white mb-12">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Scripting</span> Things Right.
           </p>
           <div className="flex gap-4 justify-center">
             <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -169,7 +169,7 @@ const Index = () => {
       </section>
 
       {/* Projects Section with Scrolling Background */}
-      <div className="relative">
+      <div className="relative bg-black">
         <ScrollingBackground />
         
         <section id="projects" className="relative z-10 py-20 px-6">
