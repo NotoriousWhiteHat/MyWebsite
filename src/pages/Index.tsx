@@ -1,7 +1,7 @@
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
-import { Button } from "@/components/ui/button";
+import GlowButton from "@/components/GlowButton";
 import heroVideo from "@/assets/Backdrop.mp4";
 
 const Index = () => {
@@ -170,9 +170,9 @@ const Index = () => {
           <StatsSection />
           
           <div className="flex gap-4 justify-center mt-4">
-            <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            <GlowButton onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects
-            </Button>
+            </GlowButton>
           </div>
         </div>
       </section>
