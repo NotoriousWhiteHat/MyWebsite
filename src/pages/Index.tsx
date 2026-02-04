@@ -1,5 +1,6 @@
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
+import StatsSection from "@/components/StatsSection";
 import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/Backdrop.mp4";
 
@@ -164,6 +165,10 @@ const Index = () => {
           <p className="text-2xl md:text-3xl font-bold text-white mb-12">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Scripting</span> Things Right.
           </p>
+          
+          {/* Stats Section */}
+          <StatsSection />
+          
           <div className="flex gap-4 justify-center">
             <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects
