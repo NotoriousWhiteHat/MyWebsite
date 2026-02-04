@@ -36,7 +36,7 @@ const GlowButton = ({ children, onClick }: GlowButtonProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      className="relative bg-black/80 px-5 py-2.5 rounded-lg text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
+      className="relative bg-black/80 px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
     >
       {isHovered && (
         <div
@@ -96,37 +96,37 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         />
       </div>
 
-      <div className="p-6 relative z-10">
-        <div className="mb-4">
-          <h3 className="text-3xl font-black text-foreground text-center mb-3">
+      <div className="p-4 sm:p-6 relative z-10">
+        <div className="mb-3 sm:mb-4">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground text-center mb-2 sm:mb-3 break-words">
             {title}
           </h3>
-          <p className="text-lg font-bold text-muted-foreground text-center">
+          <p className="text-sm sm:text-base md:text-lg font-bold text-muted-foreground text-center break-words">
             {role}
           </p>
         </div>
         
-        <div className="flex justify-center gap-16 mt-6">
+        <div className="flex justify-center gap-6 sm:gap-10 md:gap-16 mt-4 sm:mt-6">
           <div className="text-center flex-1">
-            <p className="text-5xl font-black text-foreground tabular-nums tracking-tight">
+            <p className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground tabular-nums tracking-tight">
               {visits}
             </p>
-            <p className="text-base text-muted-foreground mt-2 uppercase tracking-wider font-bold">
+            <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-1 sm:mt-2 uppercase tracking-wider font-bold">
               Visits
             </p>
           </div>
           
           <div className="text-center flex-1">
-            <p className="text-5xl font-black text-foreground tabular-nums tracking-tight">
+            <p className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground tabular-nums tracking-tight">
               {ccu}
             </p>
-            <p className="text-base text-muted-foreground mt-2 uppercase tracking-wider font-bold">
+            <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-1 sm:mt-2 uppercase tracking-wider font-bold">
               Peak CCU
             </p>
           </div>
         </div>
         
-        <div className="flex gap-4 mt-6 justify-center">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4 sm:mt-6 justify-center">
           <GlowButton onClick={() => window.open(gameLink, '_blank')}>View Project</GlowButton>
           <GlowButton onClick={() => window.open(groupLink, '_blank')}>Group</GlowButton>
         </div>
