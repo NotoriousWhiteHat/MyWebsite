@@ -36,7 +36,7 @@ const GlowButton = ({ children, onClick }: GlowButtonProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      className="relative bg-black/80 border border-zinc-800 px-5 py-2.5 rounded-lg text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
+      className="relative bg-black/80 px-5 py-2.5 rounded-lg text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
     >
       {isHovered && (
         <div
@@ -96,37 +96,37 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         />
       </div>
 
-      <div className="p-8 relative z-10">
-        <div className="mb-6">
-          <h3 className="text-2xl font-black text-foreground text-center mb-2">
+      <div className="p-6 relative z-10">
+        <div className="mb-4">
+          <h3 className="text-3xl font-black text-foreground text-center mb-3">
             {title}
           </h3>
-          <p className="text-base font-medium text-muted-foreground text-center">
+          <p className="text-lg font-bold text-muted-foreground text-center">
             {role}
           </p>
         </div>
         
-        <div className="flex gap-12 justify-center mt-8">
-          <div className="text-center">
-            <p className="text-4xl font-black text-foreground tabular-nums tracking-tight">
+        <div className="flex justify-center gap-16 mt-6">
+          <div className="text-center flex-1">
+            <p className="text-5xl font-black text-foreground tabular-nums tracking-tight">
               {visits}
             </p>
-            <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider font-semibold">
+            <p className="text-base text-muted-foreground mt-2 uppercase tracking-wider font-bold">
               Visits
             </p>
           </div>
           
-          <div className="text-center">
-            <p className="text-4xl font-black text-foreground tabular-nums tracking-tight">
+          <div className="text-center flex-1">
+            <p className="text-5xl font-black text-foreground tabular-nums tracking-tight">
               {ccu}
             </p>
-            <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider font-semibold">
+            <p className="text-base text-muted-foreground mt-2 uppercase tracking-wider font-bold">
               Peak CCU
             </p>
           </div>
         </div>
         
-        <div className="flex gap-4 mt-8 justify-center">
+        <div className="flex gap-4 mt-6 justify-center">
           <GlowButton onClick={() => window.open(gameLink, '_blank')}>View Project</GlowButton>
           <GlowButton onClick={() => window.open(groupLink, '_blank')}>Group</GlowButton>
         </div>
