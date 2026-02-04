@@ -147,6 +147,46 @@ const Index = () => {
     },
   ];
 
+  // Glow Card component with mouse-following gradient effect
+  const GlowCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden ${className}`}
+        style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
+      >
+        {isHovered && (
+          <div
+            className="absolute pointer-events-none z-0 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
+              inset: 0,
+              '--mouse-x': `${mousePosition.x}px`,
+              '--mouse-y': `${mousePosition.y}px`,
+            } as React.CSSProperties}
+          />
+        )}
+        <div className="relative z-10">{children}</div>
+      </div>
+    );
+  };
+
   const ContactButton = ({ href, icon, label }: { href: string; icon: string; label: string }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
@@ -235,7 +275,7 @@ const Index = () => {
             
             <div className="grid md:grid-cols-2 gap-8">
               {/* Left Card - Bio */}
-              <div className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden p-8">
+              <GlowCard className="p-8">
                 <p className="text-gray-300 leading-relaxed mb-4">
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
@@ -248,38 +288,35 @@ const Index = () => {
                 <p className="text-gray-300 leading-relaxed">
                   Since turning 16 I've been doing full game dev work - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
                 </p>
-              </div>
+              </GlowCard>
 
               {/* Right Card - Contact Info */}
-              <div className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
-                
-                <div className="flex gap-6 items-start">
-                  {/* Portrait - Square with black border */}
-                  <div className="w-36 h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
-                    <img 
-                      src={portrait} 
-                      alt="Jameson" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  {/* Contact Buttons */}
-                  <div className="flex flex-col gap-4 flex-1">
-                    <ContactButton 
-                      href="https://discord.com/users/959238547133595648"
-                      icon={discordLogo}
-                      label="Discord"
-                    />
-                    <ContactButton 
-                      href="https://www.roblox.com/users/37294166/profile"
-                      icon={robloxLogo}
-                      label="Roblox"
-                    />
-                  </div>
+              <GlowCard className="p-8">...
+              <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
+              <div className="flex gap-6 items-start">
+                {/* Portrait - Square with black border */}
+                <div className="w-36 h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
+                  <img 
+                    src={portrait} 
+                    alt="Jameson" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Contact Buttons */}
+                <div className="flex flex-col gap-4 flex-1">
+                  <ContactButton 
+                    href="https://discord.com/users/959238547133595648"
+                    icon={discordLogo}
+                    label="Discord"
+                  />
+                  <ContactButton 
+                    href="https://www.roblox.com/users/37294166/profile"
+                    icon={robloxLogo}
+                    label="Roblox"
+                  />
                 </div>
               </div>
-            </div>
+            </GlowCard>
           </div>
         </section>
 
