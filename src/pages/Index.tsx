@@ -169,14 +169,13 @@ const Index = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden ${className}`}
-        style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
+        className={`relative bg-zinc-900/60 border border-zinc-700/50 rounded-2xl overflow-hidden ${className}`}
       >
         {isHovered && (
           <div
             className="absolute pointer-events-none z-0 transition-opacity duration-300"
             style={{
-              background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
+              background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.08), transparent 40%)',
               inset: 0,
               '--mouse-x': `${mousePosition.x}px`,
               '--mouse-y': `${mousePosition.y}px`,
@@ -184,6 +183,48 @@ const Index = () => {
           />
         )}
         <div className="relative z-10">{children}</div>
+      </div>
+    );
+  };
+
+  // Stats Card component
+  const StatCard = ({ value, label }: { value: string; label: string }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative bg-zinc-900/60 border border-zinc-700/50 rounded-2xl overflow-hidden p-6 md:p-8"
+      >
+        {isHovered && (
+          <div
+            className="absolute pointer-events-none z-0 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.08), transparent 40%)',
+              inset: 0,
+              '--mouse-x': `${mousePosition.x}px`,
+              '--mouse-y': `${mousePosition.y}px`,
+            } as React.CSSProperties}
+          />
+        )}
+        <div className="relative z-10">
+          <p className="text-4xl md:text-5xl font-black text-white mb-2">{value}</p>
+          <p className="text-zinc-400 text-sm md:text-base">{label}</p>
+        </div>
       </div>
     );
   };
@@ -211,22 +252,21 @@ const Index = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-6 py-4 flex items-center gap-4 transition-all duration-200 hover:border-zinc-700"
-        style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
+        className="relative bg-zinc-800/80 border border-zinc-600/50 rounded-full overflow-hidden px-8 py-4 flex items-center justify-center gap-3 transition-all duration-200 hover:border-zinc-500"
       >
         {isHovered && (
           <div
             className="absolute pointer-events-none z-0 transition-opacity duration-300"
             style={{
-              background: 'radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.25), transparent 40%)',
+              background: 'radial-gradient(150px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
               inset: 0,
               '--mouse-x': `${mousePosition.x}px`,
               '--mouse-y': `${mousePosition.y}px`,
             } as React.CSSProperties}
           />
         )}
-        <img src={icon} alt={label} className="w-10 h-10 relative z-10" />
-        <span className="text-foreground font-semibold text-xl relative z-10">{label}</span>
+        <img src={icon} alt={label} className="w-6 h-6 relative z-10" />
+        <span className="text-white font-medium text-base relative z-10">{label}</span>
       </a>
     );
   };
@@ -265,61 +305,70 @@ const Index = () => {
       </section>
 
       {/* About Me & Projects with Scrolling Background */}
-      <div className="relative bg-black">
+      <div className="relative bg-zinc-950">
         <ScrollingBackground />
         
-        {/* About Me Section - Full page height with bigger content */}
-        <section id="about" className="relative z-10 min-h-screen py-20 px-4 sm:px-6 flex flex-col justify-center">
-          <div className="max-w-6xl mx-auto w-full">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-center mb-6">About Me</h2>
-            <p className="text-muted-foreground text-center mb-16 text-lg sm:text-xl max-w-2xl mx-auto">
-              Learn more about me and what separates me from other scripters.
+        {/* About Me Section - Full page layout like reference */}
+        <section id="about" className="relative z-10 py-24 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto w-full">
+            {/* Header */}
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">About Me</h2>
+            <p className="text-zinc-400 text-center mb-16 text-base sm:text-lg max-w-xl mx-auto">
+              Learn more about me and what makes my work stand out.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Two column cards */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
               {/* Left Card - Bio */}
-              <GlowCard className="p-8 md:p-10 lg:p-12">
-                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
+              <GlowCard className="p-8 md:p-10">
+                <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
-                  Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I could make money from this and started doing whitehat work.
+                <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
+                  Been scripting since I was 11 - almost <span className="text-white font-semibold">6 years</span> now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago I figured out I could make money from this and started doing <span className="text-cyan-400 font-semibold">whitehat work</span>.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
-                  Now I work with some of the biggest games on Roblox doing a lot more then just vulnerability finding. I have scripted in games with hundreds of millions of visits.
+                <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
+                  Now I work with some of the <span className="text-white font-semibold">biggest games on Roblox</span> doing a lot more than just vulnerability finding. I have scripted in games with <span className="text-cyan-400 font-semibold">hundreds of millions of visits</span>.
                 </p>
-                <p className="text-gray-300 leading-relaxed text-base md:text-lg">
-                  Since turning 16 I've been doing full game dev work - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
+                <p className="text-zinc-300 leading-relaxed text-base md:text-lg">
+                  Since turning 16 I've been doing <span className="text-white font-semibold">full game dev work</span> - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
                 </p>
               </GlowCard>
 
               {/* Right Card - Contact Info */}
-              <GlowCard className="p-8 md:p-10 lg:p-12">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Contact Info</h3>
-                <div className="flex flex-col gap-8 items-center">
-                  {/* Portrait - Bigger */}
-                  <div className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0 border-4 border-black rounded-xl overflow-hidden bg-zinc-900">
-                    <img 
-                      src={portrait} 
-                      alt="Jameson" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  {/* Contact Buttons - Bigger */}
-                  <div className="flex flex-col gap-4 w-full max-w-sm">
-                    <ContactButton 
-                      href="https://discord.com/users/959238547133595648"
-                      icon={discordLogo}
-                      label="Discord"
-                    />
-                    <ContactButton 
-                      href="https://www.roblox.com/users/37294166/profile"
-                      icon={robloxLogo}
-                      label="Roblox"
-                    />
-                  </div>
+              <GlowCard className="p-8 md:p-10">
+                <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
+                  Whether you're looking for a <span className="text-white font-semibold">trusted developer</span> or need help with <span className="text-white font-semibold">anti-cheat solutions</span>, I'm here to help you protect and grow your project.
+                </p>
+                <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
+                  I specialize in <span className="text-cyan-400 font-semibold">security, scripting, and game development</span>, ensuring your game reaches its <span className="text-white font-semibold">full potential</span>.
+                </p>
+                <p className="text-zinc-300 leading-relaxed mb-8 text-base md:text-lg">
+                  If you want to work with a <span className="text-cyan-400 font-semibold">NOTORIOUS</span> developer, you're in the right place. Reach out and let's get started.
+                </p>
+                
+                {/* Contact Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <ContactButton 
+                    href="https://discord.com/users/959238547133595648"
+                    icon={discordLogo}
+                    label="Discord"
+                  />
+                  <ContactButton 
+                    href="https://www.roblox.com/users/37294166/profile"
+                    icon={robloxLogo}
+                    label="Roblox"
+                  />
                 </div>
               </GlowCard>
+            </div>
+
+            {/* Stats Row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              <StatCard value="74K+" label="Peak CCU" />
+              <StatCard value="500M+" label="Total Visits" />
+              <StatCard value="15+" label="Games Worked On" />
+              <StatCard value="6+" label="Years Experience" />
             </div>
           </div>
         </section>
