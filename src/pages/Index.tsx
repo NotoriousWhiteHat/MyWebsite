@@ -240,13 +240,13 @@ const Index = () => {
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts and exploits just to see what I could break. Couple years back I figured out I was pretty good at finding holes in games, so I flipped it around and started helping devs patch their stuff instead.
+                  Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I was pretty good at finding holes in games, so I flipped it around and started helping devs patch their stuff instead.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Now I work with some of the biggest games on Roblox doing whitehat security - finding exploits like kill alls, aimbots, speedhacks before the cheaters do. I've helped patch vulnerabilities in games with hundreds of millions of visits.
+                  Now I work with some of the biggest games on Roblox doing a lot more then just vulnerability finding. I have scripted in games with hundreds of millions of visits.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
-                  Since turning 16 I've also been doing full game dev work - not just security but actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
+                  Since turning 16 I've been doing full game dev work - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
                 </p>
               </div>
 
