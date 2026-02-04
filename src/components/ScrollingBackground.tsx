@@ -1,8 +1,8 @@
 const ScrollingBackground = () => {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      <div className="absolute inset-0 transform -rotate-12 scale-150">
-        {[...Array(60)].map((_, i) => (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 min-h-full">
+      <div className="absolute inset-0 transform -rotate-12 scale-150 min-h-[200vh]">
+        {[...Array(120)].map((_, i) => (
           <div
             key={i}
             className={`flex whitespace-nowrap text-4xl font-black tracking-wider select-none ${
