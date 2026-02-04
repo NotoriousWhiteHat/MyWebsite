@@ -1,5 +1,6 @@
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
+import StatsSection from "@/components/StatsSection";
 import { Button } from "@/components/ui/button";
 import heroVideo from "@/assets/Backdrop.mp4";
 
@@ -161,10 +162,14 @@ const Index = () => {
           <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
             NOTORIOUS
           </h1>
-          <p className="text-2xl md:text-3xl font-bold text-white mb-12">
+          <p className="text-2xl md:text-3xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Scripting</span> Things Right.
           </p>
-          <div className="flex gap-4 justify-center">
+          
+          {/* Stats Section */}
+          <StatsSection />
+          
+          <div className="flex gap-4 justify-center mt-4">
             <Button variant="secondary" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects
             </Button>
