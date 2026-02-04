@@ -36,11 +36,8 @@ const GlowButton = ({ children, onClick }: GlowButtonProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      className="relative bg-black/80 border border-zinc-800 px-4 py-2 rounded-lg text-sm \
-                 font-medium text-foreground overflow-hidden
-                 transition-all duration-200 active:scale-[0.98]"
+      className="relative bg-black/80 border border-zinc-800 px-5 py-2.5 rounded-lg text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
     >
-      {/* Blue gradient glow that follows mouse */}
       {isHovered && (
         <div
           className="absolute pointer-events-none z-0 transition-opacity duration-300"
@@ -77,12 +74,8 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-black border border-zinc-800 rounded-xl overflow-hidden h-full"
-      style={{ 
-        boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)',
-      }}
+      className="relative bg-black rounded-xl overflow-hidden h-full"
     >
-      {/* Blue gradient glow that follows mouse */}
       {isHovered && (
         <div
           className="absolute pointer-events-none z-0 transition-opacity duration-300"
@@ -95,7 +88,6 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         />
       )}
 
-      {/* Image Section */}
       <div className="aspect-video overflow-hidden bg-black relative z-10">
         <img 
           src={image} 
@@ -104,47 +96,40 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         />
       </div>
 
-      {/* Content Section */}
-      <div className="p-6 relative z-10">
-        
-        {/* Header */}
-        <div className="mb-4">
-          <h3 className="text-xl font-bold text-foreground text-center mb-1.5">
+      <div className="p-8 relative z-10">
+        <div className="mb-6">
+          <h3 className="text-2xl font-black text-foreground text-center mb-2">
             {title}
           </h3>
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="text-base font-medium text-muted-foreground text-center">
             {role}
           </p>
         </div>
         
-        {/* Stats */}
-        <div className="flex gap-10 justify-center mt-6 pt-5 border-t border-zinc-800">
+        <div className="flex gap-12 justify-center mt-8">
           <div className="text-center">
-            <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
+            <p className="text-4xl font-black text-foreground tabular-nums tracking-tight">
               {visits}
             </p>
-            <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+            <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider font-semibold">
               Visits
             </p>
           </div>
           
           <div className="text-center">
-            <p className="text-[28px] font-bold text-foreground tabular-nums tracking-tight">
+            <p className="text-4xl font-black text-foreground tabular-nums tracking-tight">
               {ccu}
             </p>
-            <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">
+            <p className="text-sm text-muted-foreground mt-2 uppercase tracking-wider font-semibold">
               Peak CCU
             </p>
           </div>
         </div>
         
-        {/* Actions */}
-        <div className="flex gap-3 mt-6 pt-5 border-t border-zinc-800 justify-center">
+        <div className="flex gap-4 mt-8 justify-center">
           <GlowButton onClick={() => window.open(gameLink, '_blank')}>View Project</GlowButton>
-          
           <GlowButton onClick={() => window.open(groupLink, '_blank')}>Group</GlowButton>
         </div>
-        
       </div>
     </div>
   );
