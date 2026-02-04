@@ -3,6 +3,7 @@ import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
 import GlowButton from "@/components/GlowButton";
+import Navbar from "@/components/Navbar";
 import heroVideo from "@/assets/Backdrop.mp4";
 import portrait from "@/assets/Portrait.png";
 import discordLogo from "@/assets/discord-logo.png";
@@ -231,7 +232,9 @@ const Index = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in"> 
+    <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in">
+      <Navbar />
+      
       {/* Hero Section with Video Background */}
       <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden">
         <video
@@ -266,7 +269,7 @@ const Index = () => {
         <ScrollingBackground />
         
         {/* About Me Section */}
-        <section id="about" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
+        <section id="about" className="relative z-10 min-h-screen py-12 sm:py-20 px-4 sm:px-6 flex flex-col justify-center">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-4">About Me</h2>
             <p className="text-muted-foreground text-center mb-8 sm:mb-12 text-base sm:text-lg">
@@ -335,7 +338,8 @@ const Index = () => {
           </div>
         </section>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default Index;
