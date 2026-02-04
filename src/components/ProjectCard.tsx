@@ -10,6 +10,53 @@ interface ProjectCardProps {
   groupLink: string;
 }
 
+interface GlowButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+}
+
+const GlowButton = ({ children, onClick }: GlowButtonProps) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!buttonRef.current) return;
+    const rect = buttonRef.current.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <button
+      ref={buttonRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+      className="relative bg-black/80 border border-zinc-800 px-4 py-2 rounded-lg text-sm \
+                 font-medium text-foreground overflow-hidden
+                 transition-all duration-200 active:scale-[0.98]"
+    >
+      {/* Blue gradient glow that follows mouse */}
+      {isHovered && (
+        <div
+          className="absolute pointer-events-none z-0 transition-opacity duration-300"
+          style={{
+            background: 'radial-gradient(100px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.3), transparent 40%)',
+            inset: 0,
+            '--mouse-x': `${mousePosition.x}px`,
+            '--mouse-y': `${mousePosition.y}px`,
+          } as React.CSSProperties}
+        />
+      )}
+      <span className="relative z-10">{children}</span>
+    </button>
+  );
+};
+
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -93,23 +140,9 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         
         {/* Actions */}
         <div className="flex gap-3 mt-6 pt-5 border-t border-zinc-800 justify-center">
-          <button 
-            className="bg-foreground text-background px-4 py-2 rounded-lg text-sm 
-                       font-medium hover:bg-zinc-200 dark:hover:bg-zinc-300 
-                       transition-all duration-200 active:scale-[0.98]"
-            onClick={() => window.open(gameLink, '_blank')}
-          >
-            View Project
-          </button>
+          <GlowButton onClick={() => window.open(gameLink, '_blank')}>View Project</GlowButton>
           
-          <button 
-            className="bg-transparent text-muted-foreground border border-zinc-800 px-4 py-2 
-                       rounded-lg text-sm font-medium hover:border-zinc-600 hover:text-foreground 
-                       transition-all duration-200 active:scale-[0.98]"
-            onClick={() => window.open(groupLink, '_blank')}
-          >
-            Group
-          </button>
+          <GlowButton onClick={() => window.open(groupLink, '_blank')}>Group</GlowButton>
         </div>
         
       </div>
