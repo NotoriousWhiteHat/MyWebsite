@@ -211,7 +211,7 @@ const Index = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-4 py-3 sm:px-6 sm:py-4 flex items-center gap-3 sm:gap-4 transition-all duration-200 hover:border-zinc-700"
+        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-6 py-4 flex items-center gap-4 transition-all duration-200 hover:border-zinc-700"
         style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
       >
         {isHovered && (
@@ -225,8 +225,8 @@ const Index = () => {
             } as React.CSSProperties}
           />
         )}
-        <img src={icon} alt={label} className="w-6 h-6 sm:w-8 sm:h-8 relative z-10" />
-        <span className="text-foreground font-semibold text-base sm:text-lg relative z-10">{label}</span>
+        <img src={icon} alt={label} className="w-10 h-10 relative z-10" />
+        <span className="text-foreground font-semibold text-xl relative z-10">{label}</span>
       </a>
     );
   };
@@ -268,45 +268,45 @@ const Index = () => {
       <div className="relative bg-black">
         <ScrollingBackground />
         
-        {/* About Me Section */}
-        <section id="about" className="relative z-10 min-h-screen py-12 sm:py-20 px-4 sm:px-6 flex flex-col justify-center">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-4">About Me</h2>
-            <p className="text-muted-foreground text-center mb-8 sm:mb-12 text-base sm:text-lg">
+        {/* About Me Section - Full page height with bigger content */}
+        <section id="about" className="relative z-10 min-h-screen py-20 px-4 sm:px-6 flex flex-col justify-center">
+          <div className="max-w-6xl mx-auto w-full">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-center mb-6">About Me</h2>
+            <p className="text-muted-foreground text-center mb-16 text-lg sm:text-xl max-w-2xl mx-auto">
               Learn more about me and what separates me from other scripters.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
               {/* Left Card - Bio */}
-              <GlowCard className="p-4 sm:p-6 md:p-8">
-                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
+              <GlowCard className="p-8 md:p-10 lg:p-12">
+                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
+                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
                   Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I could make money from this and started doing whitehat work.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
+                <p className="text-gray-300 leading-relaxed mb-6 text-base md:text-lg">
                   Now I work with some of the biggest games on Roblox doing a lot more then just vulnerability finding. I have scripted in games with hundreds of millions of visits.
                 </p>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-300 leading-relaxed text-base md:text-lg">
                   Since turning 16 I've been doing full game dev work - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
                 </p>
               </GlowCard>
 
               {/* Right Card - Contact Info */}
-              <GlowCard className="p-4 sm:p-6 md:p-8">
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Contact Info</h3>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-start">
-                  {/* Portrait - Square with black border */}
-                  <div className="w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
+              <GlowCard className="p-8 md:p-10 lg:p-12">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Contact Info</h3>
+                <div className="flex flex-col gap-8 items-center">
+                  {/* Portrait - Bigger */}
+                  <div className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0 border-4 border-black rounded-xl overflow-hidden bg-zinc-900">
                     <img 
                       src={portrait} 
                       alt="Jameson" 
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  {/* Contact Buttons */}
-                  <div className="flex flex-col gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
+                  {/* Contact Buttons - Bigger */}
+                  <div className="flex flex-col gap-4 w-full max-w-sm">
                     <ContactButton 
                       href="https://discord.com/users/959238547133595648"
                       icon={discordLogo}
