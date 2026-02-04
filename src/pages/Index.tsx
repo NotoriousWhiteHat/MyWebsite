@@ -210,7 +210,7 @@ const Index = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-6 py-4 flex items-center gap-4 transition-all duration-200 hover:border-zinc-700"
+        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-4 py-3 sm:px-6 sm:py-4 flex items-center gap-3 sm:gap-4 transition-all duration-200 hover:border-zinc-700"
         style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
       >
         {isHovered && (
@@ -224,8 +224,8 @@ const Index = () => {
             } as React.CSSProperties}
           />
         )}
-        <img src={icon} alt={label} className="w-8 h-8 relative z-10" />
-        <span className="text-foreground font-semibold text-lg relative z-10">{label}</span>
+        <img src={icon} alt={label} className="w-6 h-6 sm:w-8 sm:h-8 relative z-10" />
+        <span className="text-foreground font-semibold text-base sm:text-lg relative z-10">{label}</span>
       </a>
     );
   };
@@ -233,7 +233,7 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in"> 
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden">
         <video
           autoPlay
           muted
@@ -243,11 +243,11 @@ const Index = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
 
-        <div className="relative z-10 text-center max-w-4xl -mt-20">
-          <h1 className="text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
+        <div className="relative z-10 text-center max-w-4xl -mt-10 sm:-mt-20 px-2">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-foreground mb-4 tracking-tight">
             NOTORIOUS
           </h1>
-          <p className="text-2xl md:text-3xl font-bold text-white mb-6">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Scripting</span> Things Right.
           </p>
           
@@ -266,36 +266,36 @@ const Index = () => {
         <ScrollingBackground />
         
         {/* About Me Section */}
-        <section id="about" className="relative z-10 py-20 px-6">
+        <section id="about" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-5xl font-black text-center mb-4">About Me</h2>
-            <p className="text-muted-foreground text-center mb-12 text-lg">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-4">About Me</h2>
+            <p className="text-muted-foreground text-center mb-8 sm:mb-12 text-base sm:text-lg">
               Learn more about me and what separates me from other scripters.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
               {/* Left Card - Bio */}
-              <GlowCard className="p-8">
-                <p className="text-gray-300 leading-relaxed mb-4">
+              <GlowCard className="p-4 sm:p-6 md:p-8">
+                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
                   Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I could make money from this and started doing whitehat work.
                 </p>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-300 leading-relaxed mb-4 text-sm sm:text-base">
                   Now I work with some of the biggest games on Roblox doing a lot more then just vulnerability finding. I have scripted in games with hundreds of millions of visits.
                 </p>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
                   Since turning 16 I've been doing full game dev work - actual systems, gameplay, UI, the whole thing. If you need someone who knows the game from both sides, that's me.
                 </p>
               </GlowCard>
 
               {/* Right Card - Contact Info */}
-              <GlowCard className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
-                <div className="flex gap-6 items-start">
+              <GlowCard className="p-4 sm:p-6 md:p-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Contact Info</h3>
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-start">
                   {/* Portrait - Square with black border */}
-                  <div className="w-36 h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
+                  <div className="w-28 h-28 sm:w-36 sm:h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
                     <img 
                       src={portrait} 
                       alt="Jameson" 
@@ -303,7 +303,7 @@ const Index = () => {
                     />
                   </div>
                   {/* Contact Buttons */}
-                  <div className="flex flex-col gap-4 flex-1">
+                  <div className="flex flex-col gap-3 sm:gap-4 flex-1 w-full sm:w-auto">
                     <ContactButton 
                       href="https://discord.com/users/959238547133595648"
                       icon={discordLogo}
@@ -322,10 +322,10 @@ const Index = () => {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="relative z-10 py-20 px-6">
+        <section id="projects" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-5xl font-black text-center mb-12">Projects</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-8 sm:mb-12">Projects</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {projects.map((project, index) => (
                 <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
                   <ProjectCard {...project} />
@@ -335,8 +335,7 @@ const Index = () => {
           </div>
         </section>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 export default Index;
