@@ -18,23 +18,23 @@ const UNIVERSE_IDS = [
   7645013075,  // The Mexican Border
 ];
 
-// Group IDs extracted from your portfolio
-const GROUP_IDS = [
-  5142143,    // A-S-c (Mini Golf)
-  675364330,  // Muscle Rabbit Studio (Climb and ZIP)
-  32461765,   // Casix Interactive (Super Soldiers)
-  32062143,   // High Table Studio (Lone Survival)
-  5855434,    // CBRN (Virus Border)
-  503910868,  // Chefs Special Games (Shoot a Brainrot)
-  699920026,  // Blind Shot Group
-  13426157,   // Half Life World
-  934390337,  // Dig A Tunnel Studios (Don't Get Crushed)
-  9255939,    // Type Productions (Lost Front)
-  1053386149, // Bye Bye Games (Slap Duels)
-  6264771,    // Emote Clan (Emote RNG)
-  14436378,   // Arcane Conquest
-  35952306,   // The Mexican Border RP
-  2808906,    // The Robine
+// Peak CCU values for each game (from your portfolio)
+const PEAK_CCU_VALUES = [
+  5600,   // Build a Mini Golf
+  4700,   // Climb and ZIP
+  4100,   // Super Soldiers
+  3000,   // Lone Survival
+  2400,   // Virus Border Roleplay
+  74700,  // Shoot a Brainrot
+  52800,  // Blind Shot
+  800,    // Half Life City 8
+  47900,  // Don't Get Crushed By 67
+  22600,  // The Lost Front
+  13600,  // Slap Duels
+  7400,   // Emote RNG
+  8000,   // Arcane Conquest
+  7400,   // The Mexican Border
+  800,    // The Robine
 ];
 
 export const handler: Handler = async (event) => {
@@ -57,22 +57,10 @@ export const handler: Handler = async (event) => {
     );
     const gamesData = await gamesResponse.json();
 
-    // Fetch group member counts (in parallel)
-    const groupPromises = GROUP_IDS.map(async (groupId) => {
-      try {
-        const response = await fetch(`https://groups.roblox.com/v1/groups/${groupId}`);
-        const data = await response.json();
-        return data.memberCount || 0;
-      } catch {
-        return 0;
-      }
-    });
-    const groupMemberCounts = await Promise.all(groupPromises);
-
     // Calculate totals
     const totalCCU = gamesData.data?.reduce((sum: number, game: any) => sum + (game.playing || 0), 0) || 0;
     const totalVisits = gamesData.data?.reduce((sum: number, game: any) => sum + (game.visits || 0), 0) || 0;
-    const totalMembers = groupMemberCounts.reduce((sum, count) => sum + count, 0);
+    const totalPeakCCU = PEAK_CCU_VALUES.reduce((sum, ccu) => sum + ccu, 0);
 
     return {
       statusCode: 200,
@@ -80,7 +68,7 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify({
         currentlyPlaying: totalCCU,
         playSessions: totalVisits,
-        communityReach: totalMembers,
+        peakCCU: totalPeakCCU,
         timestamp: Date.now(),
       }),
     };
