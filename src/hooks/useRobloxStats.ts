@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 interface RobloxStats {
   currentlyPlaying: number;
   playSessions: number;
-  communityReach: number;
+  peakCCU: number;
 }
 
 // Format large numbers nicely (1234567 -> "1.2M")
@@ -45,7 +45,7 @@ export const useRobloxStats = () => {
         setStats({
           currentlyPlaying: 0,
           playSessions: 0,
-          communityReach: 0,
+          peakCCU: 0,
         });
       } finally {
         setIsLoading(false);
