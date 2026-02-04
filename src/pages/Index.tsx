@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
@@ -146,6 +147,90 @@ const Index = () => {
     },
   ];
 
+  // Glow card component for About Me section
+  const GlowCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden ${className}`}
+        style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
+      >
+        {isHovered && (
+          <div
+            className="absolute pointer-events-none z-0 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
+              inset: 0,
+              '--mouse-x': `${mousePosition.x}px`,
+              '--mouse-y': `${mousePosition.y}px`,
+            } as React.CSSProperties}
+          />
+        )}
+        <div className="relative z-10}>{children}</div>
+      </div>
+    );
+  };
+
+  // Contact button with glow effect
+  const ContactButton = ({ href, icon, label }: { href: string; icon: string; label: string }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+    const buttonRef = useRef<HTMLAnchorElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!buttonRef.current) return;
+      const rect = buttonRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <a
+        ref={buttonRef}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-6 py-4 flex items-center gap-4 transition-all duration-200 hover:border-zinc-700"
+        style={{ boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)' }}
+      >
+        {isHovered && (
+          <div
+            className="absolute pointer-events-none z-0 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.2), transparent 40%)',
+              inset: 0,
+              '--mouse-x': `${mousePosition.x}px`,
+              '--mouse-y': `${mousePosition.y}px`,
+            } as React.CSSProperties}
+          />
+        )}
+        <img src={icon} alt={label} className="w-8 h-8 relative z-10" />
+        <span className="text-foreground font-semibold text-lg relative z-10">{label}</span>
+      </a>
+    );
+  };
+
   return (
     <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in"> 
       {/* Hero Section with Video Background */}
@@ -180,91 +265,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Me Section */}
-      <section id="about" className="relative bg-black py-20 px-6">
-        <div className="max-w-7xl mx-auto">
+      {/* About Me & Projects Section with Scrolling Background */}
+      <div className="relative bg-black">...
           <h2 className="text-5xl font-black text-center mb-4">About Me</h2>
-          <p className="text-gray-400 text-center mb-12 text-lg">
+          <p className="text-muted-foreground text-center mb-12 text-lg">
             Learn more about me and what separates me from other scripters.
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Left Card - Bio */}
-            <div className="bg-zinc-900/80 rounded-2xl p-8 border border-zinc-800">
-              <p className="text-gray-300 leading-relaxed">
-                My name is <span className="text-cyan-400 font-semibold">Jameson</span>, also known as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, and NotoriousWhiteHat.
-              </p>
-              <br />
-              <p className="text-gray-300 leading-relaxed">
-                I started scripting at <span className="font-bold text-white">11 years old</span>—nearly six years ago. My journey began with Lua exploiting, creating scripts for games, and figuring out how things worked behind the scenes. About two years ago, I discovered my knack for identifying vulnerabilities in games and decided to put those skills to good use. Since then, I've been helping top Roblox games find and patch exploits before they become a problem.
-              </p>
-              <br />
-              <p className="text-gray-300 leading-relaxed">
-                After turning <span className="font-bold text-white">16</span>, I shifted focus to full-scale game development—building quality systems that players actually enjoy. From anti-cheat solutions to core gameplay mechanics, I bring experience, precision, and a deep understanding of both sides of the game.
-              </p>
-            </div>
-
-            {/* Right Card - Contact Info */}
-            <div className="bg-zinc-900/80 rounded-2xl p-8 border border-zinc-800">
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
-              
-              <div className="flex flex-col items-center">
-                {/* Portrait */}
-                <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-cyan-500/50 mb-8">
-                  <img 
-                    src={portrait} 
-                    alt="Jameson" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                {/* Contact Buttons */}
-                <div className="flex flex-col gap-4 w-full max-w-xs">
-                  <a 
-                    href="https://discord.com/users/959238547133595648" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105"
-                  >
-                    <img src={discordLogo} alt="Discord" className="w-6 h-6" />
-                    Discord
-                  </a>
-                  
-                  <a 
-                    href="https://www.roblox.com/users/37294166/profile" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 bg-[#E2231A] hover:bg-[#C41E17] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105"
-                  >
-                    <img src={robloxLogo} alt="Roblox" className="w-6 h-6" />
-                    Roblox
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section with Scrolling Background */}
-      <div className="relative bg-black">
-        <ScrollingBackground />
-        
-        <section id="projects" className="relative z-10 py-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-5xl font-black text-center mb-12">Projects</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <ProjectCard {...project} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-};
-
-export default Index;
