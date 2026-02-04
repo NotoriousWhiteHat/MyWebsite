@@ -280,7 +280,7 @@ const Index = () => {
                   I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I was pretty good at finding holes in games, so I flipped it around and started helping devs patch their stuff instead.
+                  Been scripting since I was 11 - almost 6 years now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago now I figured out I could make money from this and started doing whitehat work.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-4">
                   Now I work with some of the biggest games on Roblox doing a lot more then just vulnerability finding. I have scripted in games with hundreds of millions of visits.
@@ -291,32 +291,33 @@ const Index = () => {
               </GlowCard>
 
               {/* Right Card - Contact Info */}
-              <GlowCard className="p-8">...
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
-              <div className="flex gap-6 items-start">
-                {/* Portrait - Square with black border */}
-                <div className="w-36 h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
-                  <img 
-                    src={portrait} 
-                    alt="Jameson" 
-                    className="w-full h-full object-cover"
-                  />
+              <GlowCard className="p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Contact Info</h3>
+                <div className="flex gap-6 items-start">
+                  {/* Portrait - Square with black border */}
+                  <div className="w-36 h-36 flex-shrink-0 border-4 border-black rounded-lg overflow-hidden bg-zinc-900">
+                    <img 
+                      src={portrait} 
+                      alt="Jameson" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* Contact Buttons */}
+                  <div className="flex flex-col gap-4 flex-1">
+                    <ContactButton 
+                      href="https://discord.com/users/959238547133595648"
+                      icon={discordLogo}
+                      label="Discord"
+                    />
+                    <ContactButton 
+                      href="https://www.roblox.com/users/37294166/profile"
+                      icon={robloxLogo}
+                      label="Roblox"
+                    />
+                  </div>
                 </div>
-                {/* Contact Buttons */}
-                <div className="flex flex-col gap-4 flex-1">
-                  <ContactButton 
-                    href="https://discord.com/users/959238547133595648"
-                    icon={discordLogo}
-                    label="Discord"
-                  />
-                  <ContactButton 
-                    href="https://www.roblox.com/users/37294166/profile"
-                    icon={robloxLogo}
-                    label="Roblox"
-                  />
-                </div>
-              </div>
-            </GlowCard>
+              </GlowCard>
+            </div>
           </div>
         </section>
 
