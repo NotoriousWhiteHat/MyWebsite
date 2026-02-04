@@ -17,8 +17,8 @@ const StatsSection = () => {
         isLoading={isLoading}
       />
       <StatCard
-        value={isLoading ? "..." : formatNumber(stats?.communityReach || 0)}
-        label="Community Reach"
+        value={isLoading ? "..." : formatNumber(stats?.peakCCU || 0)}
+        label="Peak CCU"
         isLoading={isLoading}
       />
     </div>
