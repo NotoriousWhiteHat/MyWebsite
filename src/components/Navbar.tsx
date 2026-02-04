@@ -45,7 +45,7 @@ const Navbar = () => {
           />
         )}
 
-        {/* Left Nav Links */}
+        {/* Nav Links */}
         <button
           onClick={() => scrollToSection("home")}
           className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
@@ -58,21 +58,6 @@ const Navbar = () => {
         >
           About Me
         </button>
-
-        {/* Center Logo */}
-        <div className="relative z-10 px-4">
-          <span
-            className="text-xl font-black tracking-widest text-white"
-            style={{
-              fontFamily: "'Bebas Neue', 'Impact', sans-serif",
-              letterSpacing: "0.2em",
-            }}
-          >
-            NOTORIOUS
-          </span>
-        </div>
-
-        {/* Right Nav Link */}
         <button
           onClick={() => scrollToSection("projects")}
           className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
