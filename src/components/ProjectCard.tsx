@@ -74,7 +74,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-black rounded-xl overflow-hidden h-full"
+      className="relative bg-black border border-white rounded-xl overflow-hidden h-full"
     >
       {isHovered && (
         <div
