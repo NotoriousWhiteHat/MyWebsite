@@ -23,16 +23,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 px-2 sm:px-4">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
       <div
         ref={navRef}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative flex items-center gap-6 sm:gap-10 px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-zinc-900/40 backdrop-blur-md border border-zinc-500/50"
-        style={{
-          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.3)",
-        }}
+        className="relative flex items-center gap-8 px-8 py-3 rounded-full bg-zinc-800/30 backdrop-blur-sm border border-zinc-600/40"
       >
         {/* Hover glow effect */}
         {isHovered && (
@@ -40,7 +37,7 @@ const Navbar = () => {
             className="absolute pointer-events-none z-0 transition-opacity duration-300 rounded-full"
             style={{
               background:
-                "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%)",
+                "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.04), transparent 40%)",
               inset: 0,
               "--mouse-x": `${mousePosition.x}px`,
               "--mouse-y": `${mousePosition.y}px`,
@@ -51,34 +48,34 @@ const Navbar = () => {
         {/* Left Nav Links */}
         <button
           onClick={() => scrollToSection("home")}
-          className="relative z-10 text-zinc-300 hover:text-white transition-colors duration-200 text-sm sm:text-base font-medium"
+          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
         >
           Home
         </button>
         <button
           onClick={() => scrollToSection("about")}
-          className="relative z-10 text-zinc-300 hover:text-white transition-colors duration-200 text-sm sm:text-base font-medium"
+          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
         >
           About Me
         </button>
 
         {/* Center Logo */}
-        <div className="relative z-10 mx-4 sm:mx-8">
+        <div className="relative z-10 px-4">
           <span
-            className="text-xl sm:text-2xl font-black tracking-wider text-white uppercase"
+            className="text-xl font-black tracking-widest text-white"
             style={{
               fontFamily: "'Bebas Neue', 'Impact', sans-serif",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.2em",
             }}
           >
-            Notorious
+            NOTORIOUS
           </span>
         </div>
 
         {/* Right Nav Link */}
         <button
           onClick={() => scrollToSection("projects")}
-          className="relative z-10 text-zinc-300 hover:text-white transition-colors duration-200 text-sm sm:text-base font-medium"
+          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
         >
           Games
         </button>
