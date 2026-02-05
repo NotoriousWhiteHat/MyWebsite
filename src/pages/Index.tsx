@@ -341,7 +341,7 @@ const Index = () => {
                   Whether you're looking for a <span className="text-white font-semibold">trusted developer</span> or need help with <span className="text-white font-semibold">finding vulnerabilities</span>, I'm here to help you protect and grow your project.
                 </p>
                 <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
-                  I specialize in <span className="text-cyan-400 font-semibold">scripting, and game development</span>, ensuring your game reaches its <span className="text-white font-semibold">full potential</span>.
+                  I specialize in <span className="text-cyan-400 font-semibold">scripting and game development</span>, ensuring your game reaches its <span className="text-white font-semibold">full potential</span>.
                 </p>
                 <p className="text-zinc-300 leading-relaxed mb-8 text-base md:text-lg">
                   If you want to work with <span className="text-cyan-400 font-semibold">me</span> you're in the right place. Reach out and let's get started.
