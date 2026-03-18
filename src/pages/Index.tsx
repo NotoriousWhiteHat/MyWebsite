@@ -57,6 +57,24 @@ const Index = () => {
       groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
     },
     {
+      title: "Survive Lava For Anime Fruits",
+      image: "https://i.imgur.com/BN2EXg4.png",
+      visits: "9.9M",
+      ccu: "11.600",
+      role: "Lead developer/Manager",
+      gameLink: "https://www.roblox.com/games/102904142607789/Survive-LAVA-for-Anime-Fruits",
+      groupLink: "https://www.roblox.com/communities/640554863/MaxLevel-Games#!/about"
+    },
+    {
+      title: "Climb Staircase For Brainrots",
+      image: "https://i.imgur.com/CmaM9hz.png",
+      visits: "9.7M",
+      ccu: "9.400",
+      role: "Lead developer/Manager",
+      gameLink: "https://www.roblox.com/games/118175543018675/Climb-Staircase-For-Brainrots",
+      groupLink: "https://www.roblox.com/communities/528995834/Pocket-Change#!/about"
+    },
+    {
       title: "Arcane Conquest",
       image: "https://i.imgur.com/jUKGCfs.png",
       visits: "8.10M",
