@@ -16,6 +16,8 @@ const UNIVERSE_IDS = [
   8313824597,  // Emote RNG
   7093527744,  // Arcane Conquest
   7645013075,  // The Mexican Border
+  9619579678,  // Climb Staircase For Brainrots
+  9722798126, // Survive Lava for Anime Fruits
 ];
 
 // Peak CCU values for each game (from your portfolio)
@@ -35,6 +37,8 @@ const PEAK_CCU_VALUES = [
   8000,   // Arcane Conquest
   7400,   // The Mexican Border
   800,    // The Robine
+  9400,  // Climb Staircase For Brainrots
+  11600, // Survive Lava for anime fruits
 ];
 
 export const handler: Handler = async (event) => {
