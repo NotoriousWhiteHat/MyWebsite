@@ -45,14 +45,24 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
       onKeyDown={handleKeyDown}
       role="link"
       tabIndex={0}
-      className="relative group overflow-hidden rounded-2xl w-full aspect-[4/3] md:aspect-video border bg-white/[0.02] border-zinc-700/50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60"
+      className="relative group overflow-hidden rounded-2xl w-full aspect-[4/3] md:aspect-video border bg-white/[0.02] border-zinc-700/50 hover:border-white/20 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60 transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(87,237,135,0.15)]"
     >
       {/* Green glow blob */}
       <div
-        className="pointer-events-none absolute w-[300px] h-[300px] bg-[#57ED87] rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+        className="pointer-events-none absolute w-[300px] h-[300px] bg-[#57ED87] rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 ease-out z-0"
         style={{
           left: isHovered ? mousePosition.x - 150 : "50%",
           top: isHovered ? mousePosition.y - 150 : "50%",
+          transform: isHovered ? "none" : "translate(-50%, -50%)",
+        }}
+      />
+
+      {/* White glow blob */}
+      <div
+        className="pointer-events-none absolute w-32 h-32 bg-white rounded-full blur-[40px] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-0"
+        style={{
+          left: isHovered ? mousePosition.x - 64 : "50%",
+          top: isHovered ? mousePosition.y - 64 : "50%",
           transform: isHovered ? "none" : "translate(-50%, -50%)",
         }}
       />
@@ -65,7 +75,7 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
             background:
               "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(87, 237, 135, 0.12), transparent 60%)",
             "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px`,
+            "--mouse-y": `${mousePosition.y}px",
           } as React.CSSProperties}
         />
       )}
@@ -74,23 +84,25 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
       <div className="relative z-10 h-full w-full">
         <div className="relative w-full h-full p-3 md:p-4 flex flex-col justify-end">
           {/* Background image */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 overflow-hidden">
             <img
               alt={title}
               src={image}
-              className="object-cover absolute inset-0 w-full h-full"
+              className="object-cover absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
             />
+            {/* Dark overlay that lightens on hover */}
+            <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
           </div>
 
           {/* Bottom glassmorphism info bar */}
-          <div className="relative z-10 w-full bg-black/25 backdrop-blur-[2px] border border-white/10 rounded-xl p-3 md:p-4 flex items-center justify-between">
+          <div className="relative z-10 w-full bg-black/25 backdrop-blur-[2px] border border-white/10 rounded-xl p-3 md:p-4 flex items-center justify-between transition-all duration-500 ease-out group-hover:bg-black/35 group-hover:border-white/20 group-hover:translate-y-0 translate-y-1 group-hover:shadow-[0_-4px_20px_rgba(0,0,0,0.3)]">
             <div className="min-w-0 flex-1 mr-3">
               <h3 className="text-white font-bold text-sm md:text-lg truncate">{title}</h3>
             </div>
 
             <div className="flex items-center gap-2.5 md:gap-4 shrink-0">
               {/* Peak CCU */}
-              <div className="flex items-center gap-1" aria-label={`Peak CCU: ${ccu}`}>
+              <div className="flex items-center gap-1" aria-label={`Peak CCU: ${ccu}`}> 
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
@@ -103,7 +115,7 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
               </div>
 
               {/* Visits */}
-              <div className="flex items-center gap-1" aria-label={`Visits: ${visits}`}>
+              <div className="flex items-center gap-1" aria-label={`Visits: ${visits}`}> 
                 <svg
                   viewBox="0 0 24 24"
                   fill="currentColor"
