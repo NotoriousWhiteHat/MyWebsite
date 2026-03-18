@@ -75,7 +75,7 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
             background:
               "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(87, 237, 135, 0.12), transparent 60%)",
             "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px",
+            "--mouse-y": `${mousePosition.y}px`,
           } as React.CSSProperties}
         />
       )}
