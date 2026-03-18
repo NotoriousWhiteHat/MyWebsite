@@ -5,56 +5,12 @@ interface ProjectCardProps {
   image: string;
   visits: string;
   ccu: string;
-  role: string;
+  role?: string;
   gameLink: string;
-  groupLink: string;
+  groupLink?: string;
 }
 
-interface GlowButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-}
-
-const GlowButton = ({ children, onClick }: GlowButtonProps) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!buttonRef.current) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
-
-  return (
-    <button
-      ref={buttonRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}
-      className="relative bg-black/80 px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold text-foreground overflow-hidden transition-all duration-200 active:scale-[0.98]"
-    >
-      {isHovered && (
-        <div
-          className="absolute pointer-events-none z-0 transition-opacity duration-300"
-          style={{
-            background: 'radial-gradient(100px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.3), transparent 40%)',
-            inset: 0,
-            '--mouse-x': `${mousePosition.x}px`,
-            '--mouse-y': `${mousePosition.y}px`,
-          } as React.CSSProperties}
-        />
-      )}
-      <span className="relative z-10">{children}</span>
-    </button>
-  );
-};
-
-const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
+const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -68,67 +24,98 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
     });
   };
 
+  const handleClick = () => {
+    window.open(gameLink, "_blank", "noopener,noreferrer");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
   return (
-    <div 
+    <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-black border border-white rounded-xl overflow-hidden h-full"
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="link"
+      tabIndex={0}
+      className="relative group overflow-hidden rounded-2xl w-full aspect-[4/3] md:aspect-video border bg-white/[0.02] border-zinc-700/50 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60"
     >
+      {/* Green glow blob */}
+      <div
+        className="pointer-events-none absolute w-[300px] h-[300px] bg-[#57ED87] rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+        style={{
+          left: isHovered ? mousePosition.x - 150 : "50%",
+          top: isHovered ? mousePosition.y - 150 : "50%",
+          transform: isHovered ? "none" : "translate(-50%, -50%)",
+        }}
+      />
+
+      {/* Mouse-following radial gradient */}
       {isHovered && (
         <div
-          className="absolute pointer-events-none z-0 transition-opacity duration-300"
+          className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
           style={{
-            background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 40%)',
-            inset: 0,
-            '--mouse-x': `${mousePosition.x}px`,
-            '--mouse-y': `${mousePosition.y}px`,
+            background:
+              "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(87, 237, 135, 0.12), transparent 60%)",
+            "--mouse-x": `${mousePosition.x}px`,
+            "--mouse-y": `${mousePosition.y}px`,
           } as React.CSSProperties}
         />
       )}
 
-      <div className="aspect-video overflow-hidden bg-black relative z-10">
-        <img 
-          src={image} 
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* Card content */}
+      <div className="relative z-10 h-full w-full">
+        <div className="relative w-full h-full p-3 md:p-4 flex flex-col justify-end">
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <img
+              alt={title}
+              src={image}
+              className="object-cover absolute inset-0 w-full h-full"
+            />
+          </div>
 
-      <div className="p-4 sm:p-6 relative z-10">
-        <div className="mb-3 sm:mb-4">
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-foreground text-center mb-2 sm:mb-3 break-words">
-            {title}
-          </h3>
-          <p className="text-sm sm:text-base md:text-lg font-bold text-muted-foreground text-center break-words">
-            {role}
-          </p>
-        </div>
-        
-        <div className="flex justify-center gap-6 sm:gap-10 md:gap-16 mt-4 sm:mt-6">
-          <div className="text-center flex-1">
-            <p className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground tabular-nums tracking-tight">
-              {visits}
-            </p>
-            <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-1 sm:mt-2 uppercase tracking-wider font-bold">
-              Visits
-            </p>
+          {/* Bottom glassmorphism info bar */}
+          <div className="relative z-10 w-full bg-black/25 backdrop-blur-[2px] border border-white/10 rounded-xl p-3 md:p-4 flex items-center justify-between">
+            <div className="min-w-0 flex-1 mr-3">
+              <h3 className="text-white font-bold text-sm md:text-lg truncate">{title}</h3>
+            </div>
+
+            <div className="flex items-center gap-2.5 md:gap-4 shrink-0">
+              {/* Peak CCU */}
+              <div className="flex items-center gap-1" aria-label={`Peak CCU: ${ccu}`}>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-3.5 h-3.5 md:w-5 md:h-5 text-white"
+                  aria-hidden="true"
+                >
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                <span className="text-white font-bold text-[10px] md:text-sm">{ccu}</span>
+              </div>
+
+              {/* Visits */}
+              <div className="flex items-center gap-1" aria-label={`Visits: ${visits}`}>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-3.5 h-3.5 md:w-5 md:h-5 text-white"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+                </svg>
+                <span className="text-white font-bold text-[10px] md:text-sm">{visits}</span>
+              </div>
+            </div>
           </div>
-          
-          <div className="text-center flex-1">
-            <p className="text-2xl sm:text-3xl md:text-5xl font-black text-foreground tabular-nums tracking-tight">
-              {ccu}
-            </p>
-            <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-1 sm:mt-2 uppercase tracking-wider font-bold">
-              Peak CCU
-            </p>
-          </div>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4 sm:mt-6 justify-center">
-          <GlowButton onClick={() => window.open(gameLink, '_blank')}>View Project</GlowButton>
-          <GlowButton onClick={() => window.open(groupLink, '_blank')}>Group</GlowButton>
         </div>
       </div>
     </div>
