@@ -75,7 +75,7 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
             background:
               "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(87, 237, 135, 0.12), transparent 60%)",
             "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px",
+            "--mouse-y": `${mousePosition.y}px`,
           } as React.CSSProperties}
         />
       )}
@@ -102,28 +102,12 @@ const ProjectCard = ({ title, image, visits, ccu, gameLink }: ProjectCardProps) 
 
             <div className="flex items-center gap-2.5 md:gap-4 shrink-0">
               {/* Peak CCU */}
-              <div className="flex items-center gap-1" aria-label={`Peak CCU: ${ccu}`}> 
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-3.5 h-3.5 md:w-5 md:h-5 text-white"
-                  aria-hidden="true"
-                >
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+              <div className="flex items-center gap-1" aria-label={`Peak CCU: ${ccu}`}>...
                 <span className="text-white font-bold text-[10px] md:text-sm">{ccu}</span>
               </div>
 
               {/* Visits */}
-              <div className="flex items-center gap-1" aria-label={`Visits: ${visits}`}> 
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-3.5 h-3.5 md:w-5 md:h-5 text-white"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
-                </svg>
+              <div className="flex items-center gap-1" aria-label={`Visits: ${visits}`}>...
                 <span className="text-white font-bold text-[10px] md:text-sm">{visits}</span>
               </div>
             </div>
