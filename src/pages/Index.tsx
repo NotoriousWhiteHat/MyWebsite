@@ -57,6 +57,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
     },
     {
+      title: "Escape Maze For Brainrots",
+      image: "https://i.imgur.com/noqG3c1.png",
+      visits: "700K",
+      ccu: "12.175",
+      role: "Former Scripter - I coded the entire game",
+      gameLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about",
+      groupLink: "https://www.roblox.com/games/136255418982514/Escape-Maze-For-Brainrots"
+    },
+    {
       title: "Survive Lava For Anime Fruits",
       image: "https://i.imgur.com/BN2EXg4.png",
       visits: "9.9M",
