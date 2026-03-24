@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 interface ProjectCardProps {
   title: string;
@@ -10,15 +10,20 @@ interface ProjectCardProps {
   groupLink?: string;
 }
 
-// Computed once at module load — avoids repeated media query lookups
-const IS_TOUCH_ONLY_DEVICE =
-  typeof window !== "undefined" && !window.matchMedia("(hover: hover)").matches;
-
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: ProjectCardProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover)");
+    setIsTouchDevice(!mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsTouchDevice(!e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -31,20 +36,24 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    if (!IS_TOUCH_ONLY_DEVICE) {
+    if (!isTouchDevice) {
       setIsFlipped(true);
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const relatedTarget = e.relatedTarget as Node | null;
+    if (cardRef.current && relatedTarget && cardRef.current.contains(relatedTarget)) {
+      return;
+    }
     setIsHovered(false);
-    if (!IS_TOUCH_ONLY_DEVICE) {
+    if (!isTouchDevice) {
       setIsFlipped(false);
     }
   };
 
   const handleCardClick = () => {
-    if (IS_TOUCH_ONLY_DEVICE && !isFlipped) {
+    if (isTouchDevice && !isFlipped) {
       setIsFlipped(true);
     }
   };
@@ -59,10 +68,10 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
     }
   };
 
-  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClose = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsFlipped(false);
-  };
+  }, []);
 
   return (
     <div
@@ -186,13 +195,15 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
             {/* Header: Title + Close button */}
             <div className="flex items-start justify-between gap-2">
               <h3 className="text-white font-bold text-base md:text-xl leading-tight truncate flex-1">{title}</h3>
-              <button
-                onClick={handleClose}
-                className="shrink-0 w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-all duration-200 text-sm font-bold"
-                aria-label="Close"
-              >
-                ✕
-              </button>
+              {isTouchDevice && (
+                <button
+                  onClick={handleClose}
+                  className="shrink-0 w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/60 hover:text-white transition-all duration-200 text-sm font-bold"
+                  aria-label="Close"
+                >
+                  ✕
+                </button>
+              )}
             </div>
 
             {/* Role description */}
@@ -243,7 +254,8 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#57ED87] hover:bg-[#6af09a] text-zinc-900 font-bold text-xs md:text-sm transition-all duration-200 hover:shadow-[0_0_18px_rgba(87,237,135,0.45)]"
+                onMouseDown={(e) => e.stopPropagation()}
+                className="relative z-20 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#57ED87] hover:bg-[#6af09a] text-zinc-900 font-bold text-xs md:text-sm transition-all duration-200 hover:shadow-[0_0_18px_rgba(87,237,135,0.45)] cursor-pointer"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" aria-hidden="true">
                   <path d="M8 5v14l11-7z" />
@@ -258,7 +270,8 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-[#57ED87]/50 hover:border-[#57ED87] text-[#57ED87] font-bold text-xs md:text-sm transition-all duration-200 hover:bg-[#57ED87]/10"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="relative z-20 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-[#57ED87]/50 hover:border-[#57ED87] text-[#57ED87] font-bold text-xs md:text-sm transition-all duration-200 hover:bg-[#57ED87]/10 cursor-pointer"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" aria-hidden="true">
                     <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
