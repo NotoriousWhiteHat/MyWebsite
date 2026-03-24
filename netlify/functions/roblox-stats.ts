@@ -18,6 +18,7 @@ const UNIVERSE_IDS = [
   7645013075,  // The Mexican Border
   9619579678,  // Climb Staircase For Brainrots
   9722798126, // Survive Lava for Anime Fruits
+  9684648839, // escape maze
 ];
 
 // Peak CCU values for each game (from your portfolio)
@@ -39,6 +40,7 @@ const PEAK_CCU_VALUES = [
   800,    // The Robine
   9400,  // Climb Staircase For Brainrots
   11600, // Survive Lava for anime fruits
+  12175, // escape maze
 ];
 
 export const handler: Handler = async (event) => {
