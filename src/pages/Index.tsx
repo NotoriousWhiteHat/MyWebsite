@@ -53,8 +53,8 @@ const Index = () => {
       visits: "11.9M",
       ccu: "13.600",
       role: "Anticheat - patching autofarms, fly hack, speedhack",
-      gameLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about",
-      groupLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS"
+      gameLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS",
+      groupLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about"
     },
     {
       title: "Escape Maze For Brainrots",
@@ -62,8 +62,8 @@ const Index = () => {
       visits: "700K",
       ccu: "12.175",
       role: "Former Scripter - I coded the entire game",
-      gameLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about",
-      groupLink: "https://www.roblox.com/games/136255418982514/Escape-Maze-For-Brainrots"
+      gameLink: "https://www.roblox.com/games/136255418982514/Escape-Maze-For-Brainrots",
+      groupLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about"
     },
     {
       title: "Survive Lava For Anime Fruits",
