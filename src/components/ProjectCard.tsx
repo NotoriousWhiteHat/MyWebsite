@@ -103,7 +103,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
       tabIndex={0}
       role="button"
       aria-label={title}
-      className="card-perspective relative group w-full aspect-[4/3] md:aspect-video transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(87,237,135,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60 rounded-2xl"
+      className="card-perspective relative group w-full aspect-[4/3] md:aspect-video transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60 rounded-2xl"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -121,12 +121,12 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
       >
         {/* ===================== FRONT FACE ===================== */}
         <div
-          className="card-backface-hidden absolute inset-0 overflow-hidden rounded-2xl border bg-white/[0.02] border-zinc-700/50 group-hover:border-white/20 transition-colors duration-500"
+          className="card-backface-hidden absolute inset-0 overflow-hidden rounded-2xl border bg-white/[0.02] group-hover:bg-[#1a1a1a] border-zinc-700/50 group-hover:border-white/20 transition-colors duration-500"
           style={{ pointerEvents: isFlipped ? "none" : "auto" }}
         >
-          {/* Green glow blob */}
+          {/* Hover glow blob */}
           <div
-            className="pointer-events-none absolute w-[300px] h-[300px] bg-[#57ED87] rounded-full blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 ease-out z-0"
+            className="pointer-events-none absolute w-[300px] h-[300px] bg-white rounded-full blur-[80px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 ease-out z-0"
             style={{
               left: isHovered ? mousePosition.x - 150 : "50%",
               top: isHovered ? mousePosition.y - 150 : "50%",
@@ -150,7 +150,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
               className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
               style={{
                 background:
-                  "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(87, 237, 135, 0.12), transparent 60%)",
+                  "radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.05), transparent 60%)",
                 "--mouse-x": `${mousePosition.x}px`,
                 "--mouse-y": `${mousePosition.y}px`,
               } as React.CSSProperties}
