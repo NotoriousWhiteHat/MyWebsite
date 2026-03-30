@@ -103,7 +103,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
       tabIndex={0}
       role="button"
       aria-label={title}
-      className="card-perspective relative group w-full aspect-[4/3] md:aspect-video transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#57ED87]/60 rounded-2xl"
+      className="card-perspective relative group w-full aspect-[4/3] md:aspect-video transition-all duration-500 ease-out transform-gpu hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4a9eff]/60 rounded-2xl"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -203,13 +203,13 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
         <div
           className="card-backface-hidden card-rotate-y-180 absolute inset-0 rounded-2xl border border-zinc-700/50 backdrop-blur-md"
           style={{
-            background: "linear-gradient(135deg, #18181b 80%, #1a2a1f 100%)",
+            background: "linear-gradient(135deg, #18181b 85%, #1a1a2e 100%)",
             pointerEvents: isFlipped ? "auto" : "none",
           }}
         >
-          {/* Subtle green glow accents */}
-          <div className="pointer-events-none absolute -bottom-10 -right-10 w-44 h-44 bg-[#57ED87] rounded-full blur-[70px] opacity-10 z-0" />
-          <div className="pointer-events-none absolute -top-8 -left-8 w-32 h-32 bg-[#57ED87] rounded-full blur-[60px] opacity-5 z-0" />
+          {/* Subtle blue glow accents */}
+          <div className="pointer-events-none absolute -bottom-10 -right-10 w-44 h-44 bg-[#4a9eff] rounded-full blur-[70px] opacity-10 z-0" />
+          <div className="pointer-events-none absolute -top-8 -left-8 w-32 h-32 bg-[#4a9eff] rounded-full blur-[60px] opacity-5 z-0" />
 
           <div className="relative z-10 h-full w-full p-4 md:p-5 flex flex-col">
             {/* Header: Title + Close button */}
@@ -234,7 +234,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
             {/* Stats */}
             <div className="flex items-center gap-4 mt-3">
               <div className="flex items-center gap-2" aria-label={`Peak CCU: ${ccu}`}>  
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5 text-[#57ED87] shrink-0" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5 text-[#4a9eff] shrink-0" aria-hidden="true">
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                 </svg>
                 <div>
@@ -246,7 +246,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
               <div className="w-px h-8 bg-zinc-700/80" />
 
               <div className="flex items-center gap-2" aria-label={`Visits: ${visits}`}>  
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5 text-[#57ED87] shrink-0" aria-hidden="true">   
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-5 md:h-5 text-[#4a9eff] shrink-0" aria-hidden="true">   
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
                 </svg>
                 <div>
@@ -265,7 +265,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
                 onMouseDown={(e) => e.stopPropagation()}
-                className="relative z-50 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#57ED87] hover:bg-[#6af09a] text-zinc-900 font-bold text-xs md:text-sm transition-all duration-200 hover:shadow-[0_0_18px_rgba(87,237,135,0.45)] cursor-pointer"
+                className="relative z-50 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#4a9eff] hover:bg-[#6aaeff] text-white font-bold text-xs md:text-sm transition-all duration-200 hover:shadow-[0_0_18px_rgba(74,158,255,0.45)] cursor-pointer"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" aria-hidden="true">
                   <path d="M8 5v14l11-7z" />
@@ -281,7 +281,7 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink }: P
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="relative z-50 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-[#57ED87]/50 hover:border-[#57ED87] text-[#57ED87] font-bold text-xs md:text-sm transition-all duration-200 hover:bg-[#57ED87]/10 cursor-pointer"
+                  className="relative z-50 flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-[#4a9eff]/50 hover:border-[#4a9eff] text-[#4a9eff] font-bold text-xs md:text-sm transition-all duration-200 hover:bg-[#4a9eff]/10 cursor-pointer"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" aria-hidden="true">
                     <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
