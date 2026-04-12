@@ -138,6 +138,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about"
     },
     {
+      title: "+1 Speed Dragon Escape",
+      image: "https://i.imgur.com/3KIHrkt.png",
+      visits: "3.3M",
+      ccu: "3.300",
+      role: "WWorked as a scripter doing monetization updates",
+      gameLink: "https://www.roblox.com/games/118333806535904/1-Speed-Dragon-Escape",
+      groupLink: "https://www.roblox.com/communities/34374281/1-Every-Second-Games-Glorious-Games#!/aboutt"
+    },
+    {
       title: "Lone Survival",
       image: "https://i.imgur.com/dUOSZDm.png",
       visits: "28.4M",
