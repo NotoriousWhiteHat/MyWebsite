@@ -59,18 +59,18 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-screen z-50">
-      <div className="bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60">
-        <div className="max-w-[1920px] mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Brand */}
+      <div className="bg-zinc-950/50 backdrop-blur-xl border-b border-zinc-800/40">
+        <div className="max-w-[1920px] mx-auto px-6 py-3 grid grid-cols-[auto_1fr_auto] items-center">
+          {/* Brand — left */}
           <button
             onClick={() => scrollToSection("home")}
-            className="text-xl font-black uppercase tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+            className="text-sm font-bold uppercase tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
           >
             NOTORIOUS
           </button>
 
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop nav links — center */}
+          <div className="hidden md:flex items-center justify-center gap-3">
             {navLinks.map(({ label, sectionId }) => (
               <button
                 key={sectionId}
@@ -82,7 +82,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — right (desktop spacer) */}
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
             className="md:hidden text-zinc-400 hover:text-white transition-colors duration-200 p-1"
@@ -90,6 +90,8 @@ const Navbar = () => {
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
+          {/* Desktop right spacer to balance grid */}
+          <div className="hidden md:block" aria-hidden="true" />
         </div>
 
         {/* Mobile dropdown */}

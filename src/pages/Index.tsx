@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
 import GlowButton from "@/components/GlowButton";
 import Navbar from "@/components/Navbar";
-import heroVideo from "@/assets/Backdrop.mp4";
+import GameCarousel from "@/components/GameCarousel";
 import portrait from "@/assets/Portrait.png";
 import discordLogo from "@/assets/discord-logo.png";
 import robloxLogo from "@/assets/roblox-logo.png";
@@ -422,6 +422,8 @@ const Index = () => {
             </div>
           </div>
         </section>
+        {/* Game image carousel */}
+        <GameCarousel games={projects} />
       </div>
     </div>
   );
