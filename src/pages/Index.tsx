@@ -312,7 +312,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section with Video Background */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden">
+      <section id="home" className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 overflow-hidden">
         <video
           autoPlay
           muted

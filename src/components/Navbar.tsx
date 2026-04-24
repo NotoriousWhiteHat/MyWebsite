@@ -1,20 +1,46 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+
+type SectionId = "home" | "about" | "projects";
+
+const navLinks: { label: string; sectionId: SectionId }[] = [
+  { label: "Home", sectionId: "home" },
+  { label: "About Me", sectionId: "about" },
+  { label: "Games", sectionId: "projects" },
+];
 
 const Navbar = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState<SectionId>("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!navRef.current) return;
-    const rect = navRef.current.getBoundingClientRect();
-    setMousePosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-  };
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
 
-  const scrollToSection = (sectionId: string) => {
+    const observe = (el: Element, id: SectionId) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    };
+
+    const heroEl = document.getElementById("home");
+    if (heroEl) observe(heroEl, "home");
+
+    const aboutEl = document.getElementById("about");
+    if (aboutEl) observe(aboutEl, "about");
+
+    const projectsEl = document.getElementById("projects");
+    if (projectsEl) observe(projectsEl, "projects");
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToSection = (sectionId: SectionId) => {
+    setMenuOpen(false);
     if (sectionId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -22,48 +48,64 @@ const Navbar = () => {
     }
   };
 
-  return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-      <div
-        ref={navRef}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative flex items-center gap-8 px-8 py-3 rounded-full bg-zinc-800/30 backdrop-blur-sm border border-zinc-600/40"
-      >
-        {/* Hover glow effect */}
-        {isHovered && (
-          <div
-            className="absolute pointer-events-none z-0 transition-opacity duration-300 rounded-full"
-            style={{
-              background:
-                "radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.04), transparent 40%)",
-              inset: 0,
-              "--mouse-x": `${mousePosition.x}px`,
-              "--mouse-y": `${mousePosition.y}px`,
-            } as React.CSSProperties}
-          />
-        )}
+  const linkClass = (id: SectionId) => {
+    const base =
+      "px-4 py-2 rounded-lg font-medium text-sm uppercase tracking-wide transition-all duration-200 border";
+    if (id === activeSection) {
+      return `${base} text-cyan-400 border-cyan-400/40 bg-zinc-900 shadow-[0_0_12px_rgba(34,211,238,0.15)]`;
+    }
+    return `${base} text-zinc-400 border-zinc-700/50 bg-zinc-800/60 hover:text-white hover:border-zinc-500/50`;
+  };
 
-        {/* Nav Links */}
-        <button
-          onClick={() => scrollToSection("home")}
-          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
-        >
-          Home
-        </button>
-        <button
-          onClick={() => scrollToSection("about")}
-          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
-        >
-          About Me
-        </button>
-        <button
-          onClick={() => scrollToSection("projects")}
-          className="relative z-10 text-zinc-400 hover:text-white transition-colors duration-200 text-sm font-medium"
-        >
-          Games
-        </button>
+  return (
+    <nav className="fixed top-0 left-0 w-screen z-50">
+      <div className="bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60">
+        <div className="max-w-[1920px] mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Brand */}
+          <button
+            onClick={() => scrollToSection("home")}
+            className="text-xl font-black uppercase tracking-tight bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+          >
+            NOTORIOUS
+          </button>
+
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-center gap-3">
+            {navLinks.map(({ label, sectionId }) => (
+              <button
+                key={sectionId}
+                onClick={() => scrollToSection(sectionId)}
+                className={linkClass(sectionId)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className="md:hidden text-zinc-400 hover:text-white transition-colors duration-200 p-1"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="md:hidden border-t border-zinc-800/60 px-6 py-4 flex flex-col gap-3">
+            {navLinks.map(({ label, sectionId }) => (
+              <button
+                key={sectionId}
+                onClick={() => scrollToSection(sectionId)}
+                className={linkClass(sectionId)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );
