@@ -358,7 +358,7 @@ const Index = () => {
               {/* Left Card - Bio */}
               <GlowCard className="p-8 md:p-10">
                 <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
-                  I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span>, Jarmy05, or NotoriousWhiteHat.
+                  I'm <span className="text-cyan-400 font-semibold">Jameson</span>, but most people know me as <span className="text-cyan-400 font-semibold">Notorious</span> or Jarmy05.
                 </p>
                 <p className="text-zinc-300 leading-relaxed mb-5 text-base md:text-lg">
                   Been scripting since I was 11 - almost <span className="text-white font-semibold">6 years</span> now. Started out making Lua scripts for executors as I was very interested in finding vulnerabilities. Around 2 years ago I figured out I could make money from this and started doing <span className="text-cyan-400 font-semibold">whitehat work</span>.
@@ -380,7 +380,7 @@ const Index = () => {
                   I specialize in <span className="text-cyan-400 font-semibold">scripting and game development</span>, ensuring your game reaches its <span className="text-white font-semibold">full potential</span>.
                 </p>
                 <p className="text-zinc-300 leading-relaxed mb-8 text-base md:text-lg">
-                  If you want to work with <span className="text-cyan-400 font-semibold">me</span> you're in the right place. Reach out and let's get started.
+                  If you want to work with <span className="text-cyan-400 font-semibold">me</span> reach out and let's get started.
                 </p>
                 
                 {/* Contact Buttons */}
