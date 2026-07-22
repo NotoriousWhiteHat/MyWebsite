@@ -71,6 +71,15 @@ export const handler: Handler = async (event) => {
     const totalVisits = gamesData.data?.reduce((sum: number, game: any) => sum + (game.visits || 0), 0) || 0;
     const totalPeakCCU = PEAK_CCU_VALUES.reduce((sum, ccu) => sum + ccu, 0);
 
+    // Per-game breakdown, keyed by universe ID, so individual project cards can show live stats
+    const games: Record<string, { playing: number; visits: number }> = {};
+    for (const game of gamesData.data || []) {
+      games[String(game.id)] = {
+        playing: game.playing || 0,
+        visits: game.visits || 0,
+      };
+    }
+
     return {
       statusCode: 200,
       headers,
@@ -78,6 +87,7 @@ export const handler: Handler = async (event) => {
         currentlyPlaying: totalCCU,
         playSessions: totalVisits,
         peakCCU: totalPeakCCU,
+        games,
         timestamp: Date.now(),
       }),
     };

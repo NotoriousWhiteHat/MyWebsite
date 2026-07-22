@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 
+interface GameLiveStats {
+  playing: number;
+  visits: number;
+}
+
 interface RobloxStats {
   currentlyPlaying: number;
   playSessions: number;
   peakCCU: number;
+  games: Record<string, GameLiveStats>;
 }
 
 // Format large numbers nicely (1234567 -> "1.2M")
@@ -30,11 +36,11 @@ export const useRobloxStats = () => {
       try {
         setIsLoading(true);
         const response = await fetch("/.netlify/functions/roblox-stats");
-        
+
         if (!response.ok) {
           throw new Error("Failed to fetch stats");
         }
-        
+
         const data = await response.json();
         setStats(data);
         setError(null);
@@ -46,6 +52,7 @@ export const useRobloxStats = () => {
           currentlyPlaying: 0,
           playSessions: 0,
           peakCCU: 0,
+          games: {},
         });
       } finally {
         setIsLoading(false);
@@ -53,7 +60,7 @@ export const useRobloxStats = () => {
     };
 
     fetchStats();
-    
+
     // Refresh every 60 seconds
     const interval = setInterval(fetchStats, 60000);
     return () => clearInterval(interval);

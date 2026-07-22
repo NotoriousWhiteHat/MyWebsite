@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import ScrollingBackground from "@/components/ScrollingBackground";
+import StaticBackground from "@/components/StaticBackground";
+import GamesMarquee from "@/components/GamesMarquee";
 import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
 import GlowButton from "@/components/GlowButton";
@@ -18,7 +19,8 @@ const Index = () => {
       ccu: "74.700",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/78949013360566/Shoot-a-Brainrot",
-      groupLink: "https://www.roblox.com/communities/503910868/Chefs-Special-Games#!/about"
+      groupLink: "https://www.roblox.com/communities/503910868/Chefs-Special-Games#!/about",
+      universeId: 8220738785
     },
     {
       title: "Blind Shot",
@@ -27,7 +29,8 @@ const Index = () => {
       ccu: "52.800",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/118614517739521/Blind-Shot",
-      groupLink: "https://www.roblox.com/communities/699920026/Blind-Shot-Group#!/about"
+      groupLink: "https://www.roblox.com/communities/699920026/Blind-Shot-Group#!/about",
+      universeId: 9277195104
     },
     {
       title: "Don't Get Crushed By 67",
@@ -36,7 +39,8 @@ const Index = () => {
       ccu: "47.900",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/124082555806669/Dont-Get-Crushed-By-67",
-      groupLink: "https://www.roblox.com/communities/934390337/Dig-A-Tunnel-Studios#!/about"
+      groupLink: "https://www.roblox.com/communities/934390337/Dig-A-Tunnel-Studios#!/about",
+      universeId: 8620685718
     },
     {
       title: "Escape Maze For Brainrots",
@@ -45,7 +49,8 @@ const Index = () => {
       ccu: "31.600",
       role: "Former Scripter - I coded the entire game",
       gameLink: "https://www.roblox.com/games/136255418982514/Escape-Maze-For-Brainrots",
-      groupLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about"
+      groupLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about",
+      universeId: 9684648839
     },
     {
       title: "The Lost Front",
@@ -54,7 +59,8 @@ const Index = () => {
       ccu: "22.600",
       role: "Worked on anti-cheat helping patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
-      groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
+      groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about",
+      universeId: 7935634976
     },
     {
       title: "Slap Duels",
@@ -63,7 +69,8 @@ const Index = () => {
       ccu: "13.600",
       role: "Anticheat - patching autofarms, fly hack, speedhack",
       gameLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS",
-      groupLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about"
+      groupLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about",
+      universeId: 8080863905
     },
     {
       title: "Survive Lava For Anime Fruits",
@@ -72,7 +79,8 @@ const Index = () => {
       ccu: "11.600",
       role: "Lead developer/Manager",
       gameLink: "https://www.roblox.com/games/102904142607789/Survive-LAVA-for-Anime-Fruits",
-      groupLink: "https://www.roblox.com/communities/640554863/MaxLevel-Games#!/about"
+      groupLink: "https://www.roblox.com/communities/640554863/MaxLevel-Games#!/about",
+      universeId: 9722798126
     },
     {
       title: "Climb Staircase For Brainrots",
@@ -81,7 +89,8 @@ const Index = () => {
       ccu: "9.400",
       role: "Lead developer/Manager",
       gameLink: "https://www.roblox.com/games/118175543018675/Climb-Staircase-For-Brainrots",
-      groupLink: "https://www.roblox.com/communities/528995834/Pocket-Change#!/about"
+      groupLink: "https://www.roblox.com/communities/528995834/Pocket-Change#!/about",
+      universeId: 9619579678
     },
     {
       title: "Arcane Conquest",
@@ -90,7 +99,8 @@ const Index = () => {
       ccu: "8.000",
       role: "Worked as a scripter doing mainly anti-cheat",
       gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
-      groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
+      groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about",
+      universeId: 7093527744
     },
     {
       title: "The Mexican Border | RP",
@@ -99,7 +109,8 @@ const Index = () => {
       ccu: "7.400",
       role: "Lead developer - scripting, building, UI",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
-      groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
+      groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about",
+      universeId: 7645013075
     },
     {
       title: "Emote RNG",
@@ -108,7 +119,8 @@ const Index = () => {
       ccu: "7.400",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/132768306953643/Emote-RNG",
-      groupLink: "https://www.roblox.com/communities/6264771/Emote-Clan#!/about"
+      groupLink: "https://www.roblox.com/communities/6264771/Emote-Clan#!/about",
+      universeId: 8313824597
     },
     {
       title: "Build a Mini Golf",
@@ -117,7 +129,8 @@ const Index = () => {
       ccu: "5.600",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/113508814820816/Build-a-Mini-Golf",
-      groupLink: "https://www.roblox.com/communities/5142143/A-S-c#!/about"
+      groupLink: "https://www.roblox.com/communities/5142143/A-S-c#!/about",
+      universeId: 9046316249
     },
     {
       title: "Climb And ZIP",
@@ -126,7 +139,8 @@ const Index = () => {
       ccu: "4.700",
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/79605710125811/Climb-And-Zip",
-      groupLink: "https://www.roblox.com/communities/675364330/Muscle-Rabbit-Studio#!/about"
+      groupLink: "https://www.roblox.com/communities/675364330/Muscle-Rabbit-Studio#!/about",
+      universeId: 8606799872
     },
     {
       title: "Super Soldiers",
@@ -135,7 +149,8 @@ const Index = () => {
       ccu: "4.100",
       role: "Worked on anti-cheat helped patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/119441025136387/Super-Soldiers",
-      groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about"
+      groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about",
+      universeId: 7920020824
     },
     {
       title: "+1 Speed Dragon Escape",
@@ -144,7 +159,8 @@ const Index = () => {
       ccu: "3.300",
       role: "WWorked as a scripter doing monetization updates",
       gameLink: "https://www.roblox.com/games/118333806535904/1-Speed-Dragon-Escape",
-      groupLink: "https://www.roblox.com/communities/34374281/1-Every-Second-Games-Glorious-Games#!/aboutt"
+      groupLink: "https://www.roblox.com/communities/34374281/1-Every-Second-Games-Glorious-Games#!/aboutt",
+      universeId: 9762224678
     },
     {
       title: "Lone Survival",
@@ -153,7 +169,8 @@ const Index = () => {
       ccu: "3.000",
       role: "Worked on anti-cheat helped patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
-      groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
+      groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio",
+      universeId: 4712109542
     },
     {
       title: "Virus Border Roleplay",
@@ -162,7 +179,8 @@ const Index = () => {
       ccu: "2.400",
       role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
       gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
-      groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
+      groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about",
+      universeId: 1668757602
     },
     {
       title: "The Robine",
@@ -180,7 +198,8 @@ const Index = () => {
       ccu: "800",
       role: "Whitehat - kill all, auto complete job, gun mods",
       gameLink: "https://www.roblox.com/games/8906378074/BACK-Half-Life-City-8",
-      groupLink: "https://www.roblox.com/communities/13426157/Half-Life-World"
+      groupLink: "https://www.roblox.com/communities/13426157/Half-Life-World",
+      universeId: 3365197759
     },
   ];
 
@@ -340,13 +359,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Me & Projects with Scrolling Background */}
+      {/* About Me & Projects */}
       <div className="relative bg-zinc-950">
-        <ScrollingBackground />
-        
-        {/* About Me Section - Full page layout like reference */}
-        <section id="about" className="relative z-10 py-24 px-4 sm:px-6">
-          <div className="max-w-7xl mx-auto w-full">
+        {/* About Me Section - its own bounded section with a static background */}
+        <section id="about" className="relative z-10 overflow-hidden py-24 px-4 sm:px-6">
+          <StaticBackground />
+          <div className="relative z-10 max-w-7xl mx-auto w-full">
             {/* Header */}
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">About Me</h2>
             <p className="text-zinc-400 text-center mb-16 text-base sm:text-lg max-w-xl mx-auto">
@@ -407,10 +425,15 @@ const Index = () => {
               <StatCard value="6+" label="Years Experience" />
             </div>
           </div>
+
+          {/* Scrolling strip of every game, like a marquee */}
+          <div className="relative z-10 mt-16 -mx-4 sm:-mx-6">
+            <GamesMarquee games={projects} />
+          </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
+        <section id="projects" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/60">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-8 sm:mb-12">Projects</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
