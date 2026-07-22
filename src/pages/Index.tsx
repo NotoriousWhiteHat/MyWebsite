@@ -203,6 +203,11 @@ const Index = () => {
     },
   ];
 
+  // Sort games by peak CCU (highest first). CCU strings use "." as a thousands
+  // separator (e.g. "74.700" = 74,700), so strip non-digits before comparing.
+  const ccuValue = (ccu: string) => parseInt(ccu.replace(/\D/g, ""), 10) || 0;
+  const sortedProjects = [...projects].sort((a, b) => ccuValue(b.ccu) - ccuValue(a.ccu));
+
   // Glow Card component with mouse-following gradient effect
   const GlowCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -359,14 +364,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Me & Projects */}
-      <div className="relative bg-zinc-950">
-        {/* About Me Section - its own bounded section with a static background */}
-        <section id="about" className="relative z-10 overflow-hidden py-24 px-4 sm:px-6">
-          <StaticBackground />
+      {/* About Me & Projects — one continuous, sleek surface */}
+      <div className="relative overflow-hidden bg-[#08090c]">
+        <StaticBackground />
+
+        {/* About Me Section */}
+        <section id="about" className="relative z-10 pt-28 pb-20 px-4 sm:px-6">
           <div className="relative z-10 max-w-7xl mx-auto w-full">
             {/* Header */}
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">About Me</h2>
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 tracking-tight">About Me</h2>
             <p className="text-zinc-400 text-center mb-16 text-base sm:text-lg max-w-xl mx-auto">
               Learn more about me and what makes my work stand out.
             </p>
@@ -426,19 +432,22 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Scrolling strip of every game, like a marquee */}
-          <div className="relative z-10 mt-16 -mx-4 sm:-mx-6">
-            <GamesMarquee games={projects} />
+          {/* Scrolling strip of every game */}
+          <div className="relative z-10 mt-20 -mx-4 sm:-mx-6">
+            <GamesMarquee games={sortedProjects} />
           </div>
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6 border-t border-zinc-800/60">
+        <section id="projects" className="relative z-10 pt-8 pb-24 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-8 sm:mb-12">Projects</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              {projects.map((project, index) => (
-                <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-center mb-3 tracking-tight">Games</h2>
+            <p className="text-zinc-400 text-center mb-12 sm:mb-16 text-base sm:text-lg max-w-xl mx-auto">
+              Games I've worked on, sorted by peak concurrent players.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+              {sortedProjects.map((project, index) => (
+                <div key={project.title} className="animate-fade-up" style={{ animationDelay: `${Math.min(index, 8) * 0.06}s` }}>
                   <ProjectCard {...project} />
                 </div>
               ))}

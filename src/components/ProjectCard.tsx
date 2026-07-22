@@ -11,17 +11,22 @@ interface ProjectCardProps {
   universeId?: number;
 }
 
-const StatBlock = ({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) => (
-  <div className="flex flex-col items-center justify-center px-2 py-3 text-center">
-    <span
-      className={`text-base sm:text-lg font-black tabular-nums ${
-        highlight ? "text-emerald-400" : "text-white"
-      }`}
-    >
-      {value}
-    </span>
-    <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium mt-0.5">{label}</span>
-  </div>
+const PeopleIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+  </svg>
+);
+
+const VisitsIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+);
+
+const CrownIcon = ({ className = "" }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm0 2h14v2H5v-2z" />
+  </svg>
 );
 
 const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink, universeId }: ProjectCardProps) => {
@@ -32,61 +37,70 @@ const ProjectCard = ({ title, image, visits, ccu, role, gameLink, groupLink, uni
   const liveVisits = live ? formatNumber(live.visits) : visits;
 
   return (
-    <div className="rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/50 hover:border-zinc-600 hover:-translate-y-1 transition-all duration-300">
-      {/* Image */}
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <img src={image} alt={title} className="w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+    <div className="group relative rounded-3xl bg-white/[0.03] border border-white/[0.06] p-2.5 transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05] hover:-translate-y-1">
+      {/* Image / hero area (links to game) */}
+      <a
+        href={gameLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative block overflow-hidden rounded-[18px] aspect-[16/10]"
+      >
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+        />
+        {/* Legibility gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
+        {/* Live badge */}
         {livePlaying && (
-          <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/70 backdrop-blur-sm border border-emerald-500/30 rounded-full px-3 py-1.5">
+          <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-md border border-white/10 px-2.5 py-1">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
             </span>
-            <span className="text-emerald-300 text-xs font-bold">{livePlaying} playing</span>
+            <span className="text-white text-[11px] font-semibold tracking-wide">LIVE</span>
           </div>
         )}
 
-        <h3 className="absolute bottom-3 left-4 right-4 text-white font-bold text-lg sm:text-xl">{title}</h3>
-      </div>
-
-      {/* Body */}
-      <div className="p-4 sm:p-5">
-        {role && <p className="text-zinc-400 text-sm leading-relaxed mb-4">{role}</p>}
-
-        <div className="grid grid-cols-3 divide-x divide-zinc-800 bg-black/40 border border-zinc-800 rounded-xl mb-4">
-          <StatBlock label="Peak CCU" value={ccu} />
-          <StatBlock label="Visits" value={liveVisits} />
-          <StatBlock label="Live" value={livePlaying ?? "—"} highlight={!!livePlaying} />
+        {/* Title + stats overlaid at the bottom */}
+        <div className="absolute inset-x-0 bottom-0 p-4">
+          <h3 className="text-white font-bold text-lg sm:text-xl leading-tight drop-shadow mb-2.5">{title}</h3>
+          <div className="flex items-center gap-3.5 text-white/90">
+            <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums" title="Live players">
+              <PeopleIcon className="w-4 h-4 text-emerald-400" />
+              {livePlaying ?? "—"}
+            </span>
+            <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums" title="Visits">
+              <VisitsIcon className="w-3.5 h-3.5 text-blue-400" />
+              {liveVisits}
+            </span>
+            <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums" title="Peak CCU">
+              <CrownIcon className="w-4 h-4 text-amber-300" />
+              {ccu}
+            </span>
+          </div>
         </div>
+      </a>
 
-        <div className="flex items-center gap-2">
+      {/* Footer: role + group link */}
+      <div className="flex items-center justify-between gap-3 px-2.5 pt-3 pb-1.5">
+        <p className="text-zinc-500 text-xs leading-snug line-clamp-2 flex-1">{role}</p>
+        {groupLink && (
           <a
-            href={gameLink}
+            href={groupLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-[#4a9eff] hover:bg-[#6aaeff] text-white font-bold text-sm transition-colors duration-200"
+            className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-zinc-400 hover:text-white transition-colors"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0" aria-hidden="true">
-              <path d="M8 5v14l11-7z" />
+            Group
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-3 h-3" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H8M17 7v9" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Play
           </a>
-          {groupLink && (
-            <a
-              href={groupLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg border border-[#4a9eff]/50 hover:border-[#4a9eff] text-[#4a9eff] font-bold text-sm transition-colors duration-200 hover:bg-[#4a9eff]/10"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0" aria-hidden="true">
-                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-              </svg>
-              Group
-            </a>
-          )}
-        </div>
+        )}
       </div>
     </div>
   );
