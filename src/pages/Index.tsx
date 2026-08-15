@@ -138,6 +138,15 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about"
     },
     {
+      title: "Dungeon Quest Reborn",
+      image: "https://i.imgur.com/ez5Gn89.png",
+      visits: "6.6M",
+      ccu: "3.800",
+      role: "Founder",
+      gameLink: "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
+      groupLink: "https://www.roblox.com/communities/496909722/Delta-Quarters-OG#!/about"
+    },
+    {
       title: "+1 Speed Dragon Escape",
       image: "https://i.imgur.com/3KIHrkt.png",
       visits: "3.3M",
