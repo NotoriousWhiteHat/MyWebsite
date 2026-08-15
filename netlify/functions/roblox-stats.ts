@@ -20,7 +20,7 @@ const UNIVERSE_IDS = [
   9722798126, // Survive Lava for Anime Fruits
   9684648839, // escape maze
   9762224678, // 1+ speed dragon
-  
+  9931749389, // dqr
 ];
 
 // Peak CCU values for each game (from your portfolio)
@@ -44,6 +44,7 @@ const PEAK_CCU_VALUES = [
   11600, // Survive Lava for anime fruits
   12175, // escape maze
   3300, // speed dragon
+  4000, // dqr
 ];
 
 export const handler: Handler = async (event) => {
