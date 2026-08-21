@@ -4,18 +4,23 @@ import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
 import GlowButton from "@/components/GlowButton";
 import Navbar from "@/components/Navbar";
+import { useRobloxStats } from "@/hooks/useRobloxStats";
 import heroVideo from "@/assets/Backdrop.mp4";
 import portrait from "@/assets/Portrait.png";
 import discordLogo from "@/assets/discord-logo.png";
 import robloxLogo from "@/assets/roblox-logo.png";
 
 const Index = () => {
+  const { stats } = useRobloxStats();
+  const liveGames = stats?.games ?? {};
+
   const projects = [
     {
       title: "Shoot A Brainrot",
       image: "https://i.imgur.com/AUfyBxw.png",
+      universeId: "8220738785",
       visits: "69.0M",
-      ccu: "74.700",
+      peakCcu: 74700,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/78949013360566/Shoot-a-Brainrot",
       groupLink: "https://www.roblox.com/communities/503910868/Chefs-Special-Games#!/about"
@@ -23,8 +28,9 @@ const Index = () => {
     {
       title: "Blind Shot",
       image: "https://i.imgur.com/ZdijnLu.png",
+      universeId: "9277195104",
       visits: "115.0M",
-      ccu: "52.800",
+      peakCcu: 52800,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/118614517739521/Blind-Shot",
       groupLink: "https://www.roblox.com/communities/699920026/Blind-Shot-Group#!/about"
@@ -32,8 +38,9 @@ const Index = () => {
     {
       title: "Don't Get Crushed By 67",
       image: "https://i.imgur.com/hqx6BnZ.png",
+      universeId: "8620685718",
       visits: "127.7M",
-      ccu: "47.900",
+      peakCcu: 47900,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/124082555806669/Dont-Get-Crushed-By-67",
       groupLink: "https://www.roblox.com/communities/934390337/Dig-A-Tunnel-Studios#!/about"
@@ -41,8 +48,9 @@ const Index = () => {
     {
       title: "Escape Maze For Brainrots",
       image: "https://i.imgur.com/noqG3c1.png",
+      universeId: "9684648839",
       visits: "10.9M",
-      ccu: "31.600",
+      peakCcu: 31600,
       role: "Former Scripter - I coded the entire game",
       gameLink: "https://www.roblox.com/games/136255418982514/Escape-Maze-For-Brainrots",
       groupLink: "https://www.roblox.com/communities/1027641927/67-Cheese#!/about"
@@ -50,8 +58,9 @@ const Index = () => {
     {
       title: "The Lost Front",
       image: "https://i.imgur.com/ZeAKHA8.png",
+      universeId: "7935634976",
       visits: "29.5M",
-      ccu: "22.600",
+      peakCcu: 22600,
       role: "Worked on anti-cheat helping patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/102871156420149/The-Lost-Front",
       groupLink: "https://www.roblox.com/communities/9255939/Type-Productions#!/about"
@@ -59,8 +68,9 @@ const Index = () => {
     {
       title: "Slap Duels",
       image: "https://i.imgur.com/wVOBLOh.png",
+      universeId: "8080863905",
       visits: "11.9M",
-      ccu: "13.600",
+      peakCcu: 13600,
       role: "Anticheat - patching autofarms, fly hack, speedhack",
       gameLink: "https://www.roblox.com/games/139766023909499/Slap-DUELS",
       groupLink: "https://www.roblox.com/communities/1053386149/Bye-Bye-Games#!/about"
@@ -68,8 +78,9 @@ const Index = () => {
     {
       title: "Survive Lava For Anime Fruits",
       image: "https://i.imgur.com/BN2EXg4.png",
+      universeId: "9722798126",
       visits: "9.9M",
-      ccu: "11.600",
+      peakCcu: 11600,
       role: "Lead developer/Manager",
       gameLink: "https://www.roblox.com/games/102904142607789/Survive-LAVA-for-Anime-Fruits",
       groupLink: "https://www.roblox.com/communities/640554863/MaxLevel-Games#!/about"
@@ -77,8 +88,9 @@ const Index = () => {
     {
       title: "Climb Staircase For Brainrots",
       image: "https://i.imgur.com/CmaM9hz.png",
+      universeId: "9619579678",
       visits: "9.7M",
-      ccu: "9.400",
+      peakCcu: 9400,
       role: "Lead developer/Manager",
       gameLink: "https://www.roblox.com/games/118175543018675/Climb-Staircase-For-Brainrots",
       groupLink: "https://www.roblox.com/communities/528995834/Pocket-Change#!/about"
@@ -86,8 +98,9 @@ const Index = () => {
     {
       title: "Arcane Conquest",
       image: "https://i.imgur.com/jUKGCfs.png",
+      universeId: "7093527744",
       visits: "8.10M",
-      ccu: "8.000",
+      peakCcu: 8000,
       role: "Worked as a scripter doing mainly anti-cheat",
       gameLink: "https://www.roblox.com/games/125503319883299/ABYSS-COSMETICS-Arcane-Conquest",
       groupLink: "https://www.roblox.com/communities/14436378/Arcane-Conquest#!/about"
@@ -95,8 +108,9 @@ const Index = () => {
     {
       title: "The Mexican Border | RP",
       image: "https://i.imgur.com/0xZkI8x.png",
+      universeId: "7645013075",
       visits: "13.0M",
-      ccu: "7.400",
+      peakCcu: 7400,
       role: "Lead developer - scripting, building, UI",
       gameLink: "https://www.roblox.com/games/87615892291241/BANK-The-Mexican-Border-RP",
       groupLink: "https://www.roblox.com/communities/35952306/The-Mexican-Border-RP#!/about"
@@ -104,8 +118,9 @@ const Index = () => {
     {
       title: "Emote RNG",
       image: "https://i.imgur.com/PIvsmzQ.png",
+      universeId: "8313824597",
       visits: "9.9M",
-      ccu: "7.400",
+      peakCcu: 7400,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/132768306953643/Emote-RNG",
       groupLink: "https://www.roblox.com/communities/6264771/Emote-Clan#!/about"
@@ -113,8 +128,9 @@ const Index = () => {
     {
       title: "Build a Mini Golf",
       image: "https://i.imgur.com/7kurgnM.png",
+      universeId: "9046316249",
       visits: "2.1M",
-      ccu: "5.600",
+      peakCcu: 5600,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/113508814820816/Build-a-Mini-Golf",
       groupLink: "https://www.roblox.com/communities/5142143/A-S-c#!/about"
@@ -122,8 +138,9 @@ const Index = () => {
     {
       title: "Climb And ZIP",
       image: "https://i.imgur.com/8dlxLXt.png",
+      universeId: "8606799872",
       visits: "12.5M",
-      ccu: "4.700",
+      peakCcu: 4700,
       role: "Worked as a scripter doing regular updates",
       gameLink: "https://www.roblox.com/games/79605710125811/Climb-And-Zip",
       groupLink: "https://www.roblox.com/communities/675364330/Muscle-Rabbit-Studio#!/about"
@@ -131,8 +148,9 @@ const Index = () => {
     {
       title: "Super Soldiers",
       image: "https://i.imgur.com/kxGb3xT.jpeg",
+      universeId: "7920020824",
       visits: "6.6M",
-      ccu: "4.100",
+      peakCcu: 4100,
       role: "Worked on anti-cheat helped patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/119441025136387/Super-Soldiers",
       groupLink: "https://www.roblox.com/communities/32461765/Casix-Interactive#!/about"
@@ -140,8 +158,9 @@ const Index = () => {
     {
       title: "Dungeon Quest Reborn",
       image: "https://i.imgur.com/ez5Gn89.png",
+      universeId: "9931749389",
       visits: "6.6M",
-      ccu: "3.800",
+      peakCcu: 3800,
       role: "Founder",
       gameLink: "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
       groupLink: "https://www.roblox.com/communities/496909722/Delta-Quarters-OG#!/about"
@@ -149,8 +168,9 @@ const Index = () => {
     {
       title: "+1 Speed Dragon Escape",
       image: "https://i.imgur.com/3KIHrkt.png",
+      universeId: "9762224678",
       visits: "3.3M",
-      ccu: "3.300",
+      peakCcu: 3300,
       role: "WWorked as a scripter doing monetization updates",
       gameLink: "https://www.roblox.com/games/118333806535904/1-Speed-Dragon-Escape",
       groupLink: "https://www.roblox.com/communities/34374281/1-Every-Second-Games-Glorious-Games#!/aboutt"
@@ -158,8 +178,9 @@ const Index = () => {
     {
       title: "Lone Survival",
       image: "https://i.imgur.com/dUOSZDm.png",
+      universeId: "4712109542",
       visits: "28.4M",
-      ccu: "3.000",
+      peakCcu: 3000,
       role: "Worked on anti-cheat helped patch multiple exploits.",
       gameLink: "https://www.roblox.com/games/13559584718/Lone-Survival",
       groupLink: "https://www.roblox.com/communities/32062143/High-Table-Studio"
@@ -167,8 +188,9 @@ const Index = () => {
     {
       title: "Virus Border Roleplay",
       image: "https://i.imgur.com/t3pyxcm.png",
+      universeId: "1668757602",
       visits: "36.6M",
-      ccu: "2.400",
+      peakCcu: 2400,
       role: "Whitehat/exploit fixes - kill all, gunmods, silent aim etc",
       gameLink: "https://www.roblox.com/games/4888877755/Virus-Border-Roleplay",
       groupLink: "https://www.roblox.com/communities/5855434/CBRN#!/about"
@@ -176,8 +198,9 @@ const Index = () => {
     {
       title: "The Robine",
       image: "https://i.imgur.com/zEbgoMY.png",
+      universeId: "197306872",
       visits: "18.4M",
-      ccu: "800",
+      peakCcu: 800,
       role: "Lead dev for city systems, lead scripter, manager, whitehat/exploit fixes",
       gameLink: "https://www.roblox.com/games/509062192/JEWELRY-HEIST-Project-Realism",
       groupLink: "https://www.roblox.com/communities/2808906/The-Robine#!/about"
@@ -185,13 +208,21 @@ const Index = () => {
     {
       title: "Half Life: City 8",
       image: "https://i.imgur.com/nO7Ubx1.jpeg",
+      universeId: "3365197759",
       visits: "13.0M",
-      ccu: "800",
+      peakCcu: 800,
       role: "Whitehat - kill all, auto complete job, gun mods",
       gameLink: "https://www.roblox.com/games/8906378074/BACK-Half-Life-City-8",
       groupLink: "https://www.roblox.com/communities/13426157/Half-Life-World"
     },
   ];
+
+  // Sort by live active players (falls back to peak CCU before live data loads)
+  const sortedProjects = [...projects].sort((a, b) => {
+    const aScore = liveGames[a.universeId]?.playing ?? a.peakCcu;
+    const bScore = liveGames[b.universeId]?.playing ?? b.peakCcu;
+    return bScore - aScore;
+  });
 
   // Glow Card component with mouse-following gradient effect
   const GlowCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
@@ -354,7 +385,7 @@ const Index = () => {
         <ScrollingBackground />
         
         {/* About Me Section - Full page layout like reference */}
-        <section id="about" className="relative z-10 py-24 px-4 sm:px-6">
+        <section id="about" className="relative z-10 min-h-screen flex items-center py-24 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto w-full">
             {/* Header */}
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">About Me</h2>
@@ -419,13 +450,26 @@ const Index = () => {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="relative z-10 py-12 sm:py-20 px-4 sm:px-6">
+        <section id="projects" className="relative z-10 min-h-screen py-24 sm:py-32 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-center mb-8 sm:mb-12">Projects</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              {projects.map((project, index) => (
-                <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <ProjectCard {...project} />
+            <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">Projects</h2>
+            <p className="text-zinc-400 text-center mb-4 text-base sm:text-lg max-w-xl mx-auto">
+              Games I've worked on, sorted by how many people are playing right now.
+            </p>
+            <div className="flex items-center justify-center gap-2 mb-16 text-sm text-zinc-500">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+              </span>
+              Live player counts &amp; visits, updated every minute
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {sortedProjects.map((project) => (
+                <div key={project.universeId} className="animate-fade-up">
+                  <ProjectCard
+                    {...project}
+                    live={liveGames[project.universeId]}
+                  />
                 </div>
               ))}
             </div>

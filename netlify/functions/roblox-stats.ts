@@ -67,6 +67,15 @@ export const handler: Handler = async (event) => {
     );
     const gamesData = await gamesResponse.json();
 
+    // Per-game live stats, keyed by universe id (as a string)
+    const games: Record<string, { playing: number; visits: number }> = {};
+    for (const game of gamesData.data || []) {
+      games[String(game.id)] = {
+        playing: game.playing || 0,
+        visits: game.visits || 0,
+      };
+    }
+
     // Calculate totals
     const totalCCU = gamesData.data?.reduce((sum: number, game: any) => sum + (game.playing || 0), 0) || 0;
     const totalVisits = gamesData.data?.reduce((sum: number, game: any) => sum + (game.visits || 0), 0) || 0;
@@ -76,6 +85,7 @@ export const handler: Handler = async (event) => {
       statusCode: 200,
       headers,
       body: JSON.stringify({
+        games,
         currentlyPlaying: totalCCU,
         playSessions: totalVisits,
         peakCCU: totalPeakCCU,

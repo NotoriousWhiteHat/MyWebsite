@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 
+export interface GameLiveStats {
+  playing: number;
+  visits: number;
+}
+
 interface RobloxStats {
+  games: Record<string, GameLiveStats>;
   currentlyPlaying: number;
   playSessions: number;
   peakCCU: number;
@@ -16,6 +22,21 @@ export const formatNumber = (num: number): string => {
   }
   if (num >= 1_000) {
     return (num / 1_000).toFixed(1) + "K+";
+  }
+  return num.toLocaleString();
+};
+
+// Compact number without the "+" suffix (for exact live values).
+// e.g. 195440352 -> "195.4M", 172 -> "172"
+export const formatCompact = (num: number): string => {
+  if (num >= 1_000_000_000) {
+    return (num / 1_000_000_000).toFixed(1) + "B";
+  }
+  if (num >= 1_000_000) {
+    return (num / 1_000_000).toFixed(1) + "M";
+  }
+  if (num >= 1_000) {
+    return (num / 1_000).toFixed(1) + "K";
   }
   return num.toLocaleString();
 };
@@ -43,6 +64,7 @@ export const useRobloxStats = () => {
         setError("Failed to load stats");
         // Set fallback values
         setStats({
+          games: {},
           currentlyPlaying: 0,
           playSessions: 0,
           peakCCU: 0,
