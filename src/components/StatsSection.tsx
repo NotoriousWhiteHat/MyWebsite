@@ -6,14 +6,13 @@ const StatsSection = () => {
 
   return (
     <div className="flex flex-wrap items-start gap-4 justify-center mt-8 mb-10">
-      <div className="relative">
+      <div className="flex flex-col items-start gap-2">
         <StatCard
           value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
           label="Currently Playing"
           isLoading={isLoading}
         />
-        {/* LIVE badge pinned to the top-left corner */}
-        <div className="absolute -top-2 -left-2 z-20 flex items-center gap-1.5 rounded-full border border-red-500/50 bg-black/90 px-2.5 py-1 backdrop-blur-sm">
+        <div className="flex items-center gap-1.5">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
