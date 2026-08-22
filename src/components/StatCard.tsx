@@ -4,10 +4,9 @@ interface StatCardProps {
   value: string;
   label: string;
   isLoading?: boolean;
-  live?: boolean;
 }
 
-const StatCard = ({ value, label, isLoading, live }: StatCardProps) => {
+const StatCard = ({ value, label, isLoading }: StatCardProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -60,15 +59,6 @@ const StatCard = ({ value, label, isLoading, live }: StatCardProps) => {
             <p className="text-xs text-muted-foreground mt-2 uppercase tracking-wider">
               {label}
             </p>
-            {live && (
-              <div className="mt-2 flex items-center justify-center gap-1.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-                </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Live</span>
-              </div>
-            )}
           </>
         )}
       </div>

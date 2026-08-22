@@ -6,12 +6,20 @@ const StatsSection = () => {
 
   return (
     <div className="flex flex-wrap gap-4 justify-center mt-8 mb-10">
-      <StatCard
-        value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
-        label="Currently Playing"
-        isLoading={isLoading}
-        live
-      />
+      <div className="flex flex-col items-center gap-2">
+        <StatCard
+          value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
+          label="Currently Playing"
+          isLoading={isLoading}
+        />
+        <div className="flex items-center gap-1.5">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Live</span>
+        </div>
+      </div>
       <StatCard
         value={isLoading ? "..." : formatNumber(stats?.playSessions || 0)}
         label="Play Sessions"
