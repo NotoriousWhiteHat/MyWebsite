@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import ScrollingBackground from "@/components/ScrollingBackground";
 import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
-import GlowButton from "@/components/GlowButton";
 import Navbar from "@/components/Navbar";
 import { useRobloxStats, formatCompact } from "@/hooks/useRobloxStats";
 import heroVideo from "@/assets/Backdrop.mp4";
@@ -458,12 +457,6 @@ const Index = () => {
           </p>
           
           <StatsSection />
-          
-          <div className="flex gap-4 justify-center mt-4">
-            <GlowButton onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
-              About Me
-            </GlowButton>
-          </div>
         </div>
       </section>
 
@@ -541,7 +534,7 @@ const Index = () => {
 
         {/* Projects Section */}
         <section id="projects" className="relative z-10 min-h-screen py-24 sm:py-32 px-4 sm:px-6">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-[1600px] mx-auto">
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-black text-center mb-4 italic">Projects</h2>
             <p className="text-zinc-400 text-center mb-4 text-base sm:text-lg max-w-xl mx-auto">
               Games I've worked on, sorted by how many people are playing right now.
