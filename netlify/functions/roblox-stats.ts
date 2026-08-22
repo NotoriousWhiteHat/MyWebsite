@@ -23,6 +23,7 @@ const UNIVERSE_IDS = [
   9931749389, // dqr
   197306872,  // The Robine
   848145103,  // DQ
+  10278375047, // TNT Sandbox
 ];
 
 // Roblox profile shown on the About section
@@ -49,8 +50,9 @@ const PEAK_CCU_VALUES = [
   11600, // Survive Lava for anime fruits
   12175, // escape maze
   3300, // speed dragon
-  4000, // dqr
+  13000, // dqr
   60000, // DQ
+  7400, // TNT Sandbox
 ];
 
 export const handler: Handler = async (event) => {
