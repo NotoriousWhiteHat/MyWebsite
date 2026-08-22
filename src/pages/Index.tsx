@@ -15,6 +15,16 @@ const Index = () => {
 
   const projects = [
     {
+      title: "TNT Sandbox",
+      image: "https://i.imgur.com/hY6DXgY.png",
+      universeId: "10278375047",
+      visits: "2.3B",
+      peakCcu: 7400,
+      role: "Worked as main scripter",
+      gameLink: "https://www.roblox.com/games/117430576240550/TNT-Sandbox",
+      groupLink: "https://www.roblox.com/communities/275883088/Toes-on-Fire-Games"
+    },
+    {
       title: "Dungeon Quest",
       image: "https://i.imgur.com/CJPIgJZ.png",
       universeId: "848145103",
@@ -168,9 +178,9 @@ const Index = () => {
       title: "Dungeon Quest Reborn",
       image: "https://i.imgur.com/ez5Gn89.png",
       universeId: "9931749389",
-      visits: "6.6M",
-      peakCcu: 3800,
-      role: "Founder",
+      visits: "12M",
+      peakCcu: 13000,
+      role: "Former Founder",
       gameLink: "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
       groupLink: "https://www.roblox.com/communities/496909722/Delta-Quarters-OG#!/about"
     },
