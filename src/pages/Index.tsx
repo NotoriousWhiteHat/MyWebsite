@@ -12,6 +12,12 @@ import robloxLogo from "@/assets/roblox-logo.png";
 const Index = () => {
   const { stats } = useRobloxStats();
   const liveGames = stats?.games ?? {};
+  const livePeaks = stats?.peaks ?? {};
+
+  // Effective peak = the greater of the hardcoded baseline and the
+  // self-updating record logged by the server.
+  const effectivePeak = (universeId: string, baseline: number) =>
+    Math.max(baseline, livePeaks[universeId] ?? 0);
 
   const projects = [
     {
@@ -238,8 +244,8 @@ const Index = () => {
 
   // Sort by live active players (falls back to peak CCU before live data loads)
   const sortedProjects = [...projects].sort((a, b) => {
-    const aScore = liveGames[a.universeId]?.playing ?? a.peakCcu;
-    const bScore = liveGames[b.universeId]?.playing ?? b.peakCcu;
+    const aScore = liveGames[a.universeId]?.playing ?? effectivePeak(a.universeId, a.peakCcu);
+    const bScore = liveGames[b.universeId]?.playing ?? effectivePeak(b.universeId, b.peakCcu);
     return bScore - aScore;
   });
 
@@ -561,6 +567,7 @@ const Index = () => {
                 <div key={project.universeId} className="animate-fade-up">
                   <ProjectCard
                     {...project}
+                    peakCcu={effectivePeak(project.universeId, project.peakCcu)}
                     live={liveGames[project.universeId]}
                   />
                 </div>

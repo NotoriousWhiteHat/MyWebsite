@@ -1,4 +1,5 @@
 import type { Handler } from '@netlify/functions';
+import { getStore } from '@netlify/blobs';
 
 // Your Universe IDs
 const UNIVERSE_IDS = [
@@ -84,6 +85,28 @@ export const handler: Handler = async (event) => {
       };
     }
 
+    // Self-updating peak CCU: whenever a game's live players beat the stored
+    // record, log the new record. Persisted in Netlify Blobs, so it ratchets
+    // up over time and is shared across all visitors. Best-effort.
+    let peaks: Record<string, number> = {};
+    try {
+      const store = getStore('roblox-peaks');
+      peaks = (await store.get('peaks', { type: 'json' })) || {};
+      let changed = false;
+      for (const [id, g] of Object.entries(games)) {
+        const prev = peaks[id] || 0;
+        if (g.playing > prev) {
+          peaks[id] = g.playing;
+          changed = true;
+        }
+      }
+      if (changed) {
+        await store.setJSON('peaks', peaks);
+      }
+    } catch (peaksError) {
+      console.error('Error updating peak CCU store:', peaksError);
+    }
+
     // Calculate totals
     const totalCCU = gamesData.data?.reduce((sum: number, game: any) => sum + (game.playing || 0), 0) || 0;
     const totalVisits = gamesData.data?.reduce((sum: number, game: any) => sum + (game.visits || 0), 0) || 0;
@@ -121,6 +144,7 @@ export const handler: Handler = async (event) => {
       headers,
       body: JSON.stringify({
         games,
+        peaks,
         profile,
         currentlyPlaying: totalCCU,
         playSessions: totalVisits,

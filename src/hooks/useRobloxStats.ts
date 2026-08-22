@@ -14,6 +14,7 @@ export interface RobloxProfile {
 
 interface RobloxStats {
   games: Record<string, GameLiveStats>;
+  peaks: Record<string, number>;
   profile: RobloxProfile | null;
   currentlyPlaying: number;
   playSessions: number;
@@ -73,6 +74,7 @@ export const useRobloxStats = () => {
         // Set fallback values
         setStats({
           games: {},
+          peaks: {},
           profile: null,
           currentlyPlaying: 0,
           playSessions: 0,
