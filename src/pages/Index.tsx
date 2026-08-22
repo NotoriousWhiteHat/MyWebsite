@@ -350,11 +350,13 @@ const Index = () => {
   // Wide, short Roblox profile card (built, not a screenshot)
   const RobloxProfileCard = () => {
     const profile = stats?.profile;
-    const followers = profile?.followers ?? 12124;
-    const friends = profile?.friends ?? 136;
-    const following = profile?.following ?? 2;
+    // Use `||` (not `??`) so a 0 from a rate-limited/failed refresh, or an
+    // empty avatar URL, falls back to a known-good value instead of showing 0.
+    const followers = profile?.followers || 12124;
+    const friends = profile?.friends || 136;
+    const following = profile?.following || 2;
     const avatarUrl =
-      profile?.avatarUrl ??
+      profile?.avatarUrl ||
       "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-21B65258ED72E97A85B9871F0D4643CE-Png/420/420/AvatarHeadshot/Png/noFilter";
 
     const Stat = ({ value, label }: { value: string; label: string }) => (

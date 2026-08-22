@@ -5,7 +5,7 @@ const StatsSection = () => {
   const { stats, isLoading } = useRobloxStats();
 
   return (
-    <div className="flex flex-wrap gap-4 justify-center mt-8 mb-10">
+    <div className="flex flex-wrap items-start gap-4 justify-center mt-8 mb-10">
       <div className="flex flex-col items-center gap-2">
         <StatCard
           value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
