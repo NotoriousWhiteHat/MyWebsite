@@ -553,7 +553,7 @@ const Index = () => {
               </span>
               Live player counts &amp; visits, updated every minute
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {sortedProjects.map((project) => (
                 <div key={project.universeId} className="animate-fade-up">
                   <ProjectCard

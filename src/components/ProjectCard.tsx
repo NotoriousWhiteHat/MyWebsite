@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import { formatCompact, type GameLiveStats } from "@/hooks/useRobloxStats";
 
 interface ProjectCardProps {
@@ -16,16 +15,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, image, visits, peakCcu, live, role, gameLink, groupLink }: ProjectCardProps) => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
-
   const isLive = !!live;
   const playingLabel = isLive ? formatCompact(live!.playing) : formatCompact(peakCcu);
   const peakLabel = formatCompact(peakCcu);
@@ -33,32 +22,15 @@ const ProjectCard = ({ title, image, visits, peakCcu, live, role, gameLink, grou
 
   return (
     <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-zinc-700/50 bg-zinc-900/60 transition-all duration-300 hover:border-white/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1"
     >
-      {/* Mouse-following glow */}
-      {isHovered && (
-        <div
-          className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300"
-          style={{
-            background:
-              "radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(74, 158, 255, 0.10), transparent 45%)",
-            "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px`,
-          } as React.CSSProperties}
-        />
-      )}
-
       {/* Cover image */}
       <div className="relative aspect-video w-full overflow-hidden">
         <img
           alt={title}
           src={image}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/90 via-zinc-900/10 to-transparent" />
 
