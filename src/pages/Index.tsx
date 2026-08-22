@@ -529,27 +529,6 @@ const Index = () => {
               <StatCard value={`${projects.length}+`} label="Games Worked On" />
               <StatCard value="6+" label="Years Experience" />
             </div>
-
-            {/* Worked With */}
-            <div className="mt-4 md:mt-6 rounded-2xl border border-zinc-700/50 bg-zinc-900/60 p-6 md:p-8">
-              <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4">Worked With</p>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  "Misfits Studios",
-                  "Indigo Studios",
-                  "Chartis.gg",
-                  "Voldex",
-                  "Cruz (YouTuber)",
-                ].map((name) => (
-                  <span
-                    key={name}
-                    className="rounded-full border border-zinc-700/60 bg-zinc-800/60 px-4 py-2 text-sm font-medium text-zinc-200"
-                  >
-                    {name}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
