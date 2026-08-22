@@ -16,6 +16,16 @@ const Index = () => {
 
   const projects = [
     {
+      title: "Dungeon Quest",
+      image: "https://i.imgur.com/CJPIgJZ.png",
+      universeId: "848145103",
+      visits: "2.3B",
+      peakCcu: 60000,
+      role: "Whitehat work - anti-exploit",
+      gameLink: "https://www.roblox.com/games/2414851778/Dungeon-Quest-RPG-Adventure",
+      groupLink: "roblox.com/communities/4788489/Dungeon-Quest-by-Voldex"
+    },
+    {
       title: "Shoot A Brainrot",
       image: "https://i.imgur.com/AUfyBxw.png",
       universeId: "8220738785",
