@@ -22,6 +22,7 @@ const UNIVERSE_IDS = [
   9762224678, // 1+ speed dragon
   9931749389, // dqr
   197306872,  // The Robine
+  848145103,  // DQ
 ];
 
 // Roblox profile shown on the About section
@@ -49,6 +50,7 @@ const PEAK_CCU_VALUES = [
   12175, // escape maze
   3300, // speed dragon
   4000, // dqr
+  60000, // DQ
 ];
 
 export const handler: Handler = async (event) => {
