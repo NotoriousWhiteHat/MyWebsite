@@ -38,7 +38,7 @@ const Index = () => {
       peakCcu: 60000,
       role: "Whitehat work - anti-exploit",
       gameLink: "https://www.roblox.com/games/2414851778/Dungeon-Quest-RPG-Adventure",
-      groupLink: "roblox.com/communities/4788489/Dungeon-Quest-by-Voldex"
+      groupLink: "https://www.roblox.com/communities/4788489/Dungeon-Quest-by-Voldex#!/about"
     },
     {
       title: "Shoot A Brainrot",
