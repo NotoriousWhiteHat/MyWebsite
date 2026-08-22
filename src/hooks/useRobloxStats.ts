@@ -5,8 +5,16 @@ export interface GameLiveStats {
   visits: number;
 }
 
+export interface RobloxProfile {
+  followers: number;
+  friends: number;
+  following: number;
+  avatarUrl: string | null;
+}
+
 interface RobloxStats {
   games: Record<string, GameLiveStats>;
+  profile: RobloxProfile | null;
   currentlyPlaying: number;
   playSessions: number;
   peakCCU: number;
@@ -65,6 +73,7 @@ export const useRobloxStats = () => {
         // Set fallback values
         setStats({
           games: {},
+          profile: null,
           currentlyPlaying: 0,
           playSessions: 0,
           peakCCU: 0,

@@ -27,7 +27,8 @@ const ProjectCard = ({ title, image, visits, peakCcu, live, role, gameLink, grou
   };
 
   const isLive = !!live;
-  const ccuLabel = isLive ? formatCompact(live!.playing) : formatCompact(peakCcu);
+  const playingLabel = isLive ? formatCompact(live!.playing) : formatCompact(peakCcu);
+  const peakLabel = formatCompact(peakCcu);
   const visitsLabel = isLive ? formatCompact(live!.visits) : visits;
 
   return (
@@ -73,7 +74,7 @@ const ProjectCard = ({ title, image, visits, peakCcu, live, role, gameLink, grou
                 className={`relative inline-flex h-2 w-2 rounded-full ${isLive ? "bg-green-400" : "bg-zinc-500"}`}
               />
             </span>
-            <span className="text-sm font-bold tabular-nums text-white">{ccuLabel}</span>
+            <span className="text-sm font-bold tabular-nums text-white">{playingLabel}</span>
             <span className="text-[10px] font-medium uppercase tracking-wide text-zinc-300">playing</span>
           </div>
         </div>
@@ -94,9 +95,9 @@ const ProjectCard = ({ title, image, visits, peakCcu, live, role, gameLink, grou
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden="true">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
               </svg>
-              {isLive ? "Playing now" : "Peak CCU"}
+              Peak CCU
             </div>
-            <div className="mt-0.5 text-lg font-bold tabular-nums text-white">{ccuLabel}</div>
+            <div className="mt-0.5 text-lg font-bold tabular-nums text-white">{peakLabel}</div>
           </div>
 
           <div className="h-9 w-px bg-zinc-700/60" />

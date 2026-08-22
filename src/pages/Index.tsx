@@ -4,7 +4,7 @@ import ProjectCard from "@/components/ProjectCard";
 import StatsSection from "@/components/StatsSection";
 import GlowButton from "@/components/GlowButton";
 import Navbar from "@/components/Navbar";
-import { useRobloxStats } from "@/hooks/useRobloxStats";
+import { useRobloxStats, formatCompact } from "@/hooks/useRobloxStats";
 import heroVideo from "@/assets/Backdrop.mp4";
 import portrait from "@/assets/Portrait.png";
 import discordLogo from "@/assets/discord-logo.png";
@@ -347,6 +347,81 @@ const Index = () => {
     );
   };
 
+  // Wide, short Roblox profile card (built, not a screenshot)
+  const RobloxProfileCard = () => {
+    const profile = stats?.profile;
+    const followers = profile?.followers ?? 12124;
+    const friends = profile?.friends ?? 136;
+    const following = profile?.following ?? 2;
+    const avatarUrl =
+      profile?.avatarUrl ??
+      "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-21B65258ED72E97A85B9871F0D4643CE-Png/420/420/AvatarHeadshot/Png/noFilter";
+
+    const Stat = ({ value, label }: { value: string; label: string }) => (
+      <div className="text-center">
+        <div className="text-lg md:text-xl font-black text-white tabular-nums leading-none">{value}</div>
+        <div className="mt-1 text-[10px] md:text-xs uppercase tracking-wider text-zinc-500">{label}</div>
+      </div>
+    );
+
+    return (
+      <a
+        href="https://www.roblox.com/users/37294166/profile"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative flex flex-col sm:flex-row items-center gap-5 sm:gap-8 overflow-hidden rounded-2xl border border-zinc-700/50 bg-gradient-to-r from-zinc-900/80 to-zinc-900/40 p-5 md:px-8 md:py-6 transition-all duration-300 hover:border-[#4a9eff]/40 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+      >
+        {/* Blue glow accent */}
+        <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#4a9eff] opacity-[0.07] blur-3xl" />
+
+        {/* Avatar */}
+        <div className="relative shrink-0">
+          <div className="h-20 w-20 md:h-24 md:w-24 overflow-hidden rounded-full border-2 border-[#4a9eff]/40 bg-zinc-800">
+            <img
+              src={avatarUrl}
+              alt="Roblox avatar"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <span className="absolute bottom-0 right-0 flex h-6 w-6 items-center justify-center rounded-full border-2 border-zinc-900 bg-green-500">
+            <span className="h-2 w-2 rounded-full bg-white" />
+          </span>
+        </div>
+
+        {/* Name + username + bio */}
+        <div className="min-w-0 flex-1 text-center sm:text-left">
+          <div className="flex items-center justify-center gap-2 sm:justify-start">
+            <span className="text-xl md:text-2xl font-black text-white">notorious</span>
+            {/* Verified badge */}
+            <svg viewBox="0 0 24 24" className="h-5 w-5 md:h-6 md:w-6 shrink-0" aria-label="Verified">
+              <path
+                fill="#0d76ea"
+                d="M12 1l2.4 1.8 3-.2 1 2.8 2.6 1.5-.7 2.9 1.5 2.6-2.1 2.1.3 3-2.8 1-1.3 2.7-3-.5-2.6 1.5-2-2.2-3 .5-1.3-2.7-2.8-1 .3-3-2.1-2.1L4 8.2 3.3 5.3l2.6-1.5 1-2.8 3 .2z"
+              />
+              <path fill="#fff" d="M10.6 15.2l-2.9-2.9 1.3-1.3 1.6 1.6 4-4 1.3 1.3z" />
+            </svg>
+          </div>
+          <div className="mt-0.5 text-sm text-zinc-400">@FGIBxBaconBit</div>
+          <div className="mt-1 text-sm text-zinc-300 italic">on the way to the top</div>
+        </div>
+
+        {/* Counts */}
+        <div className="flex shrink-0 items-center gap-6 md:gap-8 border-t border-zinc-700/50 pt-4 sm:border-t-0 sm:pt-0 sm:pl-8 sm:border-l">
+          <Stat value={formatCompact(friends)} label="Friends" />
+          <Stat value={formatCompact(followers)} label="Followers" />
+          <Stat value={formatCompact(following)} label="Following" />
+        </div>
+
+        {/* Hint chevron */}
+        <div className="hidden md:flex shrink-0 items-center text-zinc-600 transition-colors group-hover:text-[#4a9eff]">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+            <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </a>
+    );
+  };
+
   return (
     <div className="relative min-h-screen bg-black overflow-hidden animate-fade-in">
       <Navbar />
@@ -439,11 +514,14 @@ const Index = () => {
               </GlowCard>
             </div>
 
+            {/* Roblox Profile Card */}
+            <div className="mb-8">
+              <RobloxProfileCard />
+            </div>
+
             {/* Stats Row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              <StatCard value="74K+" label="Peak CCU" />
-              <StatCard value="500M+" label="Total Visits" />
-              <StatCard value="15+" label="Games Worked On" />
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
+              <StatCard value={`${projects.length}+`} label="Games Worked On" />
               <StatCard value="6+" label="Years Experience" />
             </div>
           </div>

@@ -21,7 +21,11 @@ const UNIVERSE_IDS = [
   9684648839, // escape maze
   9762224678, // 1+ speed dragon
   9931749389, // dqr
+  197306872,  // The Robine
 ];
+
+// Roblox profile shown on the About section
+const ROBLOX_USER_ID = 37294166;
 
 // Peak CCU values for each game (from your portfolio)
 const PEAK_CCU_VALUES = [
@@ -81,11 +85,39 @@ export const handler: Handler = async (event) => {
     const totalVisits = gamesData.data?.reduce((sum: number, game: any) => sum + (game.visits || 0), 0) || 0;
     const totalPeakCCU = PEAK_CCU_VALUES.reduce((sum, ccu) => sum + ccu, 0);
 
+    // Fetch live Roblox profile (followers / friends / avatar). Best-effort.
+    let profile: {
+      followers: number;
+      friends: number;
+      following: number;
+      avatarUrl: string | null;
+    } | null = null;
+    try {
+      const [followersRes, friendsRes, followingRes, thumbRes] = await Promise.all([
+        fetch(`https://friends.roblox.com/v1/users/${ROBLOX_USER_ID}/followers/count`),
+        fetch(`https://friends.roblox.com/v1/users/${ROBLOX_USER_ID}/friends/count`),
+        fetch(`https://friends.roblox.com/v1/users/${ROBLOX_USER_ID}/followings/count`),
+        fetch(
+          `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${ROBLOX_USER_ID}&size=420x420&format=Png&isCircular=false`
+        ),
+      ]);
+      const thumb = await thumbRes.json();
+      profile = {
+        followers: (await followersRes.json())?.count ?? 0,
+        friends: (await friendsRes.json())?.count ?? 0,
+        following: (await followingRes.json())?.count ?? 0,
+        avatarUrl: thumb?.data?.[0]?.imageUrl ?? null,
+      };
+    } catch (profileError) {
+      console.error('Error fetching Roblox profile:', profileError);
+    }
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         games,
+        profile,
         currentlyPlaying: totalCCU,
         playSessions: totalVisits,
         peakCCU: totalPeakCCU,

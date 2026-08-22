@@ -10,6 +10,7 @@ const StatsSection = () => {
         value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
         label="Currently Playing"
         isLoading={isLoading}
+        live
       />
       <StatCard
         value={isLoading ? "..." : formatNumber(stats?.playSessions || 0)}
