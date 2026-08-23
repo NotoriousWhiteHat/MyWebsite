@@ -4,9 +4,10 @@ interface StatCardProps {
   value: string;
   label: string;
   isLoading?: boolean;
+  className?: string;
 }
 
-const StatCard = ({ value, label, isLoading }: StatCardProps) => {
+const StatCard = ({ value, label, isLoading, className = "" }: StatCardProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -26,7 +27,7 @@ const StatCard = ({ value, label, isLoading }: StatCardProps) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-8 py-6 min-w-[180px]"
+      className={`relative bg-black/80 border border-zinc-800 rounded-xl overflow-hidden px-5 py-5 sm:px-8 sm:py-6 min-w-0 ${className}`}
       style={{ 
         boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8)',
       }}

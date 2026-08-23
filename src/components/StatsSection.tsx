@@ -5,9 +5,10 @@ const StatsSection = () => {
   const { stats, isLoading } = useRobloxStats();
 
   return (
-    <div className="flex flex-wrap items-start gap-4 justify-center mt-8 mb-10">
+    <div className="mx-auto mt-8 mb-10 grid max-w-xs grid-cols-1 items-start gap-3 sm:max-w-3xl sm:grid-cols-3 sm:gap-4">
       <div className="flex flex-col items-start gap-2">
         <StatCard
+          className="w-full"
           value={isLoading ? "..." : formatNumber(stats?.currentlyPlaying || 0)}
           label="Currently Playing"
           isLoading={isLoading}
@@ -21,11 +22,13 @@ const StatsSection = () => {
         </div>
       </div>
       <StatCard
+        className="w-full"
         value={isLoading ? "..." : formatNumber(stats?.playSessions || 0)}
         label="Play Sessions"
         isLoading={isLoading}
       />
       <StatCard
+        className="w-full"
         value={isLoading ? "..." : formatNumber(stats?.peakCCU || 0)}
         label="Peak CCU"
         isLoading={isLoading}
