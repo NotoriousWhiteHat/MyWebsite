@@ -186,7 +186,7 @@ const Index = () => {
       universeId: "9931749389",
       visits: "12M",
       peakCcu: 45000,
-      role: "Former Founder",
+      role: "Developer",
       gameLink: "https://www.roblox.com/games/77649408247578/Dungeon-Quest-Reborn",
       groupLink: "https://www.roblox.com/communities/496909722/Delta-Quarters-OG#!/about"
     },
