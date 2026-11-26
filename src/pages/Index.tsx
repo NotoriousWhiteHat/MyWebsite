@@ -31,6 +31,26 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/275883088/Toes-on-Fire-Games"
     },
     {
+      title: "Dino Playground",
+      image: "https://i.imgur.com/vDAS9PZ.png",
+      universeId: "10775916991",
+      visits: "2.3B",
+      peakCcu: 1100,
+      role: "Liveops",
+      gameLink: "https://www.roblox.com/games/105224082851276/Dino-Playground",
+      groupLink: "https://www.roblox.com/communities/948396541/Dino-Playground"
+    },
+    {
+      title: "Steal with Spider Arms🕷️",
+      image: "https://i.imgur.com/nZEB9uv.png",
+      universeId: "10776408857",
+      visits: "2.3B",
+      peakCcu: 11000,
+      role: "Liveops",
+      gameLink: "https://www.roblox.com/games/120413462077800/Steal-with-Spider-Arms",
+      groupLink: "https://www.roblox.com/communities/223039393/Myth-Records"
+    },
+    {
       title: "Dungeon Quest",
       image: "https://i.imgur.com/CJPIgJZ.png",
       universeId: "848145103",
