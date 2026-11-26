@@ -31,6 +31,16 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/275883088/Toes-on-Fire-Games"
     },
     {
+      title: "Throw Key for Cars",
+      image: "https://i.imgur.com/k6P8vUt.png",
+      universeId: "10773711031",
+      visits: "2.3B",
+      peakCcu: 17000,
+      role: "Liveops",
+      gameLink: "https://www.roblox.com/games/115599018087832/Throw-Key-for-Cars",
+      groupLink: "https://www.roblox.com/communities/362399052/VEGA-TRUTH"
+    },
+    {
       title: "Dino Playground",
       image: "https://i.imgur.com/vDAS9PZ.png",
       universeId: "10775916991",
