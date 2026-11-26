@@ -27,6 +27,7 @@ const UNIVERSE_IDS = [
   10278375047, // TNT Sandbox
   10776408857, // spider
   10775916991, // dino
+  10773711031, // key car
 ];
 
 // Roblox profile shown on the About section
@@ -58,6 +59,7 @@ const PEAK_CCU_VALUES = [
   7400, // TNT Sandbox
   11000, // spider
   1100, // dino
+  17000, // key for car
 
 ];
 
