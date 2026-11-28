@@ -28,6 +28,7 @@ const UNIVERSE_IDS = [
   10776408857, // spider
   10775916991, // dino
   10773711031, // key car
+  6147671296, // lucky islands
 ];
 
 // Roblox profile shown on the About section
@@ -60,6 +61,7 @@ const PEAK_CCU_VALUES = [
   11000, // spider
   1100, // dino
   17000, // key for car
+  22000, // lucky islands
 
 ];
 
