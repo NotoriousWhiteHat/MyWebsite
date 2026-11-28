@@ -31,12 +31,22 @@ const Index = () => {
       groupLink: "https://www.roblox.com/communities/275883088/Toes-on-Fire-Games"
     },
     {
+      title: "Lucky Islands",
+      image: "https://i.imgur.com/s478CUs.png",
+      universeId: "6147671296",
+      visits: "2.3B",
+      peakCcu: 22000,
+      role: "Live Ops",
+      gameLink: "https://www.roblox.com/games/18134283205/Lucky-Islands",
+      groupLink: "https://www.roblox.com/communities/34486264/We-Love-Game-s"
+    },
+    {
       title: "Throw Key for Cars",
       image: "https://i.imgur.com/k6P8vUt.png",
       universeId: "10773711031",
       visits: "2.3B",
       peakCcu: 17000,
-      role: "Liveops",
+      role: "Live Ops",
       gameLink: "https://www.roblox.com/games/115599018087832/Throw-Key-for-Cars",
       groupLink: "https://www.roblox.com/communities/362399052/VEGA-TRUTH"
     },
@@ -46,7 +56,7 @@ const Index = () => {
       universeId: "10775916991",
       visits: "2.3B",
       peakCcu: 1100,
-      role: "Liveops",
+      role: "Live Ops",
       gameLink: "https://www.roblox.com/games/105224082851276/Dino-Playground",
       groupLink: "https://www.roblox.com/communities/948396541/Dino-Playground"
     },
@@ -56,7 +66,7 @@ const Index = () => {
       universeId: "10776408857",
       visits: "2.3B",
       peakCcu: 11000,
-      role: "Liveops",
+      role: "Live Ops",
       gameLink: "https://www.roblox.com/games/120413462077800/Steal-with-Spider-Arms",
       groupLink: "https://www.roblox.com/communities/223039393/Myth-Records"
     },
